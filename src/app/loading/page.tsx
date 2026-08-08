@@ -11,10 +11,20 @@ export default function LoadingPage() {
   const router = useRouter()
 
   useEffect(() => {
+    // mark that the loading page was shown (so server middleware won't redirect next time)
+    try {
+      // set as a session cookie so the loading page shows once per browser session
+      document.cookie = 'kurogami_shown_loading=1; path=/'
+    } catch (e) {
+      // ignore
+    }
     let raf: number | null = null
     let start: number | null = null
 
     const duration = 4800 // ms
+
+    const params = new URLSearchParams(window.location.search)
+    const target = params.get('to') || '/hub'
 
     const step = (timestamp: number) => {
       if (!start) start = timestamp
@@ -25,8 +35,8 @@ export default function LoadingPage() {
         raf = requestAnimationFrame(step)
       } else {
         setFinished(true)
-        // auto-redirect after short delay to /hub
-        setTimeout(() => router.push('/hub'), 1200)
+        // auto-redirect after short delay to the requested target
+        setTimeout(() => router.push(target), 1200)
       }
     }
 
@@ -80,9 +90,13 @@ export default function LoadingPage() {
                 <motion.button
                   whileHover={{ scale: 1.03 }}
                   className="rounded-full bg-[#ff2d55] px-6 py-3 text-sm font-semibold uppercase text-white"
-                  onClick={() => router.push('/hub')}
+                  onClick={() => {
+                    const params = new URLSearchParams(window.location.search)
+                    const target = params.get('to') || '/hub'
+                    router.push(target)
+                  }}
                 >
-                  Enter the Hub
+                  Continue
                 </motion.button>
               </motion.div>
             </div>

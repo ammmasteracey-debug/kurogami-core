@@ -1,7 +1,9 @@
 'use client'
 
 import Image from 'next/image'
+import { useState } from 'react'
 import { motion } from 'framer-motion'
+import ShadowBrickell from '../../components/metaverse/ShadowBrickell'
 
 const modules = [
   { title: 'RWA Intelligence', description: 'Live asset insights and real-world asset signals.' },
@@ -22,6 +24,8 @@ const tribes = [
 ]
 
 export default function HubPage() {
+  const [activeTab, setActiveTab] = useState('overview')
+
   return (
     <main className="relative min-h-screen overflow-hidden bg-[#02040f] text-white">
       <div className="absolute inset-0">
@@ -47,7 +51,28 @@ export default function HubPage() {
           </p>
         </header>
 
-        <section className="grid gap-6 xl:grid-cols-[1.35fr_0.95fr]">
+        <div className="mb-8 flex flex-wrap items-center justify-center gap-3">
+          {['overview', 'metaverse', 'modules'].map((tab) => (
+            <button
+              key={tab}
+              onClick={() => setActiveTab(tab)}
+              className={`rounded-full px-6 py-3 text-sm font-semibold uppercase tracking-[0.18em] transition ${
+                activeTab === tab
+                  ? 'bg-[#ff2d55] text-white shadow-[0_20px_80px_rgba(255,45,85,0.18)]'
+                  : 'bg-white/5 text-cyan-200 hover:bg-white/10'
+              }`}
+            >
+              {tab === 'overview' ? 'Overview' : tab === 'metaverse' ? 'Metaverse' : 'Modules'}
+            </button>
+          ))}
+        </div>
+
+        {activeTab === 'metaverse' ? (
+          <div className="rounded-[2rem] border border-white/10 bg-[#08111f]/90 p-4 shadow-[0_40px_120px_rgba(0,0,0,0.5)] backdrop-blur-xl">
+            <ShadowBrickell />
+          </div>
+        ) : (
+          <section className="grid gap-6 xl:grid-cols-[1.35fr_0.95fr]">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
@@ -124,6 +149,7 @@ export default function HubPage() {
             </div>
           </motion.div>
         </section>
+        )}
 
         <section className="mt-10 rounded-[2rem] border border-white/10 bg-[#08111f]/90 p-6 shadow-[0_40px_120px_rgba(0,0,0,0.35)] backdrop-blur-xl">
           <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
