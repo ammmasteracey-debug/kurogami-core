@@ -2,12 +2,11 @@
 
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { useRouter } from 'next/navigation'
 
 export default function LoadingPage() {
   const [progress, setProgress] = useState(0)
-  const [finished, setFinished] = useState(false)
   const router = useRouter()
 
   useEffect(() => {
@@ -34,7 +33,6 @@ export default function LoadingPage() {
       if (elapsed < duration) {
         raf = requestAnimationFrame(step)
       } else {
-        setFinished(true)
         // auto-redirect after short delay to the requested target
         setTimeout(() => router.push(target), 1200)
       }
@@ -47,61 +45,42 @@ export default function LoadingPage() {
   }, [router])
 
   return (
-    <main className="relative min-h-screen w-full overflow-hidden bg-[#02040f] text-white">
-      <div className="absolute inset-0">
-        <Image src="/images/shadow-brickell4.jpg" alt="Shadow Brickell" fill className="object-cover object-center" priority />
-        <div className="absolute inset-0 bg-black/60" />
-      </div>
+    <main className="relative min-h-screen w-full overflow-hidden bg-black text-white">
+      <div className="relative z-10 flex min-h-screen w-full items-center justify-center px-6">
+        <div className="w-full max-w-6xl">
+          <div className="relative mx-auto h-[34vh] w-full">
+            <Image
+              src="/images/kurogami-load.jpg"
+              alt="Kurogami load"
+              fill
+              priority
+              className="object-contain object-center opacity-90"
+            />
+          </div>
 
-      <div className="relative z-10 flex h-screen w-full flex-col items-center justify-center px-6 text-center">
-        <AnimatePresence>
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.9 }} className="max-w-4xl">
-            <div className="mb-6 select-none text-shadow">
-              <div className="mb-2 text-center text-7xl font-extrabold leading-none tracking-normal sm:text-9xl md:text-[7rem]">
-                黒神
-              </div>
-              <div className="mt-2 text-center text-3xl font-bold uppercase tracking-widest text-white sm:text-4xl md:text-5xl">
-                KUROGAMI
-              </div>
+          <div className="mx-auto mt-5 w-full max-w-3xl px-2">
+            <div className="relative h-[6px] overflow-hidden rounded-full bg-white/10">
+              <motion.div
+                className="absolute left-0 top-0 h-full rounded-full"
+                style={{
+                  background: 'linear-gradient(90deg, rgba(115,255,210,0.92), rgba(217,183,111,0.92))',
+                  boxShadow: '0 0 22px rgba(115,255,210,0.22), 0 0 30px rgba(217,183,111,0.18)'
+                }}
+                animate={{ width: `${progress}%` }}
+                transition={{ ease: 'easeInOut', duration: 0.35 }}
+              />
+              <motion.div
+                className="absolute top-0 h-full w-24"
+                style={{
+                  background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.52), transparent)',
+                  mixBlendMode: 'screen'
+                }}
+                animate={{ x: ['-30%', '130%'] }}
+                transition={{ duration: 1.4, repeat: Infinity, ease: 'linear' }}
+              />
             </div>
-
-            <div className="mx-auto mt-8 w-full max-w-2xl">
-              <p className="mb-4 text-sm uppercase tracking-[0.4em] text-cyan-300/80">ACCESSING THE FRACTURE...</p>
-
-              <div className="relative h-4 w-full overflow-hidden rounded-full bg-white/5">
-                <motion.div
-                  className="absolute left-0 top-0 h-full"
-                  style={{
-                    boxShadow: '0 12px 40px rgba(255,200,80,0.12), 0 6px 14px rgba(255,120,120,0.06)'
-                  }}
-                  animate={{ width: `${progress}%` }}
-                  transition={{ ease: 'easeInOut', duration: 0.4 }}
-                >
-                  <div className="h-full w-full" style={{ background: 'linear-gradient(90deg,#e6c07b,#ffd97a 40%, #ffb3a7)' }} />
-                </motion.div>
-              </div>
-
-              <div className="mt-4 flex items-center justify-between text-xs text-slate-300">
-                <span>{progress}%</span>
-                <span>{finished ? 'Complete' : 'Initializing'}</span>
-              </div>
-
-              <motion.div initial={{ opacity: 0 }} animate={{ opacity: finished ? 1 : 0 }} transition={{ duration: 0.6 }} className="mt-8">
-                <motion.button
-                  whileHover={{ scale: 1.03 }}
-                  className="rounded-full bg-[#ff2d55] px-6 py-3 text-sm font-semibold uppercase text-white"
-                  onClick={() => {
-                    const params = new URLSearchParams(window.location.search)
-                    const target = params.get('to') || '/hub'
-                    router.push(target)
-                  }}
-                >
-                  Continue
-                </motion.button>
-              </motion.div>
-            </div>
-          </motion.div>
-        </AnimatePresence>
+          </div>
+        </div>
       </div>
     </main>
   )

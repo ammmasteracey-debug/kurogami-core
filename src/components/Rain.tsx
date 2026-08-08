@@ -3,11 +3,11 @@
 import { motion } from 'framer-motion'
 
 const rainLines = Array.from({ length: 60 }, (_, index) => {
-  const width = 1.5 + Math.random() * 1.8 // slightly thicker
+  const width = 1 + Math.random() * 1.4
   const left = Math.random() * 100
-  const hue = Math.random() < 0.5 ? '#00f0ff' : '#ff2d55'
-  const opacity = 0.12 + Math.random() * 0.4
-  const duration = 3 + Math.random() * 5
+  const hue = Math.random() < 0.7 ? '#d9b76f' : '#8f9caf'
+  const opacity = 0.08 + Math.random() * 0.2
+  const duration = 4 + Math.random() * 6
   const delay = -Math.random() * 6
 
   return { id: index, left, width, hue, opacity, duration, delay }
@@ -19,12 +19,13 @@ export default function Rain() {
       {rainLines.map((line) => (
         <motion.span
           key={line.id}
-          className={`absolute top-[-18px] rounded-full pointer-events-none w-[1.5px]`} 
+          className="pointer-events-none absolute top-[-18px] rounded-full"
           style={{
             left: `${line.left}%`,
+            width: `${line.width}px`,
             height: '28vh',
             opacity: line.opacity,
-            backgroundImage: `linear-gradient(to bottom, transparent, ${line.hue} 40%, ${line.hue} 60%, transparent)`,
+            backgroundImage: `linear-gradient(to bottom, transparent, ${line.hue} 36%, ${line.hue} 64%, transparent)`,
             filter: 'blur(1px)'
           }}
           animate={{ y: ['-12vh', '110vh'] }}

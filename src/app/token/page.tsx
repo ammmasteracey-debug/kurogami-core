@@ -3,8 +3,19 @@ import Link from 'next/link'
 
 export default function TokenPage() {
   return (
-    <main className="token-shell min-h-screen bg-[#030406] text-[var(--text)]">
-      <section className="mx-auto flex max-w-7xl flex-col gap-8 px-6 py-20 sm:px-8 lg:px-10">
+    <main className="token-shell relative min-h-screen overflow-hidden bg-black text-[var(--text)]">
+      <div className="pointer-events-none absolute inset-0">
+        <Image
+          src="/images/kurogami-world-hero.jpg"
+          alt="Kurogami World background"
+          fill
+          priority
+          className="object-cover object-center opacity-30"
+        />
+        <div className="absolute inset-0 bg-black/72" />
+      </div>
+
+      <section className="relative z-10 mx-auto flex max-w-7xl flex-col gap-8 px-6 py-20 sm:px-8 lg:px-10">
         <div className="token-hero rounded-[2rem] border border-white/10 bg-[rgba(7,8,14,0.9)] p-8 shadow-[0_40px_120px_rgba(0,0,0,0.38)] sm:p-10 lg:p-14">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <p className="token-kicker">$KRG</p>
@@ -27,11 +38,11 @@ export default function TokenPage() {
             <div className="flex justify-center lg:justify-end">
               <div className="relative flex h-[280px] w-full max-w-[340px] items-center justify-center rounded-[1.8rem] border border-white/10 bg-[radial-gradient(circle_at_center,rgba(240,194,74,0.16),transparent_60%)] p-6 shadow-[0_30px_90px_rgba(0,0,0,0.28)]">
                 <Image
-                  src="/images/KRG-logo.jpg"
-                  alt="KRG token logo"
-                  width={320}
-                  height={320}
-                  className="h-full w-full rounded-[1.2rem] object-contain"
+                  src="/images/kurogami-load.jpg"
+                  alt="Kurogami World logo"
+                  width={900}
+                  height={900}
+                  className="h-full w-full rounded-[1.75rem] object-contain"
                 />
               </div>
             </div>

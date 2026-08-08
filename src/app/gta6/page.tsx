@@ -4,15 +4,15 @@ import { motion } from 'framer-motion'
 
 export default function GTA6Page() {
   return (
-    <main className="page-shell overflow-hidden bg-[#05060d] text-white">
-      <section className="section-hero min-h-[calc(100vh-6rem)] px-6 py-20 lg:px-12">
+    <main className="relative overflow-hidden bg-black text-white">
+      <section className="section-hero relative z-10 min-h-[calc(100vh-6rem)] px-6 py-20 lg:px-12">
         <div className="mx-auto max-w-6xl">
           <div className="rounded-[2rem] border border-white/10 bg-[#08101f]/80 p-10 backdrop-blur-xl shadow-[0_30px_120px_rgba(0,0,0,0.45)]">
             <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] items-center">
               <div>
                 <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-black/25 px-4 py-2 backdrop-blur-md">
                   <div className="flex h-11 w-11 items-center justify-center rounded-full border border-cyan-400/25 bg-white/10 p-1.5">
-                    <Image src="/images/kurogami-world-logo.jpg" alt="Kurogami World logo" width={40} height={40} className="h-full w-full rounded-full object-contain" />
+                    <Image src="/images/kurogami-load.jpg" alt="Kurogami World logo" width={40} height={40} className="h-full w-full rounded-full object-contain" />
                   </div>
                   <div>
                     <p className="text-[0.68rem] uppercase tracking-[0.28em] text-cyan-300">Kurogami World</p>
@@ -49,7 +49,7 @@ export default function GTA6Page() {
         </div>
       </section>
 
-      <section id="why" className="section-panel border-t border-white/10 px-6 py-20 lg:px-12">
+      <section id="why" className="section-panel relative z-10 border-t border-white/10 px-6 py-20 lg:px-12">
         <div className="mx-auto max-w-6xl grid gap-14 lg:grid-cols-[0.95fr_0.9fr]">
           <div>
             <p className="label">WHY THIS SERVER IS DIFFERENT</p>
@@ -116,7 +116,7 @@ export default function GTA6Page() {
         </div>
       </section>
 
-      <section className="section-cta border-t border-white/10 px-6 py-20 lg:px-12">
+      <section className="section-cta relative z-10 border-t border-white/10 px-6 py-20 lg:px-12">
         <div className="mx-auto max-w-6xl rounded-[2rem] border border-white/10 bg-[#07101d]/80 p-10 shadow-[0_30px_120px_rgba(0,0,0,0.35)]">
           <div className="grid gap-10 lg:grid-cols-[1fr_0.95fr] items-center">
             <div>

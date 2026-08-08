@@ -5,18 +5,48 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import Rain from '../components/Rain'
 import Particles from '../components/Particles'
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import TrippyBackground from '../components/TrippyBackground'
 import HeroParallax from '../components/HeroParallax'
+
+type ArtistProfile = {
+  id: string
+  name: string
+  role: string
+  bio: string
+  fullBio: string
+  tags: string[]
+  score: number
+  breakdown: {
+    creation: number
+    consistency: number
+    culturalSignal: number
+    distribution: number
+    systems: number
+  }
+  image: string
+  socials: {
+    instagram: string
+    tiktok: string
+    x: string
+  }
+  portfolio: {
+    title: string
+    format: string
+    note: string
+    link: string
+  }[]
+}
 
 export default function HomePage() {
   const router = useRouter()
 
   const [activePanel, setActivePanel] = useState<'overview' | 'insight' | 'rights' | 'compare' | 'offer'>('overview')
   const [selectedArtist, setSelectedArtist] = useState<string | null>(null)
+  const [streamStage, setStreamStage] = useState<'locked' | 'preview' | 'checkout'>('locked')
 
-  const artists = [
+  const artists: ArtistProfile[] = [
     {
       id: 'acey',
       name: 'Acey',
@@ -33,7 +63,13 @@ export default function HomePage() {
         distribution: 92,
         systems: 94,
       },
-      image: '/images/kurogami-world-logo.jpg',
+      image: '/images/kurogami-load.jpg',
+      socials: {
+        instagram: 'https://instagram.com/kurogamiworld',
+        tiktok: 'https://www.tiktok.com/@kurogamiworld',
+        x: 'https://x.com/kurogamiworld',
+      },
+      portfolio: [],
     },
     {
       id: 'tom',
@@ -51,7 +87,26 @@ export default function HomePage() {
         distribution: 86,
         systems: 87,
       },
-      image: '/images/kurogami-world-logo.jpg',
+      image: '/images/kurogami-load.jpg',
+      socials: {
+        instagram: 'https://instagram.com/tomlaroc',
+        tiktok: 'https://www.tiktok.com/@tomlaroc',
+        x: 'https://x.com/tomlaroc',
+      },
+      portfolio: [
+        {
+          title: 'Frequency District Sessions',
+          format: 'Live set / curation',
+          note: 'Underground sound programming for high-signal rooms and founder activations.',
+          link: 'https://www.tiktok.com/@tomlaroc',
+        },
+        {
+          title: 'Midnight Atmosphere Series',
+          format: 'Audio direction',
+          note: 'Signature ambient and percussive palette for character-led storytelling.',
+          link: 'https://instagram.com/tomlaroc',
+        },
+      ],
     },
     {
       id: 'lens',
@@ -69,7 +124,26 @@ export default function HomePage() {
         distribution: 88,
         systems: 89,
       },
-      image: '/images/kurogami-world-logo.jpg',
+      image: '/images/kurogami-load.jpg',
+      socials: {
+        instagram: 'https://instagram.com/lenscreates',
+        tiktok: 'https://www.tiktok.com/@lenscreates',
+        x: 'https://x.com/lenscreates',
+      },
+      portfolio: [
+        {
+          title: 'Chromatic Motion Walls',
+          format: 'Live painting',
+          note: 'Rapid visual compositions produced live during cultural events and streams.',
+          link: 'https://instagram.com/lenscreates',
+        },
+        {
+          title: 'Street Pulse Visual Logs',
+          format: 'Video / documentation',
+          note: 'Cinematic captures translating Miami movement into collectible visual memory.',
+          link: 'https://www.tiktok.com/@lenscreates',
+        },
+      ],
     },
     {
       id: 'jay',
@@ -87,11 +161,44 @@ export default function HomePage() {
         distribution: 89,
         systems: 92,
       },
-      image: '/images/kurogami-world-logo.jpg',
+      image: '/images/kurogami-load.jpg',
+      socials: {
+        instagram: 'https://instagram.com/jaydrawsworlds',
+        tiktok: 'https://www.tiktok.com/@jaydrawsworlds',
+        x: 'https://x.com/jaydrawsworlds',
+      },
+      portfolio: [
+        {
+          title: 'Shadow Brickell Characters',
+          format: 'Character system',
+          note: 'Identity framework and signature character lines for district-level narrative.',
+          link: 'https://x.com/jaydrawsworlds',
+        },
+        {
+          title: 'Global Tribe Sketch Cycles',
+          format: 'Illustration',
+          note: 'Cross-style drawings that map faction identity, posture, and visual mythology.',
+          link: 'https://instagram.com/jaydrawsworlds',
+        },
+      ],
     },
   ]
 
   const selectedArtistProfile = artists.find((artist) => artist.id === selectedArtist) ?? null
+  const portfolioArtists = artists.filter((artist) => artist.id !== 'acey')
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+
+    const hasLoadingCookie = document.cookie
+      .split(';')
+      .map((part) => part.trim())
+      .some((part) => part.startsWith('kurogami_shown_loading='))
+
+    if (!hasLoadingCookie) {
+      router.replace('/loading?to=/')
+    }
+  }, [router])
 
   const showLoading = useCallback(() => {
     try {
@@ -116,14 +223,16 @@ export default function HomePage() {
       <div className="glowfield" />
 
       <section className="hero relative overflow-hidden">
-        <div className="absolute inset-0">
-          <Image
-            src="/images/shadow-brickell1.jpg"
-            alt="Shadow Brickell"
-            fill
-            priority
-            className="object-cover object-center brightness-[0.62] contrast-[1.08] saturate-[1.1]"
-          />
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute inset-[-3%]">
+            <Image
+              src="/images/kurogami-world-hero.jpg"
+              alt="Kurogami World hero"
+              fill
+              priority
+              className="object-cover object-center brightness-[0.62] contrast-[1.08] saturate-[1.1]"
+            />
+          </div>
           <div className="absolute inset-0 hero-image-overlay" />
         </div>
 
@@ -138,7 +247,7 @@ export default function HomePage() {
             >
               <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-black/25 px-4 py-2 backdrop-blur-md shadow-[0_10px_40px_rgba(0,0,0,0.24)]">
                 <div className="flex h-11 w-11 items-center justify-center rounded-full border border-[#f1c96a]/25 bg-white/10 p-1.5">
-                  <Image src="/images/kurogami-world-logo.jpg" alt="Kurogami World logo" width={40} height={40} className="h-full w-full rounded-full object-contain" />
+                  <Image src="/images/kurogami-load.jpg" alt="Kurogami World logo" width={40} height={40} className="h-full w-full rounded-full object-contain" />
                 </div>
                 <div className="text-left">
                   <p className="text-[0.68rem] uppercase tracking-[0.28em] text-[#f1c96a]">Kurogami World</p>
@@ -245,7 +354,7 @@ export default function HomePage() {
           <div className="panel-card p-10">
             <div className="mb-8 flex flex-wrap items-center gap-4 rounded-[1.2rem] border border-white/10 bg-black/20 p-4">
               <div className="flex h-12 w-12 items-center justify-center rounded-full border border-[#f1c96a]/25 bg-white/10 p-2">
-                <Image src="/images/kurogami-world-logo.jpg" alt="Kurogami World logo" width={42} height={42} className="h-full w-full rounded-full object-contain" />
+                <Image src="/images/kurogami-load.jpg" alt="Kurogami World logo" width={42} height={42} className="h-full w-full rounded-full object-contain" />
               </div>
               <div>
                 <p className="text-[0.68rem] uppercase tracking-[0.3em] text-[#f1c96a]">Kurogami World</p>
@@ -523,6 +632,12 @@ export default function HomePage() {
                       ))}
                     </div>
 
+                    <div className="artist-socials mt-4">
+                      <a href={a.socials.instagram} target="_blank" rel="noreferrer" className="artist-social-link">Instagram</a>
+                      <a href={a.socials.tiktok} target="_blank" rel="noreferrer" className="artist-social-link">TikTok</a>
+                      <a href={a.socials.x} target="_blank" rel="noreferrer" className="artist-social-link">X</a>
+                    </div>
+
                     <div className="forge-row mt-4">
                       <div className="forge-info">
                         <div className="forge-score">{a.score}</div>
@@ -544,6 +659,105 @@ export default function HomePage() {
             </div>
 
             <p className="mt-6 support-text">Forge Index grades artists on creation, consistency, cultural signal, distribution, and systems capacity — helping match artists with aligned capital.</p>
+          </div>
+        </section>
+
+        <section className="section">
+          <div className="panel-card p-10">
+            <p className="label">PORTFOLIOS</p>
+            <h2 className="section-title mt-4">Founding artist portfolios</h2>
+            <div className="divider" />
+            <p className="support-text mt-4">Portfolio previews are available for all founding artists except Acey, per your request.</p>
+
+            <div className="mt-8 grid gap-6 lg:grid-cols-3">
+              {portfolioArtists.map((artist) => (
+                <article key={`${artist.id}-portfolio`} className="portfolio-card">
+                  <h3 className="artist-name">{artist.name}</h3>
+                  <p className="artist-role">{artist.role}</p>
+                  <div className="portfolio-list mt-5">
+                    {artist.portfolio.map((item) => (
+                      <a key={item.title} href={item.link} target="_blank" rel="noreferrer" className="portfolio-item">
+                        <p className="portfolio-title">{item.title}</p>
+                        <p className="portfolio-format">{item.format}</p>
+                        <p className="portfolio-note">{item.note}</p>
+                      </a>
+                    ))}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="section">
+          <div className="panel-card p-10">
+            <p className="label">TIKTOK STREAM ACCESS</p>
+            <h2 className="section-title mt-4">Watch through the site with a free preview, then choose your gateway.</h2>
+            <div className="divider" />
+            <p className="support-text mt-4">Free preview starts inside the page. Continued access routes through either an NFT key purchase or a $200/month limited community subscription.</p>
+
+            <div className="stream-shell mt-8">
+              <div className="stream-player-wrap">
+                {(streamStage === 'preview' || streamStage === 'checkout') ? (
+                  <iframe
+                    className="stream-iframe"
+                    src="https://www.tiktok.com/@kurogamiworld/live"
+                    title="Kurogami TikTok stream"
+                    loading="lazy"
+                    allow="autoplay; encrypted-media; picture-in-picture"
+                  />
+                ) : (
+                  <div className="stream-placeholder">
+                    <p className="label">Stream Preview Locked</p>
+                    <p className="stream-placeholder-copy">Start a free preview to watch the live TikTok feed inside the site.</p>
+                  </div>
+                )}
+              </div>
+
+              <div className="stream-actions mt-6">
+                {streamStage === 'locked' && (
+                  <button type="button" className="btn btn-primary" onClick={() => setStreamStage('preview')}>
+                    Start Free Preview
+                  </button>
+                )}
+
+                {streamStage === 'preview' && (
+                  <>
+                    <a className="btn btn-secondary" href="https://www.tiktok.com/@kurogamiworld/live" target="_blank" rel="noreferrer">
+                      Open in TikTok
+                    </a>
+                    <button type="button" className="btn btn-token" onClick={() => setStreamStage('checkout')}>
+                      Continue After Preview
+                    </button>
+                  </>
+                )}
+
+                {streamStage === 'checkout' && (
+                  <div className="gateway-grid">
+                    <div className="gateway-card">
+                      <p className="label">Gateway 1</p>
+                      <h3 className="gateway-title">NFT Access Key</h3>
+                      <p className="support-text">Unlock full network access, stream archives, community, and creator layers through founding art ownership.</p>
+                      <button type="button" className="btn btn-primary mt-4" onClick={() => showPanel('offer')}>
+                        Purchase NFT Access
+                      </button>
+                    </div>
+
+                    <div className="gateway-card">
+                      <p className="label">Gateway 2</p>
+                      <h3 className="gateway-title">$200/mo Community Tier</h3>
+                      <p className="support-text">Join the community with limited access for participation, discussion, and selected stream features.</p>
+                      <a
+                        className="btn btn-secondary mt-4"
+                        href="mailto:kurogamiworld@gmail.com?subject=Kurogami%20Community%20Subscription%20%24200%2Fmo&body=I%20want%20to%20join%20the%20%24200%2Fmonth%20limited%20access%20community%20tier."
+                      >
+                        Subscribe for $200/mo
+                      </a>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
         </section>
 
@@ -635,6 +849,12 @@ export default function HomePage() {
                   {selectedArtistProfile.tags.map((tag) => (
                     <span key={tag} className="tag">{tag}</span>
                   ))}
+                </div>
+
+                <div className="artist-socials mt-5">
+                  <a href={selectedArtistProfile.socials.instagram} target="_blank" rel="noreferrer" className="artist-social-link">Instagram</a>
+                  <a href={selectedArtistProfile.socials.tiktok} target="_blank" rel="noreferrer" className="artist-social-link">TikTok</a>
+                  <a href={selectedArtistProfile.socials.x} target="_blank" rel="noreferrer" className="artist-social-link">X</a>
                 </div>
 
                 <div className="artist-modal-forge mt-6">
