@@ -42,9 +42,9 @@ type ArtistProfile = {
 export default function HomePage() {
   const router = useRouter()
 
-  const [activePanel, setActivePanel] = useState<'overview' | 'insight' | 'rights' | 'compare' | 'offer'>('overview')
+  const [activePanel, setActivePanel] = useState<'overview' | 'insight' | 'rights' | 'compare' | 'infrastructure' | 'offer'>('overview')
   const [selectedArtist, setSelectedArtist] = useState<string | null>(null)
-  const [streamStage, setStreamStage] = useState<'locked' | 'preview' | 'checkout'>('locked')
+  const [heroMenuOpen, setHeroMenuOpen] = useState(false)
 
   const artists: ArtistProfile[] = [
     {
@@ -208,7 +208,7 @@ export default function HomePage() {
   }, [router])
 
   const showPanel = useCallback(
-    (panel: 'overview' | 'insight' | 'rights' | 'compare' | 'offer') => {
+    (panel: 'overview' | 'insight' | 'rights' | 'compare' | 'infrastructure' | 'offer') => {
       setActivePanel(panel)
       if (typeof window !== 'undefined') {
         document.getElementById('nestedContent')?.scrollIntoView({ behavior: 'smooth' })
@@ -323,23 +323,50 @@ export default function HomePage() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.36 }}
-              className="herocta"
+              className="herocta herocta-vertical"
             >
-              <button type="button" className="btn btn-primary" onClick={() => showPanel('offer')}>
-                Reserve Founding Art
+              <button
+                type="button"
+                className="hero-menu-toggle"
+                aria-expanded={heroMenuOpen}
+                aria-controls="heroVerticalMenu"
+                onClick={() => setHeroMenuOpen((prev) => !prev)}
+              >
+                {heroMenuOpen ? 'Close Menu' : 'Open Menu'}
               </button>
-              <Link href="/gta6" className="btn btn-gta6">
-                Explore GTA6 Layer
-              </Link>
-              <Link href="/lore" className="btn btn-secondary">
-                Read the Lore
-              </Link>
-              <Link href="/token" className="btn btn-token">
-                Learn About $KRG
-              </Link>
-              <Link href="/solana" className="btn btn-token">
-                Solana Rails
-              </Link>
+
+              {heroMenuOpen && (
+                <motion.div
+                  className="hero-menu-shell"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.25, ease: 'easeOut' }}
+                >
+                  <div id="heroVerticalMenu" className="hero-menu-stack">
+                    <button type="button" className="hero-menu-link hero-menu-item" onClick={() => showPanel('offer')}>
+                      Reserve Founding Art
+                    </button>
+                    <Link href="/surviving-miami" className="hero-menu-link hero-menu-item">
+                      Surviving Miami
+                    </Link>
+                    <Link href="/lore" className="hero-menu-link hero-menu-item">
+                      Read the Lore
+                    </Link>
+                    <Link href="/token" className="hero-menu-link hero-menu-item">
+                      Learn About $KRG
+                    </Link>
+                    <Link href="/solana" className="hero-menu-link hero-menu-item">
+                      Solana Rails
+                    </Link>
+                    <Link href="/gta6" className="hero-menu-link hero-menu-item">
+                      Explore GTA6 Layer
+                    </Link>
+                  </div>
+                  <div className="hero-menu-scroll-indicator" aria-hidden>
+                    ↓
+                  </div>
+                </motion.div>
+              )}
             </motion.div>
           </div>
         </div>
@@ -389,6 +416,13 @@ export default function HomePage() {
                 className={`nested-tab ${activePanel === 'compare' ? 'active' : ''}`}
               >
                 Comparison
+              </button>
+              <button
+                type="button"
+                onClick={() => showPanel('infrastructure')}
+                className={`nested-tab ${activePanel === 'infrastructure' ? 'active' : ''}`}
+              >
+                Infrastructure
               </button>
               <button
                 type="button"
@@ -448,31 +482,32 @@ export default function HomePage() {
                 <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] items-start">
                   <div>
                     <p className="label">THE MODEL</p>
-                    <h2 className="section-title mt-4">Surviving Miami / open stream network</h2>
+                    <h2 className="section-title mt-4">Core stack: art, key, network, infrastructure, rails.</h2>
                     <div className="divider" />
                     <p className="hero-copy mt-6">
-                      Artists can let the camera run without leaving the creative process. No forced talking-head performance required. Process becomes content. Exposure becomes natural.
+                      Kurogami is built as a layered system where each part has a clear job and each layer unlocks the next.
                     </p>
                     <ul className="utility-list mt-8">
-                      <li>Stream the process rather than stage it.</li>
-                      <li>Make the work itself the content.</li>
-                      <li>Let visibility grow from creative momentum.</li>
+                      <li>ART (front value)</li>
+                      <li>NFT KEY (access object)</li>
+                      <li>SURVIVING MIAMI / OPEN STREAM NETWORK (public face)</li>
+                      <li>KUROGAMI INFRASTRUCTURE (backend)</li>
+                      <li>$KRG allocation + world layers + RWA rails</li>
                     </ul>
                   </div>
                   <div className="panel-card p-10">
-                    <p className="label">K U R O G A M I</p>
-                    <h3 className="mt-4 text-3xl font-semibold text-[var(--text-1)]">The infrastructure beneath that exposure</h3>
+                    <p className="label">PRESALE RULE</p>
+                    <h3 className="mt-4 text-3xl font-semibold text-[var(--text-1)]">Founding art now, key at launch, allocation by NFT count.</h3>
                     <div className="divider my-6" />
                     <ul className="utility-list">
-                      <li>keys</li>
-                      <li>network access</li>
-                      <li>ownership</li>
-                      <li>long-term world</li>
+                      <li>Buy founding art now.</li>
+                      <li>Receive NFT at launch.</li>
+                      <li>$KRG allocation scales with number of NFTs held.</li>
                     </ul>
                     <div className="key-panel mt-8">
-                      <p className="label">NFT = Key</p>
+                      <p className="label">Holder Dynamics</p>
                       <p className="hero-copy mt-3">
-                        Not just a collectible. The access layer into the ecosystem.
+                        This structure creates natural pressure to hold more than one key over time.
                       </p>
                     </div>
                   </div>
@@ -573,19 +608,120 @@ export default function HomePage() {
                 </div>
               )}
 
+              {activePanel === 'infrastructure' && (
+                <div className="space-y-8">
+                  <div className="text-center">
+                    <p className="label">INFRASTRUCTURE LAYER</p>
+                    <h2 className="section-title mt-4">Blue-chip NFT infrastructure, not a replacement for the collection itself.</h2>
+                    <div className="divider mx-auto" />
+                  </div>
+
+                  <div className="infrastructure-grid">
+                    <div className="infrastructure-card">
+                      <p className="label">POSITIONING</p>
+                      <p className="hero-copy mt-4">
+                        Kurogami is not competing to replace BAYC-class collections. It is the world and utility operating layer they can plug into.
+                      </p>
+                      <div className="infrastructure-stack mt-6">
+                        <div className="infrastructure-surface">
+                          <p className="utility-title">They keep</p>
+                          <ul className="utility-list mt-3">
+                            <li>Their PFP identity</li>
+                            <li>Their community</li>
+                            <li>Their brand</li>
+                            <li>Their status</li>
+                          </ul>
+                        </div>
+                        <div className="infrastructure-surface">
+                          <p className="utility-title">They gain</p>
+                          <ul className="utility-list mt-3">
+                            <li>District / world access</li>
+                            <li>Artist + event activation</li>
+                            <li>Stream network presence</li>
+                            <li>Future virtual placement paths</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="infrastructure-card">
+                      <p className="label">KUROGAMI PROVIDES</p>
+                      <ul className="utility-list mt-4">
+                        <li>Keyed entry architecture</li>
+                        <li>Live cultural activation</li>
+                        <li>Artist systems</li>
+                        <li>Optional economic modules</li>
+                        <li>Long-form world expansion</li>
+                      </ul>
+                      <div className="quote-card mt-6">
+                        <p className="support-text">Credibility bridge</p>
+                        <p className="hero-copy mt-2">
+                          People like the Golden Age / Ape-event DJ node help translate this into rooms that already trust NFT-as-access.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="infrastructure-card">
+                    <p className="label">LIVESHARE INTEGRATION CONCEPT</p>
+                    <p className="hero-copy mt-4">
+                      Frank’s Liveshare angle becomes more serious when framed as infrastructure rather than another token on a page.
+                    </p>
+                    <div className="quote-card mt-6">
+                      <p className="support-text">Liveshare as RWA MLS layer</p>
+                      <p className="hero-copy mt-3">
+                        Liveshare becomes the listing / matching / transaction coordination layer for tokenized real-world assets inside Kurogami’s broader market stack.
+                      </p>
+                    </div>
+                    <div className="infrastructure-stack mt-6">
+                      <div className="infrastructure-surface">
+                        <p className="utility-title">Meaning</p>
+                        <ul className="utility-list mt-3">
+                          <li>Buy</li>
+                          <li>Sell</li>
+                          <li>Rent</li>
+                          <li>List</li>
+                        </ul>
+                      </div>
+                      <div className="infrastructure-surface">
+                        <p className="utility-title">Interface logic</p>
+                        <p className="hero-copy mt-3">
+                          Physical or tokenized assets flow into a Liveshare-style coordination layer, then into Kurogami’s parcel and spatial layer, before reaching NFT key access and $KRG-backed participation.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="infrastructure-card">
+                    <p className="label">FULL LOOP</p>
+                    <div className="loop-list mt-5">
+                      <div className="loop-item"><span className="loop-number">1</span><span>Artist creates (Jay / Lens / Tom)</span></div>
+                      <div className="loop-item"><span className="loop-number">2</span><span>Collector buys founding art (presale)</span></div>
+                      <div className="loop-item"><span className="loop-number">3</span><span>NFT key issues at launch</span></div>
+                      <div className="loop-item"><span className="loop-number">4</span><span>$KRG allocated by holdings</span></div>
+                      <div className="loop-item"><span className="loop-number">5</span><span>Holder enters Surviving Miami / network</span></div>
+                      <div className="loop-item"><span className="loop-number">6</span><span>Blue-chip collections can plug into world layer</span></div>
+                      <div className="loop-item"><span className="loop-number">7</span><span>Spatial / parcel layer displays and routes asset activity</span></div>
+                      <div className="loop-item"><span className="loop-number">8</span><span>Liveshare-class infra coordinates list / buy / sell / rent</span></div>
+                      <div className="loop-item"><span className="loop-number">9</span><span>Kurogami remains the cultural + access OS on top</span></div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
               {activePanel === 'offer' && (
                 <div className="grid gap-10 lg:grid-cols-[1fr_0.95fr] items-center">
                   <div>
                     <p className="label">FOUNDING OFFER</p>
                     <h2 className="section-title mt-4">A $10k founding piece is a bundled position.</h2>
                     <p className="hero-copy mt-6">
-                      This is not “art only.” A $10k founding piece is a claim on founding art, a rare NFT key, brand exposure, and a path into a wider ecosystem.
+                      This is not art-only. Buy founding art now, receive the NFT key at launch, and participate in a stack where allocation and access deepen as your key position grows.
                     </p>
                     <ul className="why-list mt-8">
                       <li>Founding art of Kurogami</li>
-                      <li>Rare NFT key at launch</li>
-                      <li>Exposure to artists’ brand growth</li>
-                      <li>Access path into the wider ecosystem</li>
+                      <li>Receive NFT key at launch</li>
+                      <li>$KRG allocation scales with number of NFTs held</li>
+                      <li>Access path into world layers and RWA rails</li>
                     </ul>
                     <button type="button" className="btn btn-primary mt-8" onClick={() => showLoading()}>
                       Reserve Founding Art
@@ -691,71 +827,42 @@ export default function HomePage() {
 
         <section className="section">
           <div className="panel-card p-10">
-            <p className="label">TIKTOK STREAM ACCESS</p>
-            <h2 className="section-title mt-4">Watch through the site with a free preview, then choose your gateway.</h2>
+            <p className="label">STREAM ACCESS</p>
+            <h2 className="section-title mt-4">Kurogami Streaming Box (Coming Soon)</h2>
             <div className="divider" />
-            <p className="support-text mt-4">Free preview starts inside the page. Continued access routes through either an NFT key purchase or a $200/month limited community subscription.</p>
+            <p className="support-text mt-4">This will run as a native Kurogami streaming surface. No external platform required.</p>
 
             <div className="stream-shell mt-8">
               <div className="stream-player-wrap">
-                {(streamStage === 'preview' || streamStage === 'checkout') ? (
-                  <iframe
-                    className="stream-iframe"
-                    src="https://www.tiktok.com/@kurogamiworld/live"
-                    title="Kurogami TikTok stream"
-                    loading="lazy"
-                    allow="autoplay; encrypted-media; picture-in-picture"
-                  />
-                ) : (
-                  <div className="stream-placeholder">
-                    <p className="label">Stream Preview Locked</p>
-                    <p className="stream-placeholder-copy">Start a free preview to watch the live TikTok feed inside the site.</p>
-                  </div>
-                )}
+                <div className="stream-placeholder">
+                  <p className="label">Coming Soon</p>
+                  <p className="stream-placeholder-copy">The Kurogami streaming box is in production and will launch here soon.</p>
+                </div>
               </div>
 
               <div className="stream-actions mt-6">
-                {streamStage === 'locked' && (
-                  <button type="button" className="btn btn-primary" onClick={() => setStreamStage('preview')}>
-                    Start Free Preview
-                  </button>
-                )}
-
-                {streamStage === 'preview' && (
-                  <>
-                    <a className="btn btn-secondary" href="https://www.tiktok.com/@kurogamiworld/live" target="_blank" rel="noreferrer">
-                      Open in TikTok
-                    </a>
-                    <button type="button" className="btn btn-token" onClick={() => setStreamStage('checkout')}>
-                      Continue After Preview
+                <div className="gateway-grid">
+                  <div className="gateway-card">
+                    <p className="label">Gateway 1</p>
+                    <h3 className="gateway-title">NFT Access Key</h3>
+                    <p className="support-text">Unlock full network access, stream archives, community, and creator layers through founding art ownership.</p>
+                    <button type="button" className="btn btn-primary mt-4" onClick={() => showPanel('offer')}>
+                      Purchase NFT Access
                     </button>
-                  </>
-                )}
-
-                {streamStage === 'checkout' && (
-                  <div className="gateway-grid">
-                    <div className="gateway-card">
-                      <p className="label">Gateway 1</p>
-                      <h3 className="gateway-title">NFT Access Key</h3>
-                      <p className="support-text">Unlock full network access, stream archives, community, and creator layers through founding art ownership.</p>
-                      <button type="button" className="btn btn-primary mt-4" onClick={() => showPanel('offer')}>
-                        Purchase NFT Access
-                      </button>
-                    </div>
-
-                    <div className="gateway-card">
-                      <p className="label">Gateway 2</p>
-                      <h3 className="gateway-title">$200/mo Community Tier</h3>
-                      <p className="support-text">Join the community with limited access for participation, discussion, and selected stream features.</p>
-                      <a
-                        className="btn btn-secondary mt-4"
-                        href="mailto:kurogamiworld@gmail.com?subject=Kurogami%20Community%20Subscription%20%24200%2Fmo&body=I%20want%20to%20join%20the%20%24200%2Fmonth%20limited%20access%20community%20tier."
-                      >
-                        Subscribe for $200/mo
-                      </a>
-                    </div>
                   </div>
-                )}
+
+                  <div className="gateway-card">
+                    <p className="label">Gateway 2</p>
+                    <h3 className="gateway-title">$200/mo Community Tier</h3>
+                    <p className="support-text">Join the community with limited access for participation, discussion, and selected stream features.</p>
+                    <a
+                      className="btn btn-secondary mt-4"
+                      href="mailto:kurogamiworld@gmail.com?subject=Kurogami%20Community%20Subscription%20%24200%2Fmo&body=I%20want%20to%20join%20the%20%24200%2Fmonth%20limited%20access%20community%20tier."
+                    >
+                      Subscribe for $200/mo
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -803,6 +910,9 @@ export default function HomePage() {
             <h2 className="section-title mt-4">Explore each layer of Kurogami World.</h2>
             <div className="divider" />
             <div className="herocta mt-8">
+              <Link href="/surviving-miami" className="btn btn-secondary">
+                Surviving Miami
+              </Link>
               <Link href="/lore" className="btn btn-secondary">
                 The Lore
               </Link>
@@ -814,6 +924,26 @@ export default function HomePage() {
               </Link>
               <Link href="/gta6" className="btn btn-gta6">
                 GTA6 Layer
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        <section className="section">
+          <div className="panel-card p-10 text-center">
+            <p className="label">NEXT ACTION</p>
+            <h2 className="section-title mt-4">Enter the key stack.</h2>
+            <div className="divider mx-auto" />
+            <p className="support-text mt-4">Reserve founding art, understand the monetary layer, and position early in the world system.</p>
+            <div className="herocta mt-8 justify-center">
+              <button type="button" className="btn btn-primary" onClick={() => showPanel('offer')}>
+                Reserve Founding Art
+              </button>
+              <Link href="/token" className="btn btn-token">
+                Explore $KRG
+              </Link>
+              <Link href="/surviving-miami" className="btn btn-secondary">
+                Surviving Miami
               </Link>
             </div>
           </div>
