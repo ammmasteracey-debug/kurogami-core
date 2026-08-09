@@ -9,7 +9,7 @@ export default function HubPage() {
         <p className="text-[0.68rem] uppercase tracking-[0.32em] text-[var(--gold)]">Kurogami World</p>
         <h1 className="mt-4 text-4xl font-semibold sm:text-5xl">Hub</h1>
         <p className="mt-6 max-w-3xl text-lg leading-8 text-white/75">
-          This hub route is restored as a lightweight destination for the earlier command-center experience.
+          This hub route is restored as a lightweight destination for the earlier command-center experience and is now live for deployment.
         </p>
 
         <div className="mt-10 grid gap-4 rounded-[1.6rem] border border-white/10 bg-white/5 p-6 backdrop-blur-md sm:grid-cols-2">
