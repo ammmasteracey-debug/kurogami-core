@@ -186,6 +186,35 @@ export default function HomePage() {
 
   const selectedArtistProfile = artists.find((artist) => artist.id === selectedArtist) ?? null
   const portfolioArtists = artists.filter((artist) => artist.id !== 'acey')
+  const weeklyEvents = [
+    {
+      title: 'Sunday Nights at Churchill\'s',
+      recurring: 'Every Sunday',
+      venue: 'Churchill\'s Pub',
+      city: 'Miami',
+      artistsPresent: 'Tom Laroc · Lens · Jay',
+      description: 'Sound, live painting, and character work in public. Process becomes presence.',
+      thisWeek: true,
+    },
+    {
+      title: 'Open Slot',
+      recurring: 'Open',
+      venue: 'TBD',
+      city: 'Miami',
+      artistsPresent: 'Open for future artists',
+      description: 'A flexible slot for a new artist, collaborator, or live activation.',
+      thisWeek: false,
+    },
+    {
+      title: 'Open Slot',
+      recurring: 'Open',
+      venue: 'TBD',
+      city: 'Miami',
+      artistsPresent: 'Open for future artists',
+      description: 'A flexible slot for a new artist, collaborator, or live activation.',
+      thisWeek: false,
+    },
+  ]
 
   useEffect(() => {
     if (typeof window === 'undefined') return
@@ -784,7 +813,7 @@ export default function HomePage() {
                       </div>
                     </div>
 
-                    <div className="mt-4">
+                    <div className="mt-auto pt-4">
                       <button className="btn btn-ghost" onClick={() => setSelectedArtist(a.id)}>
                         View Profile
                       </button>
@@ -795,6 +824,60 @@ export default function HomePage() {
             </div>
 
             <p className="mt-6 support-text">Forge Index grades artists on creation, consistency, cultural signal, distribution, and systems capacity — helping match artists with aligned capital.</p>
+          </div>
+        </section>
+
+        <section className="section">
+          <div className="panel-card p-10">
+            <p className="label">WEEKLY EVENTS</p>
+            <h2 className="section-title mt-4">Where the artists build in public</h2>
+            <div className="divider" />
+            <p className="support-text mt-4">Kurogami is not only online. The work happens live.</p>
+            <p className="hero-copy mt-6 max-w-4xl">
+              Each week the founding artists appear in real rooms - painting, drawing, sound, and process in the open. These nights are part of the world: culture first, camera optional, creation continuous.
+            </p>
+
+            <div className="mt-8 overflow-hidden rounded-[1.5rem] border border-[#f1c96a]/20 bg-black/25">
+              <Image
+                src="/images/churchills.jpg"
+                alt="Sunday event at Churchill's with founding artists"
+                width={1600}
+                height={900}
+                className="h-[280px] w-full object-contain object-center sm:h-[380px] lg:h-[460px]"
+              />
+            </div>
+
+            <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+              {weeklyEvents.map((event) => (
+                <article
+                  key={event.title}
+                  className="rounded-[1.2rem] border border-[#f1c96a]/18 bg-[rgba(8,10,17,0.86)] p-5 transition-colors duration-200 hover:border-[#f1c96a]/40"
+                >
+                  <div className="flex items-start justify-between gap-3">
+                    <p className="font-mono text-[0.66rem] uppercase tracking-[0.28em] text-[var(--gold)]">{event.recurring}</p>
+                    {event.thisWeek && (
+                      <span className="rounded-full border border-[#f1c96a]/45 bg-[#f1c96a]/14 px-3 py-1 text-[0.62rem] uppercase tracking-[0.2em] text-[#f1c96a]">
+                        This week
+                      </span>
+                    )}
+                  </div>
+                  <h3 className="mt-4 text-xl font-semibold text-white">{event.title}</h3>
+                  <div className="mt-4 space-y-1 text-sm text-white/78">
+                    <p><span className="text-white/45">Venue:</span> {event.venue}</p>
+                    <p><span className="text-white/45">City:</span> {event.city}</p>
+                    <p><span className="text-white/45">Artists:</span> {event.artistsPresent}</p>
+                  </div>
+                  <p className="mt-4 text-sm leading-7 text-white/75">{event.description}</p>
+                </article>
+              ))}
+            </div>
+
+            <p className="support-text mt-6">Lineups can expand. Follow @kurogamixyz for weekly updates.</p>
+            <div className="herocta mt-7">
+              <a href="https://x.com/kurogamixyz" target="_blank" rel="noreferrer" className="btn btn-secondary">
+                Follow for event updates
+              </a>
+            </div>
           </div>
         </section>
 
