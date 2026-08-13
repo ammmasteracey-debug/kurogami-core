@@ -28,7 +28,7 @@ export default function HubPage() {
             Return Home
           </Link>
           <Link href="/surviving-miami" className="rounded-full border border-white/10 bg-white/10 px-5 py-3 text-sm uppercase tracking-[0.24em] text-white/80">
-            Surviving Miami
+            Kurogami World
           </Link>
           <Link href="/token" className="rounded-full border border-white/10 bg-white/10 px-5 py-3 text-sm uppercase tracking-[0.24em] text-white/80">
             $KRG

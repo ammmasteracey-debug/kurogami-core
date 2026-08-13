@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function SolanaPage() {
   return (
@@ -140,6 +141,17 @@ export default function SolanaPage() {
           <p className="solana-paragraph">
             Infrastructure choices can evolve with product needs. This page explains current design rationale, not investment advice.
           </p>
+        </article>
+
+        <article className="solana-card rounded-[1.7rem] border border-white/10 bg-[rgba(8,10,17,0.9)] p-8 text-center sm:p-10">
+          <p className="solana-section-title">Next Action</p>
+          <div className="solana-divider-sm mx-auto my-5" />
+          <p className="solana-paragraph">Execution rails are one layer. Pair them with key ownership and network participation.</p>
+          <div className="herocta mt-8 justify-center">
+            <Link href="/" className="btn btn-primary">Reserve Founding Art</Link>
+            <Link href="/token" className="btn btn-token">Explore $KRG</Link>
+            <Link href="/surviving-miami" className="btn btn-secondary">Kurogami World</Link>
+          </div>
         </article>
       </section>
     </main>

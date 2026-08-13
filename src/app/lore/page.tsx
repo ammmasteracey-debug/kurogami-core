@@ -68,7 +68,7 @@ export default function LorePage() {
               <div>
                 <h2 className="text-lg font-semibold text-[var(--gold)]">The Public Face</h2>
                 <p className="lore-paragraph mt-2">
-                  Surviving Miami and the expanding stream network. Artists let the camera run without leaving the creative process. Process becomes presence. Presence becomes network.
+                  Kurogami World and the expanding stream network. Artists let the camera run without leaving the creative process. Process becomes presence. Presence becomes network.
                 </p>
               </div>
               <div>
@@ -125,6 +125,17 @@ export default function LorePage() {
           <p className="lore-paragraph mt-5 text-xl leading-8 text-[var(--gold)]">
             Create. Own. Compound. Belong.
           </p>
+        </article>
+
+        <article className="lore-card rounded-[1.7rem] border border-white/10 bg-[rgba(8,10,17,0.9)] p-8 text-center sm:p-10">
+          <p className="lore-section-title">Next Action</p>
+          <div className="lore-divider-sm mx-auto my-5" />
+          <p className="lore-paragraph">Move from narrative to position: claim founding art, read the monetary layer, and enter the public network.</p>
+          <div className="herocta mt-8 justify-center">
+            <Link href="/" className="btn btn-primary">Reserve Founding Art</Link>
+            <Link href="/token" className="btn btn-token">Explore $KRG</Link>
+            <Link href="/surviving-miami" className="btn btn-secondary">Kurogami World</Link>
+          </div>
         </article>
       </section>
     </main>

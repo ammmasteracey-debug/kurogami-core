@@ -23,7 +23,7 @@ export default function LoadingPage() {
     const duration = 4800 // ms
 
     const params = new URLSearchParams(window.location.search)
-    const target = params.get('to') || '/hub'
+    const target = params.get('to') || '/'
 
     const step = (timestamp: number) => {
       if (!start) start = timestamp

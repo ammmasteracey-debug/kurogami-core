@@ -1,6 +1,6 @@
 # Kurogami Hub
 
-This workspace is a scaffold for a cinematic Next.js 14 (App Router) + Tailwind + Framer Motion site called Kurogami Hub.
+This workspace is a scaffold for a cinematic Next.js 14 (App Router) + Tailwind + Framer Motion site called Kurogami World.
 
 Run locally:
 

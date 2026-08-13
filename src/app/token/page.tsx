@@ -140,6 +140,17 @@ export default function TokenPage() {
             $KRG is not a guaranteed return product. Value depends on execution, adoption, and market conditions. This page explains role and design, not financial advice.
           </p>
         </article>
+
+        <article className="token-card rounded-[1.7rem] border border-white/10 bg-[rgba(8,10,17,0.9)] p-8 text-center sm:p-10">
+          <p className="token-section-title">Next Action</p>
+          <div className="token-divider-sm mx-auto my-5" />
+          <p className="token-paragraph">Pair monetary exposure with system access and public cultural visibility.</p>
+          <div className="herocta mt-8 justify-center">
+            <Link href="/" className="btn btn-primary">Reserve Founding Art</Link>
+            <Link href="/surviving-miami" className="btn btn-secondary">Kurogami World</Link>
+            <Link href="/solana" className="btn btn-token">Solana Rails</Link>
+          </div>
+        </article>
       </section>
     </main>
   )

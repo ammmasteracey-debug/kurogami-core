@@ -17,13 +17,13 @@ export default function SurvivingMiamiPage() {
 
       <section className="relative z-10 mx-auto flex max-w-6xl flex-col gap-8 px-6 py-20 sm:px-8 lg:px-10">
         <article className="rounded-[2rem] border border-white/10 bg-[rgba(7,8,14,0.88)] p-8 shadow-[0_40px_120px_rgba(0,0,0,0.38)] sm:p-10 lg:p-14">
-          <p className="font-mono text-[0.78rem] uppercase tracking-[0.32em] text-[var(--gold)]">Surviving Miami</p>
+          <p className="font-mono text-[0.78rem] uppercase tracking-[0.32em] text-[var(--gold)]">Kurogami World</p>
           <h1 className="mt-5 font-[var(--disp)] text-4xl font-semibold leading-[0.95] text-white sm:text-5xl lg:text-6xl">
             The public face of Kurogami World
           </h1>
           <div className="my-8 h-px w-24 bg-gradient-to-r from-[var(--gold)] to-transparent" />
           <p className="max-w-4xl text-lg leading-8 text-[rgba(233,238,243,0.88)] sm:text-xl">
-            Surviving Miami is not a closed cast.
+            Kurogami World is not a closed cast.
             <br />
             It is an open streaming network for culture in motion.
           </p>
@@ -36,10 +36,27 @@ export default function SurvivingMiamiPage() {
           <p className="font-mono text-[0.76rem] uppercase tracking-[0.3em] text-[var(--gold)]">What It Is</p>
           <div className="my-5 h-px w-20 bg-gradient-to-r from-[var(--gold)] to-transparent" />
           <p className="text-base leading-8 text-[rgba(233,238,243,0.84)] sm:text-lg">
-            Surviving Miami began as a Miami-rooted cultural stream surface.
+            Kurogami World began as a Miami-rooted cultural stream surface.
             <br />
             It is expanding into an open network where artists, operators, and culture-makers can broadcast from their actual lives — not only from one house or one fixed cast.
           </p>
+        </article>
+
+        <article className="overflow-hidden rounded-[1.7rem] border border-white/10 bg-[rgba(8,10,17,0.9)] shadow-[0_30px_80px_rgba(0,0,0,0.26)]">
+          <div className="relative aspect-[16/9] w-full">
+            <Image
+              src="/images/surviving-miami.jpg"
+              alt="Kurogami World featured visual"
+              fill
+              className="object-cover object-center"
+            />
+          </div>
+          <div className="p-6 sm:p-8">
+            <p className="font-mono text-[0.72rem] uppercase tracking-[0.28em] text-[var(--gold)]">Featured</p>
+            <p className="mt-3 text-base leading-8 text-[rgba(233,238,243,0.82)] sm:text-lg">
+              Kurogami World in-frame: the live cultural surface that opens into the wider network.
+            </p>
+          </div>
         </article>
 
         <div className="grid gap-6 lg:grid-cols-2">
@@ -111,7 +128,7 @@ export default function SurvivingMiamiPage() {
                 <br />
                 Other cities / countries can run local cultural nodes under the same key system.
                 <br />
-                Surviving Miami is the first node, not the cage.
+                Kurogami World is the first node, not the cage.
               </p>
             </div>
           </div>
@@ -135,7 +152,7 @@ export default function SurvivingMiamiPage() {
             </div>
             <div>
               <h3 className="text-lg font-semibold text-white">Step 4 — Enter the network</h3>
-              <p className="mt-2 text-base leading-8 sm:text-lg">Access Surviving Miami / open stream surfaces and deeper Kurogami layers as they unlock.</p>
+              <p className="mt-2 text-base leading-8 sm:text-lg">Access Kurogami World / open stream surfaces and deeper layers as they unlock.</p>
             </div>
           </div>
         </article>
@@ -174,7 +191,7 @@ export default function SurvivingMiamiPage() {
           <p className="font-mono text-[0.76rem] uppercase tracking-[0.3em] text-[var(--gold)]">The Line</p>
           <div className="my-5 h-px w-20 bg-gradient-to-r from-[var(--gold)] to-transparent" />
           <p className="text-lg leading-8 text-white/90 sm:text-xl">
-            Surviving Miami makes culture visible.
+            Kurogami World makes culture visible.
             <br />
             Kurogami makes culture ownable.
             <br />

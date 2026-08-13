@@ -1,16 +1,43 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import KurogamiGuide from '../components/KurogamiGuide'
 import './globals.css'
 
 export const metadata = {
   title: 'Kurogami Lore',
-  description: 'Premium landing page for Kurogami with access to the hub.'
+  description: 'Premium landing page for Kurogami with a cinematic experience.'
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body className="min-h-screen flex flex-col bg-black text-[var(--text-1)]">
+        <KurogamiGuide />
+        <header className="site-nav-wrap">
+          <div className="mx-auto max-w-6xl px-6 pt-6 sm:px-8 lg:px-10">
+            <nav className="site-nav-card">
+              <Link href="/" className="site-nav-brand">
+                <div className="site-nav-logo-wrap">
+                  <Image src="/images/kurogami-load.jpg" alt="Kurogami logo" width={40} height={40} className="h-full w-full rounded-full object-contain" />
+                </div>
+                <div>
+                  <p className="text-[0.68rem] uppercase tracking-[0.28em] text-[var(--gold)]">Kurogami World</p>
+                  <p className="text-xs text-white/60">Main Navigation</p>
+                </div>
+              </Link>
+
+              <div className="site-nav-links">
+                <Link href="/">Home</Link>
+                <Link href="/reserve">Reserve</Link>
+                <Link href="/surviving-miami">Kurogami World</Link>
+                <Link href="/lore">Lore</Link>
+                <Link href="/token">$KRG</Link>
+                <Link href="/solana">Solana</Link>
+                <Link href="/gta6">GTA6</Link>
+              </div>
+            </nav>
+          </div>
+        </header>
         <div className="flex-1">{children}</div>
         <footer className="site-footer">
           <div className="mx-auto flex max-w-6xl flex-col gap-6 px-6 pb-10 pt-2 sm:px-8 lg:px-10">

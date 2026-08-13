@@ -25,7 +25,7 @@ export default function CinematicLoader({ onClose }: { onClose?: () => void }) {
       } else {
         setFinished(true)
         setTimeout(() => {
-          router.push('/hub')
+          router.push('/')
         }, 1200)
       }
     }
@@ -84,9 +84,9 @@ export default function CinematicLoader({ onClose }: { onClose?: () => void }) {
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: finished ? 1 : 0 }} transition={{ duration: 0.4 }}>
               <button
                 className="rounded-full bg-[#ff2d55] px-8 py-3 text-sm font-semibold uppercase tracking-[0.15em] text-white shadow-[0_20px_80px_rgba(255,45,85,0.2)]"
-                onClick={() => router.push('/hub')}
+                onClick={() => router.push('/')}
               >
-                Enter the Hub
+                Enter the World
               </button>
             </motion.div>
           </div>

@@ -185,7 +185,6 @@ export default function HomePage() {
   ]
 
   const selectedArtistProfile = artists.find((artist) => artist.id === selectedArtist) ?? null
-  const portfolioArtists = artists.filter((artist) => artist.id !== 'acey')
   const weeklyEvents = [
     {
       title: 'Sunday Nights at Churchill\'s',
@@ -354,6 +353,9 @@ export default function HomePage() {
               transition={{ duration: 0.8, delay: 0.36 }}
               className="herocta herocta-vertical"
             >
+              <Link href="/reserve" className="btn btn-primary">
+                Reserve Founding Art
+              </Link>
               <button
                 type="button"
                 className="hero-menu-toggle"
@@ -376,7 +378,7 @@ export default function HomePage() {
                       Reserve Founding Art
                     </button>
                     <Link href="/surviving-miami" className="hero-menu-link hero-menu-item">
-                      Surviving Miami
+                      Kurogami World
                     </Link>
                     <Link href="/lore" className="hero-menu-link hero-menu-item">
                       Read the Lore
@@ -470,7 +472,7 @@ export default function HomePage() {
                     <h2 className="section-title mt-4">We are all artists.</h2>
                     <div className="divider" />
                     <p className="hero-copy mt-6">
-                      Art is creation and growth. Most people’s art is never seen. Kurogami World exists to change that. It is a world for artists, built by artists — from every walk of life.
+                      Art is creation and growth. Every artist deserves an audience, Kurogami World is built to ensure you find one. Created by artists, for artists, our community welcomes creators from every walk of life.
                     </p>
                     <div className="hero-info-grid mt-8">
                       <div className="info-card">
@@ -482,7 +484,7 @@ export default function HomePage() {
                       <div className="info-card">
                         <p className="info-label">Who this is for</p>
                         <p>
-                          Painters, streamers, designers, musicians, stylists, builders — anyone whose work deserves a world, not just a snapshot.
+                          Painters, streamers, designers, musicians, stylists, builders, anyone whose work deserves a world, not just a snapshot.
                         </p>
                       </div>
                     </div>
@@ -519,7 +521,7 @@ export default function HomePage() {
                     <ul className="utility-list mt-8">
                       <li>ART (front value)</li>
                       <li>NFT KEY (access object)</li>
-                      <li>SURVIVING MIAMI / OPEN STREAM NETWORK (public face)</li>
+                      <li>KUROGAMI WORLD / OPEN STREAM NETWORK (public face)</li>
                       <li>KUROGAMI INFRASTRUCTURE (backend)</li>
                       <li>$KRG allocation + world layers + RWA rails</li>
                     </ul>
@@ -728,7 +730,7 @@ export default function HomePage() {
                       <div className="loop-item"><span className="loop-number">2</span><span>Collector buys founding art (presale)</span></div>
                       <div className="loop-item"><span className="loop-number">3</span><span>NFT key issues at launch</span></div>
                       <div className="loop-item"><span className="loop-number">4</span><span>$KRG allocated by holdings</span></div>
-                      <div className="loop-item"><span className="loop-number">5</span><span>Holder enters Surviving Miami / network</span></div>
+                      <div className="loop-item"><span className="loop-number">5</span><span>Holder enters Kurogami World / network</span></div>
                       <div className="loop-item"><span className="loop-number">6</span><span>Blue-chip collections can plug into world layer</span></div>
                       <div className="loop-item"><span className="loop-number">7</span><span>Spatial / parcel layer displays and routes asset activity</span></div>
                       <div className="loop-item"><span className="loop-number">8</span><span>Liveshare-class infra coordinates list / buy / sell / rent</span></div>
@@ -752,9 +754,9 @@ export default function HomePage() {
                       <li>$KRG allocation scales with number of NFTs held</li>
                       <li>Access path into world layers and RWA rails</li>
                     </ul>
-                    <button type="button" className="btn btn-primary mt-8" onClick={() => showLoading()}>
+                    <Link href="/reserve" className="btn btn-primary mt-8">
                       Reserve Founding Art
-                    </button>
+                    </Link>
                     <p className="support-text mt-4">Early cultural participation, not a fixed-yield product.</p>
                   </div>
                   <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[#020409]/80">
@@ -803,6 +805,20 @@ export default function HomePage() {
                       <a href={a.socials.x} target="_blank" rel="noreferrer" className="artist-social-link">X</a>
                     </div>
 
+                    {a.portfolio.length > 0 && (
+                      <div className="artist-portfolio mt-4">
+                        <p className="artist-portfolio-label">Portfolio</p>
+                        <div className="artist-portfolio-list">
+                          {a.portfolio.map((item) => (
+                            <a key={item.title} href={item.link} target="_blank" rel="noreferrer" className="artist-portfolio-item">
+                              <span className="artist-portfolio-title">{item.title}</span>
+                              <span className="artist-portfolio-format">{item.format}</span>
+                            </a>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
                     <div className="forge-row mt-4">
                       <div className="forge-info">
                         <div className="forge-score">{a.score}</div>
@@ -823,7 +839,7 @@ export default function HomePage() {
               ))}
             </div>
 
-            <p className="mt-6 support-text">Forge Index grades artists on creation, consistency, cultural signal, distribution, and systems capacity — helping match artists with aligned capital.</p>
+            <p className="mt-6 support-text">Forge Index grades artists on creation, consistency, cultural signal, distribution, and systems capacity, helping match artists with aligned capital.</p>
           </div>
         </section>
 
@@ -834,18 +850,8 @@ export default function HomePage() {
             <div className="divider" />
             <p className="support-text mt-4">Kurogami is not only online. The work happens live.</p>
             <p className="hero-copy mt-6 max-w-4xl">
-              Each week the founding artists appear in real rooms - painting, drawing, sound, and process in the open. These nights are part of the world: culture first, camera optional, creation continuous.
+              Each week the founding artists appear in real rooms, painting, drawing, sound, and process in the open. These nights are part of the world: culture first, camera optional, creation continuous.
             </p>
-
-            <div className="mt-8 overflow-hidden rounded-[1.5rem] border border-[#f1c96a]/20 bg-black/25">
-              <Image
-                src="/images/churchills.jpg"
-                alt="Sunday event at Churchill's with founding artists"
-                width={1600}
-                height={900}
-                className="h-[280px] w-full object-contain object-center sm:h-[380px] lg:h-[460px]"
-              />
-            </div>
 
             <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
               {weeklyEvents.map((event) => (
@@ -877,33 +883,6 @@ export default function HomePage() {
               <a href="https://x.com/kurogamixyz" target="_blank" rel="noreferrer" className="btn btn-secondary">
                 Follow for event updates
               </a>
-            </div>
-          </div>
-        </section>
-
-        <section className="section">
-          <div className="panel-card p-10">
-            <p className="label">PORTFOLIOS</p>
-            <h2 className="section-title mt-4">Founding artist portfolios</h2>
-            <div className="divider" />
-            <p className="support-text mt-4">Portfolio previews are available for all founding artists except Acey, per your request.</p>
-
-            <div className="mt-8 grid gap-6 lg:grid-cols-3">
-              {portfolioArtists.map((artist) => (
-                <article key={`${artist.id}-portfolio`} className="portfolio-card">
-                  <h3 className="artist-name">{artist.name}</h3>
-                  <p className="artist-role">{artist.role}</p>
-                  <div className="portfolio-list mt-5">
-                    {artist.portfolio.map((item) => (
-                      <a key={item.title} href={item.link} target="_blank" rel="noreferrer" className="portfolio-item">
-                        <p className="portfolio-title">{item.title}</p>
-                        <p className="portfolio-format">{item.format}</p>
-                        <p className="portfolio-note">{item.note}</p>
-                      </a>
-                    ))}
-                  </div>
-                </article>
-              ))}
             </div>
           </div>
         </section>
@@ -994,7 +973,7 @@ export default function HomePage() {
             <div className="divider" />
             <div className="herocta mt-8">
               <Link href="/surviving-miami" className="btn btn-secondary">
-                Surviving Miami
+                Kurogami World
               </Link>
               <Link href="/lore" className="btn btn-secondary">
                 The Lore
@@ -1026,7 +1005,7 @@ export default function HomePage() {
                 Explore $KRG
               </Link>
               <Link href="/surviving-miami" className="btn btn-secondary">
-                Surviving Miami
+                Kurogami World
               </Link>
             </div>
           </div>

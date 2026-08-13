@@ -155,6 +155,21 @@ export default function GTA6Page() {
           </div>
         </div>
       </section>
+
+      <section className="relative z-10 border-t border-white/10 px-6 py-20 lg:px-12">
+        <div className="mx-auto max-w-6xl rounded-[2rem] border border-white/10 bg-[#07101d]/80 p-10 text-center shadow-[0_30px_120px_rgba(0,0,0,0.35)]">
+          <p className="label uppercase tracking-[0.35em] text-cyan-300">NEXT ACTION</p>
+          <h2 className="section-title mt-4">Enter with ownership, not spectatorship.</h2>
+          <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-300">
+            Claim a founding position, understand the token layer, and move through the wider network stack.
+          </p>
+          <div className="herocta mt-8 justify-center">
+            <Link href="/" className="btn btn-primary">Reserve Founding Art</Link>
+            <Link href="/token" className="btn btn-token">Explore $KRG</Link>
+            <Link href="/surviving-miami" className="btn btn-secondary">Kurogami World</Link>
+          </div>
+        </div>
+      </section>
     </main>
   )
 }
