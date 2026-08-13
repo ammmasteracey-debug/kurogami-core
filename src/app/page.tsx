@@ -380,23 +380,26 @@ export default function HomePage() {
                   transition={{ duration: 0.25, ease: 'easeOut' }}
                 >
                   <div id="heroVerticalMenu" className="hero-menu-stack">
-                    <button type="button" className="hero-menu-link hero-menu-item" onClick={() => showPanel('offer')}>
-                      Reserve Founding Art
-                    </button>
+                    <Link href="/" className="hero-menu-link hero-menu-item">
+                      Home
+                    </Link>
+                    <Link href="/reserve" className="hero-menu-link hero-menu-item">
+                      Reserve
+                    </Link>
                     <Link href="/surviving-miami" className="hero-menu-link hero-menu-item">
                       Kurogami World
                     </Link>
                     <Link href="/lore" className="hero-menu-link hero-menu-item">
-                      Read the Lore
+                      Lore
                     </Link>
                     <Link href="/token" className="hero-menu-link hero-menu-item">
-                      Learn About $KRG
+                      $KRG
                     </Link>
                     <Link href="/solana" className="hero-menu-link hero-menu-item">
-                      Solana Rails
+                      Solana
                     </Link>
                     <Link href="/gta6" className="hero-menu-link hero-menu-item">
-                      Explore GTA6 Layer
+                      GTA6
                     </Link>
                   </div>
                   <div className="hero-menu-scroll-indicator" aria-hidden>
