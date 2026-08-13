@@ -6,8 +6,8 @@ export default function SurvivingMiamiPage() {
     <main className="relative min-h-screen overflow-hidden bg-black text-[var(--text)]">
       <div className="pointer-events-none absolute inset-0">
         <Image
-          src="/images/kurogami-world-hero.jpg"
-          alt="Kurogami World background"
+          src="/images/kurogami-world-stream.jpg"
+          alt="Kurogami World stream background"
           fill
           priority
           className="object-cover object-center opacity-30"

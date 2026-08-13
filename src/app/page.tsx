@@ -28,8 +28,7 @@ type ArtistProfile = {
   image: string
   socials: {
     instagram: string
-    tiktok: string
-    x: string
+    x?: string
   }
   portfolio: {
     title: string
@@ -49,12 +48,12 @@ export default function HomePage() {
   const artists: ArtistProfile[] = [
     {
       id: 'acey',
-      name: 'Acey',
-      role: 'Tech Artist / Systems Architect',
-      bio: 'Architect of Kurogami World and its infrastructure layer. Builds systems for access, ownership, capital routing, and world design.',
+      name: 'Ac3y',
+      role: 'Founder · Systems Architect · Kurogami World',
+      bio: 'Builder with 11+ years across sales, ecommerce, renewable energy, AI automation, custom trading systems, and full-stack Web3 infrastructure. Architecting Kurogami World as a cultural-economic system with real-world access, liquidity, and world-building layers.',
       fullBio:
-        'Architect of Kurogami World and its infrastructure layer. Acey builds the systems spine for access, ownership, capital routing, and world design so artists can operate with leverage, not dependency.',
-      tags: ['Systems', 'Infrastructure', 'Capital', 'World Design'],
+        'Builder with 11+ years of cross-industry execution across sales, ecommerce, renewable energy, AI automation, custom trading systems, and full-stack Web3 infrastructure. Currently architecting Kurogami World — a cultural-economic system combining founding art as access keys, real-world asset claim and liquidity rails, proprietary trading edge, artist-led public culture, and long-form world infrastructure. The Forge Index exists because revenue, followers, and short-term traction are incomplete measures. It grades operators by depth, execution, alignment, and ability to build systems that outlast cycles. Member of the first 100 via the clean OTC / proof-of-concept cohort, Braelen is helping set the standard, structure, and early market behavior for the system.',
+      tags: ['Systems', 'Infrastructure', 'Automation', 'Trading', 'Web3'],
       score: 92,
       breakdown: {
         creation: 93,
@@ -65,11 +64,23 @@ export default function HomePage() {
       },
       image: '/images/kurogami-load.jpg',
       socials: {
-        instagram: 'https://instagram.com/kurogamiworld',
-        tiktok: 'https://www.tiktok.com/@kurogamiworld',
-        x: 'https://x.com/kurogamiworld',
+        instagram: 'https://www.instagram.com/cryptoac3y?igsh=OXIzOXd2YmFybjgz&utm_source=qr',
+        x: 'https://x.com/CryptoAc3y',
       },
-      portfolio: [],
+      portfolio: [
+        {
+          title: 'Kurogami World Architecture',
+          format: 'System design',
+          note: 'Founding art as access keys, claim and liquidity rails, and culture-led infrastructure for the broader world layer.',
+          link: 'https://x.com/CryptoAc3y',
+        },
+        {
+          title: 'Automation & Ops Systems',
+          format: 'AI / CRM / tooling',
+          note: 'Voice agents, dashboard workflows, and process automation built for service, real estate, and trading operations.',
+          link: 'https://www.instagram.com/cryptoac3y?igsh=OXIzOXd2YmFybjgz&utm_source=qr',
+        },
+      ],
     },
     {
       id: 'tom',
@@ -89,9 +100,8 @@ export default function HomePage() {
       },
       image: '/images/kurogami-load.jpg',
       socials: {
-        instagram: 'https://instagram.com/tomlaroc',
-        tiktok: 'https://www.tiktok.com/@tomlaroc',
-        x: 'https://x.com/tomlaroc',
+        instagram: 'https://www.instagram.com/tomlaroc?igsh=a3h6MndyOXFmMjRr',
+        x: 'https://x.com/TomLaroc',
       },
       portfolio: [
         {
@@ -111,7 +121,7 @@ export default function HomePage() {
     {
       id: 'lens',
       name: 'Lens',
-      role: 'Live Painting / Visual Experience',
+      role: 'Live Painting / Visual Experience · Club Operations',
       bio: 'Multidisciplinary visual artist specializing in live painting and videography. Work rooted in movement, color, and energy. Turns moments into art and experiences into memory. Based in Miami.',
       fullBio:
         'Lens is a multidisciplinary visual artist focused on live painting and videography. Rooted in movement, color, and energy, the work turns moments into art and experiences into memory, with a distinct Miami visual pulse.',
@@ -126,9 +136,7 @@ export default function HomePage() {
       },
       image: '/images/kurogami-load.jpg',
       socials: {
-        instagram: 'https://instagram.com/lenscreates',
-        tiktok: 'https://www.tiktok.com/@lenscreates',
-        x: 'https://x.com/lenscreates',
+        instagram: 'https://www.instagram.com/lensvisuals?igsh=MTdqeGZ1anowcTltdg==',
       },
       portfolio: [
         {
@@ -163,9 +171,7 @@ export default function HomePage() {
       },
       image: '/images/kurogami-load.jpg',
       socials: {
-        instagram: 'https://instagram.com/jaydrawsworlds',
-        tiktok: 'https://www.tiktok.com/@jaydrawsworlds',
-        x: 'https://x.com/jaydrawsworlds',
+        instagram: 'https://www.instagram.com/tokeyodraws?igsh=MXkxYTR4ZHZnOGtoMA==',
       },
       portfolio: [
         {
@@ -254,8 +260,8 @@ export default function HomePage() {
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute inset-[-3%]">
             <Image
-              src="/images/kurogami-world-hero.jpg"
-              alt="Kurogami World hero"
+              src="/images/kurogami-world-stream.jpg"
+              alt="Kurogami World stream hero"
               fill
               priority
               className="object-cover object-center brightness-[0.62] contrast-[1.08] saturate-[1.1]"
@@ -744,15 +750,15 @@ export default function HomePage() {
                 <div className="grid gap-10 lg:grid-cols-[1fr_0.95fr] items-center">
                   <div>
                     <p className="label">FOUNDING OFFER</p>
-                    <h2 className="section-title mt-4">A $10k founding piece is a bundled position.</h2>
+                    <h2 className="section-title mt-4">Starting at $10k: a founding access position, not a single finished artwork.</h2>
                     <p className="hero-copy mt-6">
-                      This is not art-only. Buy founding art now, receive the NFT key at launch, and participate in a stack where allocation and access deepen as your key position grows.
+                      The value is framed around the utility of the NFT key, not a specific art piece. Founding positions secure early access to Kurogami World, future allocation pathways, and cultural infrastructure while the art itself acts as the visible expression of entry into the system.
                     </p>
                     <ul className="why-list mt-8">
-                      <li>Founding art of Kurogami</li>
-                      <li>Receive NFT key at launch</li>
+                      <li>Founding access position in Kurogami World</li>
+                      <li>NFT utility key at launch</li>
                       <li>$KRG allocation scales with number of NFTs held</li>
-                      <li>Access path into world layers and RWA rails</li>
+                      <li>World access and future utility layers</li>
                     </ul>
                     <Link href="/reserve" className="btn btn-primary mt-8">
                       Reserve Founding Art
@@ -761,11 +767,11 @@ export default function HomePage() {
                   </div>
                   <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[#020409]/80">
                     <Image
-                      src="/images/sonic-pic.jpg"
-                      alt="Sonic founding rare art"
+                      src="/images/kurogami-world-logo.jpg"
+                      alt="Kurogami logo placeholder"
                       width={900}
                       height={900}
-                      className="h-full w-full object-cover object-center"
+                      className="h-full w-full object-contain p-10 opacity-90"
                     />
                   </div>
                 </div>
@@ -801,8 +807,9 @@ export default function HomePage() {
 
                     <div className="artist-socials mt-4">
                       <a href={a.socials.instagram} target="_blank" rel="noreferrer" className="artist-social-link">Instagram</a>
-                      <a href={a.socials.tiktok} target="_blank" rel="noreferrer" className="artist-social-link">TikTok</a>
-                      <a href={a.socials.x} target="_blank" rel="noreferrer" className="artist-social-link">X</a>
+                      {a.socials.x && (
+                        <a href={a.socials.x} target="_blank" rel="noreferrer" className="artist-social-link">X</a>
+                      )}
                     </div>
 
                     {a.portfolio.length > 0 && (
@@ -1045,8 +1052,9 @@ export default function HomePage() {
 
                 <div className="artist-socials mt-5">
                   <a href={selectedArtistProfile.socials.instagram} target="_blank" rel="noreferrer" className="artist-social-link">Instagram</a>
-                  <a href={selectedArtistProfile.socials.tiktok} target="_blank" rel="noreferrer" className="artist-social-link">TikTok</a>
-                  <a href={selectedArtistProfile.socials.x} target="_blank" rel="noreferrer" className="artist-social-link">X</a>
+                  {selectedArtistProfile.socials.x && (
+                    <a href={selectedArtistProfile.socials.x} target="_blank" rel="noreferrer" className="artist-social-link">X</a>
+                  )}
                 </div>
 
                 <div className="artist-modal-forge mt-6">
