@@ -45,8 +45,8 @@ export default function SurvivingMiamiPage() {
         <article className="overflow-hidden rounded-[1.7rem] border border-white/10 bg-[rgba(8,10,17,0.9)] shadow-[0_30px_80px_rgba(0,0,0,0.26)]">
           <div className="relative aspect-[16/9] w-full">
             <Image
-              src="/images/surviving-miami.jpg"
-              alt="Kurogami World featured visual"
+              src="/images/kurogami-world-stream.jpg"
+              alt="Kurogami World stream visual"
               fill
               className="object-cover object-center"
             />
