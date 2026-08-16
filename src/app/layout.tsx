@@ -59,6 +59,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   </p>
                 </div>
               </div>
+              <nav aria-label="Footer navigation" className="mt-6 flex flex-wrap gap-x-5 gap-y-3 border-t border-white/10 pt-5 text-[0.68rem] uppercase tracking-[0.18em] text-white/65">
+                <Link href="/" className="transition-colors hover:text-[var(--gold)]">Home</Link>
+                <Link href="/reserve" className="transition-colors hover:text-[var(--gold)]">Reserve</Link>
+                <Link href="/surviving-miami" className="transition-colors hover:text-[var(--gold)]">Kurogami World</Link>
+                <Link href="/nights" className="transition-colors hover:text-[var(--gold)]">Nights</Link>
+                <Link href="/lore" className="transition-colors hover:text-[var(--gold)]">Lore</Link>
+                <Link href="/token" className="transition-colors hover:text-[var(--gold)]">$KRG</Link>
+                <Link href="/solana" className="transition-colors hover:text-[var(--gold)]">Solana</Link>
+                <Link href="/gta6" className="transition-colors hover:text-[var(--gold)]">GTA6</Link>
+              </nav>
               <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-white/10 pt-4">
                 <p className="text-[0.68rem] uppercase tracking-[0.28em] text-white/45">Kurogami World · Cultural Access Layer</p>
                 <Link href="/" className="site-return-btn">
