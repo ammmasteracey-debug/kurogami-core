@@ -30,6 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <Link href="/">Home</Link>
                 <Link href="/reserve">Reserve</Link>
                 <Link href="/surviving-miami">Kurogami World</Link>
+                <Link href="/nights">Nights</Link>
                 <Link href="/lore">Lore</Link>
                 <Link href="/token">$KRG</Link>
                 <Link href="/solana">Solana</Link>

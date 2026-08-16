@@ -389,6 +389,9 @@ export default function HomePage() {
                     <Link href="/surviving-miami" className="hero-menu-link hero-menu-item">
                       Kurogami World
                     </Link>
+                    <Link href="/nights" className="hero-menu-link hero-menu-item">
+                      Nights
+                    </Link>
                     <Link href="/lore" className="hero-menu-link hero-menu-item">
                       Lore
                     </Link>
@@ -893,6 +896,9 @@ export default function HomePage() {
               <a href="https://x.com/kurogamixyz" target="_blank" rel="noreferrer" className="btn btn-secondary">
                 Follow for event updates
               </a>
+              <Link href="/nights" className="btn btn-primary">
+                Explore Kurogami World Nights
+              </Link>
             </div>
           </div>
         </section>
