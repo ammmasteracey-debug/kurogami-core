@@ -31,6 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <Link href="/reserve">Reserve</Link>
                 <Link href="/surviving-miami">Kurogami World</Link>
                 <Link href="/nights">Nights</Link>
+                <Link href="/curriculum">Curriculum</Link>
                 <Link href="/lore">Lore</Link>
                 <Link href="/token">$KRG</Link>
                 <Link href="/solana">Solana</Link>
@@ -64,6 +65,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <Link href="/reserve" className="transition-colors hover:text-[var(--gold)]">Reserve</Link>
                 <Link href="/surviving-miami" className="transition-colors hover:text-[var(--gold)]">Kurogami World</Link>
                 <Link href="/nights" className="transition-colors hover:text-[var(--gold)]">Nights</Link>
+                <Link href="/curriculum" className="transition-colors hover:text-[var(--gold)]">Curriculum</Link>
                 <Link href="/lore" className="transition-colors hover:text-[var(--gold)]">Lore</Link>
                 <Link href="/token" className="transition-colors hover:text-[var(--gold)]">$KRG</Link>
                 <Link href="/solana" className="transition-colors hover:text-[var(--gold)]">Solana</Link>
