@@ -61,6 +61,8 @@ export default function CurriculumPage() {
   const [quotedValue, setQuotedValue] = useState<number | null>(null)
   const [txHash, setTxHash] = useState('')
   const [formSubmitted, setFormSubmitted] = useState(false)
+  const [proofSubmitting, setProofSubmitting] = useState(false)
+  const [proofError, setProofError] = useState('')
 
   const copyAddress = async (asset: AssetKey) => {
     try {
@@ -155,9 +157,29 @@ export default function CurriculumPage() {
     }
   }
 
-  const submitProof = (event: FormEvent<HTMLFormElement>) => {
+  const submitProof = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    setFormSubmitted(true)
+    setProofSubmitting(true)
+    setProofError('')
+
+    try {
+      const response = await fetch('/api/curriculum-proof', {
+        method: 'POST',
+        body: new FormData(event.currentTarget),
+      })
+      const result = await response.json() as { error?: string }
+
+      if (!response.ok) {
+        throw new Error(result.error ?? 'Unable to send proof right now.')
+      }
+
+      setFormSubmitted(true)
+      event.currentTarget.reset()
+    } catch (error) {
+      setProofError(error instanceof Error ? error.message : 'Unable to send proof right now. Please try again.')
+    } finally {
+      setProofSubmitting(false)
+    }
   }
 
   return (
@@ -288,14 +310,15 @@ export default function CurriculumPage() {
           <h2 className="mt-4 font-[var(--disp)] text-3xl font-semibold text-white sm:text-4xl">Submit payment proof</h2>
           <p className="mt-4 max-w-3xl text-sm leading-7 text-white/72">After sending, provide your details so access can be manually verified and delivered through Telegram.</p>
           <form className="mt-7 grid gap-5 md:grid-cols-2" onSubmit={submitProof}>
-            <label><span className="text-xs uppercase tracking-[0.2em] text-white/70">Name or IG handle</span><input required type="text" className={inputClass} /></label>
-            <label><span className="text-xs uppercase tracking-[0.2em] text-white/70">Contact (Telegram preferred)</span><input required type="text" className={inputClass} /></label>
-            <label><span className="text-xs uppercase tracking-[0.2em] text-white/70">Asset sent</span><select required value={formAsset} onChange={(event) => setFormAsset(event.target.value as AssetKey)} className={inputClass}><option>SOL</option><option>ETH</option><option>BTC</option></select></label>
-            <label><span className="text-xs uppercase tracking-[0.2em] text-white/70">Amount</span><input required type="text" placeholder="$500 equivalent" className={inputClass} /></label>
-            <label className="md:col-span-2"><span className="text-xs uppercase tracking-[0.2em] text-white/70">Transaction hash</span><input required type="text" value={txHash} onChange={(event) => setTxHash(event.target.value)} className={inputClass} /></label>
-            <label className="md:col-span-2"><span className="text-xs uppercase tracking-[0.2em] text-white/70">Screenshot</span><input type="file" accept="image/*" className="mt-2 block w-full rounded-[0.85rem] border border-white/12 bg-black/35 px-4 py-3 text-sm text-white file:mr-4 file:rounded-full file:border-0 file:bg-[#f1c96a]/20 file:px-4 file:py-2 file:text-xs file:uppercase file:tracking-[0.15em] file:text-[var(--gold)]" /></label>
-            <button type="submit" className="btn btn-primary md:col-span-2">Submit Payment Proof</button>
+            <label><span className="text-xs uppercase tracking-[0.2em] text-white/70">Name or IG handle</span><input name="name" required type="text" className={inputClass} /></label>
+            <label><span className="text-xs uppercase tracking-[0.2em] text-white/70">Contact (Telegram preferred)</span><input name="contact" required type="text" className={inputClass} /></label>
+            <label><span className="text-xs uppercase tracking-[0.2em] text-white/70">Asset sent</span><select name="asset" required value={formAsset} onChange={(event) => setFormAsset(event.target.value as AssetKey)} className={inputClass}><option>SOL</option><option>ETH</option><option>BTC</option></select></label>
+            <label><span className="text-xs uppercase tracking-[0.2em] text-white/70">Amount</span><input name="amount" required type="text" placeholder="$500 equivalent" className={inputClass} /></label>
+            <label className="md:col-span-2"><span className="text-xs uppercase tracking-[0.2em] text-white/70">Transaction hash</span><input name="txHash" required type="text" value={txHash} onChange={(event) => setTxHash(event.target.value)} className={inputClass} /></label>
+            <label className="md:col-span-2"><span className="text-xs uppercase tracking-[0.2em] text-white/70">Screenshot</span><input name="screenshot" type="file" accept="image/*" className="mt-2 block w-full rounded-[0.85rem] border border-white/12 bg-black/35 px-4 py-3 text-sm text-white file:mr-4 file:rounded-full file:border-0 file:bg-[#f1c96a]/20 file:px-4 file:py-2 file:text-xs file:uppercase file:tracking-[0.15em] file:text-[var(--gold)]" /></label>
+            <button type="submit" disabled={proofSubmitting} className="btn btn-primary disabled:cursor-wait disabled:opacity-60 md:col-span-2">{proofSubmitting ? 'Sending Proof...' : 'Submit Payment Proof'}</button>
           </form>
+          {proofError && <p className="mt-5 rounded-[0.9rem] border border-red-300/30 bg-red-950/30 px-4 py-4 text-sm leading-7 text-red-100">{proofError}</p>}
           {formSubmitted && <p className="mt-5 rounded-[0.9rem] border border-[#f1c96a]/35 bg-[#f1c96a]/10 px-4 py-4 text-sm leading-7 text-[#f6d98c]">Payment received pending verification. Telegram access is sent after confirmation. All curriculum resources are inside the Telegram room.</p>}
         </article>
 
