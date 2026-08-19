@@ -2,28 +2,8 @@
 
 import Image from 'next/image'
 import { FormEvent, useState } from 'react'
-import { Connection, PublicKey, SystemProgram, Transaction } from '@solana/web3.js'
-import { BrowserProvider, parseEther } from 'ethers'
 
 type AssetKey = 'SOL' | 'ETH' | 'BTC'
-type WalletAsset = 'SOL' | 'ETH'
-type WalletPhase = 'idle' | 'connecting' | 'connected' | 'pending' | 'success' | 'error'
-
-type SolanaProvider = {
-  connect: () => Promise<{ publicKey?: { toString: () => string } }>
-  signAndSendTransaction: (transaction: Transaction) => Promise<{ signature: string }>
-}
-
-type EthereumProvider = {
-  request: (args: { method: string; params?: unknown[] }) => Promise<unknown>
-}
-
-declare global {
-  interface Window {
-    solana?: SolanaProvider
-    ethereum?: EthereumProvider
-  }
-}
 
 const treasuryAddresses: Record<AssetKey, string> = {
   SOL: '7Vp969jxuFYfDWEvhndhxuQzLB6CtyFCfviaPdWtZNrY',
@@ -34,32 +14,10 @@ const treasuryAddresses: Record<AssetKey, string> = {
 const panelClass = 'rounded-[1.7rem] border border-white/10 bg-[rgba(8,10,17,0.9)] p-7 shadow-[0_30px_80px_rgba(0,0,0,0.26)] sm:p-10'
 const labelClass = 'font-mono text-[0.72rem] uppercase tracking-[0.3em] text-[var(--gold)]'
 const inputClass = 'mt-2 w-full rounded-[0.85rem] border border-white/12 bg-black/35 px-4 py-3 text-sm text-white outline-none transition-colors placeholder:text-white/35 focus:border-[#f1c96a]/45'
-const solanaRpcUrl = process.env.NEXT_PUBLIC_SOLANA_RPC_URL ?? 'https://api.mainnet-beta.solana.com'
-
-function truncateAddress(address: string) {
-  return `${address.slice(0, 6)}...${address.slice(-4)}`
-}
-
-async function fetchUsdQuote(asset: WalletAsset) {
-  const id = asset === 'SOL' ? 'solana' : 'ethereum'
-  const response = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${id}&vs_currencies=usd`)
-  if (!response.ok) throw new Error('Live crypto quote unavailable')
-  const data = await response.json() as Record<string, { usd?: number }>
-  const price = data[id]?.usd
-  if (!price) throw new Error('Live crypto quote unavailable')
-  return 500 / price
-}
 
 export default function CurriculumPage() {
   const [copiedAsset, setCopiedAsset] = useState<AssetKey | null>(null)
-  const [selectedAsset, setSelectedAsset] = useState<WalletAsset>('SOL')
   const [formAsset, setFormAsset] = useState<AssetKey>('SOL')
-  const [walletAddress, setWalletAddress] = useState('')
-  const [walletPhase, setWalletPhase] = useState<WalletPhase>('idle')
-  const [walletStatus, setWalletStatus] = useState('')
-  const [quotedAmount, setQuotedAmount] = useState('')
-  const [quotedValue, setQuotedValue] = useState<number | null>(null)
-  const [txHash, setTxHash] = useState('')
   const [formSubmitted, setFormSubmitted] = useState(false)
   const [proofSubmitting, setProofSubmitting] = useState(false)
   const [proofError, setProofError] = useState('')
@@ -70,90 +28,7 @@ export default function CurriculumPage() {
       setCopiedAsset(asset)
       window.setTimeout(() => setCopiedAsset(null), 1800)
     } catch (_error) {
-      setWalletStatus('Copy failed. Please select the address manually.')
-    }
-  }
-
-  const connectWallet = async () => {
-    setWalletPhase('connecting')
-    setWalletStatus('Connecting wallet...')
-    try {
-      if (selectedAsset === 'SOL' && window.solana) {
-        const response = await window.solana.connect()
-        const address = response.publicKey?.toString()
-        if (!address) throw new Error('Solana wallet did not return an address')
-        setWalletAddress(address)
-        const quote = await fetchUsdQuote('SOL')
-        setQuotedValue(quote)
-        setQuotedAmount(`${quote.toFixed(6)} SOL`)
-        setWalletPhase('connected')
-        setWalletStatus('Wallet connected. Review the amount, then confirm payment.')
-        return
-      }
-
-      if (selectedAsset === 'ETH' && window.ethereum) {
-        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' }) as string[]
-        const address = accounts[0]
-        if (!address) throw new Error('Ethereum wallet did not return an address')
-        setWalletAddress(address)
-        const quote = await fetchUsdQuote('ETH')
-        setQuotedValue(quote)
-        setQuotedAmount(`${quote.toFixed(6)} ETH`)
-        setWalletPhase('connected')
-        setWalletStatus('Wallet connected. Review the amount, then confirm payment.')
-        return
-      }
-
-      setWalletPhase('error')
-      setWalletStatus('No browser wallet detected. Use Send Manually below with an official treasury address.')
-    } catch (error) {
-      setWalletPhase('error')
-      setWalletStatus(error instanceof Error ? error.message : 'Wallet connection failed. Use Send Manually below.')
-    }
-  }
-
-  const sendWalletPayment = async () => {
-    setWalletPhase('pending')
-    setWalletStatus('Transaction pending. Confirm the transfer in your wallet...')
-    try {
-      if (selectedAsset === 'SOL' && window.solana) {
-        const connection = new Connection(solanaRpcUrl, 'confirmed')
-        const from = new PublicKey(walletAddress)
-        const transaction = new Transaction().add(
-          SystemProgram.transfer({
-            fromPubkey: from,
-            toPubkey: new PublicKey(treasuryAddresses.SOL),
-            lamports: Math.round((quotedValue ?? await fetchUsdQuote('SOL')) * 1_000_000_000),
-          }),
-        )
-        transaction.feePayer = from
-        transaction.recentBlockhash = (await connection.getLatestBlockhash()).blockhash
-        const result = await window.solana.signAndSendTransaction(transaction)
-        setTxHash(result.signature)
-        setWalletPhase('success')
-        setWalletStatus('Payment sent. Submit your Telegram contact below for manual access approval.')
-        document.getElementById('curriculum-proof')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-        return
-      }
-
-      if (selectedAsset === 'ETH' && window.ethereum) {
-        const provider = new BrowserProvider(window.ethereum as never)
-        const signer = await provider.getSigner()
-        const result = await signer.sendTransaction({
-          to: treasuryAddresses.ETH,
-          value: parseEther((quotedValue ?? await fetchUsdQuote('ETH')).toFixed(8)),
-        })
-        setTxHash(result.hash)
-        setWalletPhase('success')
-        setWalletStatus('Payment submitted. Submit your Telegram contact below for manual access approval.')
-        document.getElementById('curriculum-proof')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-        return
-      }
-
-      throw new Error('Wallet is no longer available. Use Send Manually below.')
-    } catch (error) {
-      setWalletPhase('error')
-      setWalletStatus(error instanceof Error ? error.message : 'Payment failed. Use Send Manually below.')
+      setCopiedAsset(null)
     }
   }
 
@@ -257,35 +132,14 @@ export default function CurriculumPage() {
           </div>
 
           <div className="mt-8 grid gap-6 lg:grid-cols-2">
-            <div className="rounded-[1.2rem] border border-[#f1c96a]/25 bg-[#f1c96a]/[0.06] p-6">
+            <div className="rounded-[1.2rem] border border-white/10 bg-black/20 p-6 opacity-70">
               <p className={labelClass}>Primary CTA</p>
               <h3 className="mt-4 text-xl font-semibold text-white">Pay with Wallet</h3>
-              <p className="mt-3 text-sm leading-7 text-white/72">Connect an available Solana or Ethereum browser wallet. The exact $500 equivalent is confirmed with your submitted proof.</p>
-              <div className="mt-5 flex flex-wrap gap-2">
-                {(['SOL', 'ETH'] as WalletAsset[]).map((asset) => (
-                  <button key={asset} type="button" onClick={() => { setSelectedAsset(asset); setWalletPhase('idle'); setWalletStatus(''); setQuotedAmount(''); setQuotedValue(null) }} className={`rounded-full border px-4 py-2 text-xs uppercase tracking-[0.2em] transition-colors ${selectedAsset === asset ? 'border-[#f1c96a]/55 bg-[#f1c96a]/15 text-[var(--gold)]' : 'border-white/10 bg-black/20 text-white/60'}`}>
-                    {asset}
-                  </button>
-                ))}
-              </div>
-              {walletPhase === 'idle' || walletPhase === 'error' ? (
-                <button type="button" onClick={connectWallet} className="btn btn-primary mt-6">Pay with Wallet</button>
-              ) : walletPhase === 'connecting' || walletPhase === 'pending' ? (
-                <button type="button" disabled className="btn btn-primary mt-6 opacity-60">{walletPhase === 'connecting' ? 'Connecting...' : 'Transaction pending...'}</button>
-              ) : walletPhase === 'connected' ? (
-                <div className="mt-6 rounded-[0.9rem] border border-[#f1c96a]/25 bg-black/25 p-4">
-                  <p className="text-sm text-white/80">Connected: <span className="font-mono text-[#f6d98c]">{truncateAddress(walletAddress)}</span></p>
-                  <p className="mt-2 text-sm text-white/80">Selected asset: <span className="text-[#f6d98c]">{selectedAsset}</span></p>
-                  <p className="mt-2 text-sm text-white/80">Amount due: <span className="text-[#f6d98c]">{quotedAmount} ($500 USD equivalent)</span></p>
-                  <button type="button" onClick={sendWalletPayment} className="btn btn-primary mt-5">Confirm Payment</button>
-                </div>
-              ) : (
-                <div className="mt-6 rounded-[0.9rem] border border-[#f1c96a]/35 bg-[#f1c96a]/10 p-4 text-sm leading-7 text-[#f6d98c]">Payment successful. Transaction captured below.</div>
-              )}
-              {walletStatus && walletPhase !== 'connected' && <p className="mt-4 break-words text-sm leading-7 text-[#f6d98c]">{walletStatus}</p>}
+              <p className="mt-3 text-sm leading-7 text-white/60">Wallet connect coming soon. Use Send Manually for now.</p>
+              <button type="button" disabled className="btn btn-primary mt-6 cursor-not-allowed opacity-50">Coming Soon</button>
             </div>
 
-            <div className="rounded-[1.2rem] border border-white/10 bg-black/25 p-6">
+            <div className="rounded-[1.2rem] border border-[#f1c96a]/25 bg-[#f1c96a]/[0.06] p-6">
               <p className={labelClass}>Secondary CTA</p>
               <h3 className="mt-4 text-xl font-semibold text-white">Send Manually</h3>
               <p className="mt-3 text-sm leading-7 text-white/72">Send the $500 equivalent and include the reference note <span className="text-[#f6d98c]">CURRICULUM-500</span>.</p>
@@ -314,7 +168,7 @@ export default function CurriculumPage() {
             <label><span className="text-xs uppercase tracking-[0.2em] text-white/70">Contact (Telegram preferred)</span><input name="contact" required type="text" className={inputClass} /></label>
             <label><span className="text-xs uppercase tracking-[0.2em] text-white/70">Asset sent</span><select name="asset" required value={formAsset} onChange={(event) => setFormAsset(event.target.value as AssetKey)} className={inputClass}><option>SOL</option><option>ETH</option><option>BTC</option></select></label>
             <label><span className="text-xs uppercase tracking-[0.2em] text-white/70">Amount</span><input name="amount" required type="text" placeholder="$500 equivalent" className={inputClass} /></label>
-            <label className="md:col-span-2"><span className="text-xs uppercase tracking-[0.2em] text-white/70">Transaction hash</span><input name="txHash" required type="text" value={txHash} onChange={(event) => setTxHash(event.target.value)} className={inputClass} /></label>
+            <label className="md:col-span-2"><span className="text-xs uppercase tracking-[0.2em] text-white/70">Transaction hash</span><input name="txHash" required type="text" className={inputClass} /></label>
             <label className="md:col-span-2"><span className="text-xs uppercase tracking-[0.2em] text-white/70">Screenshot</span><input name="screenshot" type="file" accept="image/*" className="mt-2 block w-full rounded-[0.85rem] border border-white/12 bg-black/35 px-4 py-3 text-sm text-white file:mr-4 file:rounded-full file:border-0 file:bg-[#f1c96a]/20 file:px-4 file:py-2 file:text-xs file:uppercase file:tracking-[0.15em] file:text-[var(--gold)]" /></label>
             <button type="submit" disabled={proofSubmitting} className="btn btn-primary disabled:cursor-wait disabled:opacity-60 md:col-span-2">{proofSubmitting ? 'Sending Proof...' : 'Submit Payment Proof'}</button>
           </form>
