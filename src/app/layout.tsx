@@ -4,8 +4,8 @@ import KurogamiGuide from '../components/KurogamiGuide'
 import './globals.css'
 
 export const metadata = {
-  title: 'Kurogami Lore',
-  description: 'Premium landing page for Kurogami with a cinematic experience.'
+  title: 'Kurogami World',
+  description: 'Premium portal for creators with founding access layers.'
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -22,20 +22,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 </div>
                 <div>
                   <p className="text-[0.68rem] uppercase tracking-[0.28em] text-[var(--gold)]">Kurogami World</p>
-                  <p className="text-xs text-white/60">Main Navigation</p>
+                  <p className="text-xs text-white/60">Portal</p>
                 </div>
               </Link>
 
               <div className="site-nav-links">
-                <Link href="/">Home</Link>
-                <Link href="/reserve">Reserve</Link>
-                <Link href="/surviving-miami">Kurogami World</Link>
+                <Link href="/world">World</Link>
+                <Link href="/paths">Paths</Link>
+                <Link href="/artists">Artists</Link>
                 <Link href="/nights">Nights</Link>
+                <Link href="/reserve">Reserve</Link>
                 <Link href="/curriculum">Curriculum</Link>
-                <Link href="/lore">Lore</Link>
-                <Link href="/token">$KRG</Link>
-                <Link href="/solana">Solana</Link>
-                <Link href="/gta6">GTA6</Link>
+                <Link href="/incubation">Incubation</Link>
+                <Link href="/desk">Desk</Link>
+                <Link href="/deeper">Deeper</Link>
               </div>
             </nav>
           </div>
@@ -61,15 +61,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 </div>
               </div>
               <nav aria-label="Footer navigation" className="mt-6 flex flex-wrap gap-x-5 gap-y-3 border-t border-white/10 pt-5 text-[0.68rem] uppercase tracking-[0.18em] text-white/65">
-                <Link href="/" className="transition-colors hover:text-[var(--gold)]">Home</Link>
-                <Link href="/reserve" className="transition-colors hover:text-[var(--gold)]">Reserve</Link>
-                <Link href="/surviving-miami" className="transition-colors hover:text-[var(--gold)]">Kurogami World</Link>
+                <Link href="/world" className="transition-colors hover:text-[var(--gold)]">World</Link>
+                <Link href="/paths" className="transition-colors hover:text-[var(--gold)]">Paths</Link>
+                <Link href="/artists" className="transition-colors hover:text-[var(--gold)]">Artists</Link>
                 <Link href="/nights" className="transition-colors hover:text-[var(--gold)]">Nights</Link>
+                <Link href="/reserve" className="transition-colors hover:text-[var(--gold)]">Reserve</Link>
                 <Link href="/curriculum" className="transition-colors hover:text-[var(--gold)]">Curriculum</Link>
-                <Link href="/lore" className="transition-colors hover:text-[var(--gold)]">Lore</Link>
-                <Link href="/token" className="transition-colors hover:text-[var(--gold)]">$KRG</Link>
-                <Link href="/solana" className="transition-colors hover:text-[var(--gold)]">Solana</Link>
-                <Link href="/gta6" className="transition-colors hover:text-[var(--gold)]">GTA6</Link>
+                <Link href="/incubation" className="transition-colors hover:text-[var(--gold)]">Incubation</Link>
+                <Link href="/desk" className="transition-colors hover:text-[var(--gold)]">Desk</Link>
+                <Link href="/deeper" className="transition-colors hover:text-[var(--gold)]">Deeper</Link>
+                <Link href="/portal" className="transition-colors hover:text-[var(--gold)]">Portal</Link>
               </nav>
               <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-white/10 pt-4">
                 <p className="text-[0.68rem] uppercase tracking-[0.28em] text-white/45">Kurogami World · Cultural Access Layer</p>

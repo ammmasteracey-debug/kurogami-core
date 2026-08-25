@@ -655,6 +655,59 @@ body {
 .artists-section .panel-card {
   padding: 1.25rem;
 }
+.artist-carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.artist-carousel-arrow {
+  display: inline-flex;
+  width: 2.5rem;
+  height: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(240, 194, 74, 0.28);
+  border-radius: 999px;
+  background: rgba(240, 194, 74, 0.07);
+  color: var(--gold);
+  font-size: 1.1rem;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+.artist-carousel-arrow:hover {
+  border-color: rgba(240, 194, 74, 0.58);
+  background: rgba(240, 194, 74, 0.16);
+}
+.artist-carousel-dots {
+  display: flex;
+  gap: 0.4rem;
+}
+.artist-carousel-dot {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 999px;
+  background: rgba(240, 194, 74, 0.38);
+}
+.artist-carousel-dot:first-child {
+  width: 1.15rem;
+  background: var(--gold);
+}
+.artist-carousel {
+  display: flex;
+  gap: 1.25rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(240, 194, 74, 0.38) transparent;
+  padding: 0.25rem 0.1rem 1rem;
+}
+.artist-carousel .artist-card {
+  flex: 0 0 calc((100% - 2.5rem) / 3);
+  scroll-snap-align: start;
+}
+.artist-carousel::-webkit-scrollbar { height: 0.35rem; }
+.artist-carousel::-webkit-scrollbar-thumb { background: rgba(240, 194, 74, 0.38); border-radius: 999px; }
+
 .artist-card {
   border-radius: 1.25rem;
   overflow: hidden;
@@ -708,6 +761,48 @@ body {
 .forge-labels { font-size:0.72rem; color:rgba(255,255,255,0.6) }
 .forge-bar { flex:1; height:10px; background:rgba(255,255,255,0.06); border-radius:999px; overflow:hidden }
 .forge-fill { height:100%; background:linear-gradient(90deg,var(--gold),rgba(249,221,121,0.8)); box-shadow:0 8px 24px rgba(240,194,74,0.06) }
+
+.incubation-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.62);
+  backdrop-filter: blur(16px);
+}
+
+.incubation-modal {
+  width: min(620px, 100%);
+  max-height: min(82vh, 620px);
+  overflow-y: auto;
+  border: 1px solid rgba(240, 194, 74, 0.34);
+  border-radius: 1.5rem;
+  background: linear-gradient(180deg, rgba(12, 14, 22, 0.98), rgba(6, 8, 14, 0.98));
+  box-shadow: 0 32px 120px rgba(0, 0, 0, 0.55);
+  padding: 1.5rem;
+}
+
+.incubation-modal-close {
+  display: inline-flex;
+  width: 2.25rem;
+  height: 2.25rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.4rem;
+  line-height: 1;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.incubation-modal-close:hover {
+  border-color: rgba(240, 194, 74, 0.5);
+  color: var(--gold);
+}
 
 .artist-modal-overlay {
   position: fixed;
@@ -827,6 +922,10 @@ body {
 }
 
 @media (max-width: 760px) {
+  .artist-carousel .artist-card {
+    flex-basis: 88%;
+  }
+
   .hero-gallery-grid {
     display: flex;
     flex-wrap: nowrap;
@@ -1810,10 +1909,13 @@ canvas {
 
 .site-nav-links {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
   justify-content: flex-end;
   gap: 0.4rem;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: thin;
 }
 
 .site-nav-links a {
