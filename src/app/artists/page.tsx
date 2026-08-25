@@ -59,7 +59,7 @@ const artists = [
     tags: ['Fashion', 'Brand Operations', 'Meme Engine', 'Capital Systems'],
     image: '/images/kurogami-load.jpg',
     socials: {
-      instagram: 'https://instagram.com',
+      instagram: 'https://www.instagram.com/nadiaaawilson?igsi=dHVtNXpnemZic2p6',
     },
     ctaLabel: 'View brand',
     ctaLink: 'https://luxecreators.store/',
