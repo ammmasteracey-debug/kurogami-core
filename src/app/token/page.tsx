@@ -1,156 +1,47 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
+const panel = 'rounded-[1.7rem] border border-white/10 bg-[rgba(8,10,17,0.9)] p-7 shadow-[0_30px_80px_rgba(0,0,0,0.26)] sm:p-10'
+const label = 'font-mono text-[0.72rem] uppercase tracking-[0.3em] text-[var(--gold)]'
+
+const loop = ['Founding Art / NFT Key', 'Access to Kurogami World layers', 'Participation in culture, network, and systems', '$KRG utility + allocation mechanics', 'Stronger network and deeper infrastructure', 'Back into key value and ecosystem activity']
+const allocation = [
+  ['Founding NFT / Key holders', '30%', 'Structurally recognizes early cultural ownership and key position.'],
+  ['Ecosystem + community incentives', '20%', 'Supports useful participation across artists, members, and network activity.'],
+  ['Liquidity + market structure', '15%', 'Creates the foundation for orderly markets and future settlement surfaces.'],
+  ['Core contributors / team', '15%', 'Funds the people building the system, subject to vesting.'],
+  ['Treasury / world development', '15%', 'Supports visible product, cultural, and infrastructure development.'],
+  ['Partnerships / strategic reserves', '5%', 'Allows selective coordination with aligned builders and partners.'],
+]
+const roadmap = [
+  ['Now', 'Phase 1 — Foundation', ['Kurogami World portal live', 'Founding art reservations', 'Artists, nights, and culture layer public', 'Curriculum and incubation lanes active']],
+  ['Next', 'Phase 2 — Access Hardening', ['NFT key launch / claim path for reserved founders', 'Member portal activation', 'Telegram and resource rails formalized', '$KRG final token parameters published']],
+  ['Later', 'Phase 3 — Monetary Layer', ['$KRG TGE', 'Founding allocation execution', 'Liquidity structure', 'Utility surfaces activated inside portal']],
+  ['Later', 'Phase 4 — Expansion', ['Deeper world modules', 'Broader creator onboarding', 'Claim and liquidity rails where applicable', 'Larger cultural network effects']],
+]
+
 export default function TokenPage() {
   return (
-    <main className="token-shell relative min-h-screen overflow-hidden bg-black text-[var(--text)]">
-      <div className="pointer-events-none absolute inset-0">
-        <Image
-          src="/images/kurogami-world-hero.jpg"
-          alt="Kurogami World background"
-          fill
-          priority
-          className="object-cover object-center opacity-30"
-        />
-        <div className="absolute inset-0 bg-black/72" />
-      </div>
+    <main className="relative min-h-screen overflow-hidden bg-black text-[var(--text)]">
+      <div className="pointer-events-none absolute inset-0"><Image src="/images/tokenimics.jpg" alt="Kurogami tokenomics backdrop" fill priority className="object-cover object-center opacity-20" /><div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.8),rgba(0,0,0,0.97))]" /></div>
+      <section className="relative z-10 mx-auto flex max-w-6xl flex-col gap-8 px-6 py-20 sm:px-8 lg:px-10">
+        <article className="overflow-hidden rounded-[2rem] border border-[#f1c96a]/25 bg-[rgba(7,8,14,0.92)] shadow-[0_40px_120px_rgba(0,0,0,0.38)]"><div className="grid items-stretch lg:grid-cols-[1.05fr_0.95fr]"><div className="p-8 sm:p-12 lg:p-14"><p className={label}>$KRG</p><h1 className="mt-5 font-[var(--disp)] text-4xl font-semibold leading-[0.95] text-white sm:text-5xl lg:text-6xl">The monetary layer of Kurogami World</h1><div className="my-7 h-px w-20 bg-gradient-to-r from-[var(--gold)] to-transparent" /><p className="text-lg leading-8 text-white/84 sm:text-xl">Founding keys open the world. $KRG helps the world move.</p><p className="mt-5 text-base leading-8 text-white/72">$KRG is the utility and coordination token of Kurogami World. Founding art NFTs are the access keys. The design connects early cultural ownership and ongoing participation to the monetary layer without turning the project into empty emissions theater.</p><div className="herocta mt-8"><Link href="/reserve" className="btn btn-primary">Reserve Founding Art</Link><Link href="/curriculum" className="btn btn-secondary">View Curriculum</Link><Link href="/portal" className="btn btn-secondary">Enter Portal</Link></div></div><div className="relative min-h-[300px] border-t border-white/10 lg:border-l lg:border-t-0"><Image src="/images/tokenimics.jpg" alt="Kurogami tokenomics visual" fill className="object-cover object-center opacity-75" /><div className="absolute inset-0 bg-black/30" /></div></div></article>
 
-      <section className="relative z-10 mx-auto flex max-w-7xl flex-col gap-8 px-6 py-20 sm:px-8 lg:px-10">
-        <div className="token-hero rounded-[2rem] border border-white/10 bg-[rgba(7,8,14,0.9)] p-8 shadow-[0_40px_120px_rgba(0,0,0,0.38)] sm:p-10 lg:p-14">
-          <div className="flex flex-wrap items-center justify-between gap-4">
-            <p className="token-kicker">$KRG</p>
-            <Link href="/" className="text-sm uppercase tracking-[0.28em] text-[var(--gold)] transition-opacity hover:opacity-80">
-              Back to Main
-            </Link>
-          </div>
+        <article className={panel}><p className={label}>The Loop</p><h2 className="mt-4 font-[var(--disp)] text-3xl font-semibold text-white sm:text-4xl">The value loop</h2><div className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{loop.map((item, index) => <div key={item} className="rounded-[1.1rem] border border-white/10 bg-black/25 p-5"><span className="font-mono text-sm text-[var(--gold)]">0{index + 1}</span><p className="mt-3 text-base leading-7 text-white/85">{item}</p></div>)}</div><p className="mt-7 max-w-4xl text-base leading-8 text-white/75 sm:text-lg">NFTs are not just images. Founding rares are access instruments. $KRG is the monetary layer that helps coordinate utility across the world. The point is continuity between culture, ownership, and infrastructure.</p></article>
 
-          <div className="mt-8 grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
-            <div className="max-w-4xl">
-              <h1 className="token-title text-4xl font-semibold leading-[0.95] text-white sm:text-5xl lg:text-6xl">
-                The monetary layer of Kurogami World
-              </h1>
-              <div className="token-divider my-8" />
-              <p className="max-w-3xl text-lg leading-8 text-[rgba(233,238,243,0.84)] sm:text-xl">
-                If Bitcoin is hardened money for the open internet, $KRG is designed as the coordinating asset inside a cultural-economic world.
-              </p>
-            </div>
+        <article className={panel}><p className={label}>Founding Rares</p><h2 className="mt-4 font-[var(--disp)] text-3xl font-semibold text-white sm:text-4xl">Founding rares sit at the top of the key stack</h2><div className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{[['Access', 'Entry into world layers and member surfaces.'], ['Allocation', '$KRG distribution bias toward earlier and rarer keys.'], ['Status', 'Founding cohort positioning in the early system.'], ['Continuity', 'Cultural ownership that persists as systems expand.']].map(([title, text]) => <div key={title} className="rounded-[1.1rem] border border-[#f1c96a]/20 bg-[#f1c96a]/[0.05] p-5"><h3 className="text-lg font-semibold text-[var(--gold)]">{title}</h3><p className="mt-3 text-sm leading-7 text-white/72">{text}</p></div>)}</div><p className="mt-6 rounded-[0.9rem] border border-white/10 bg-black/25 px-4 py-4 text-sm leading-7 text-white/65">Exact allocation formulas can finalize closer to TGE. The principle is fixed: founding keys are first-class in the loop.</p></article>
 
-            <div className="flex justify-center lg:justify-end">
-              <div className="relative flex h-[280px] w-full max-w-[340px] items-center justify-center rounded-[1.8rem] border border-white/10 bg-[radial-gradient(circle_at_center,rgba(240,194,74,0.16),transparent_60%)] p-6 shadow-[0_30px_90px_rgba(0,0,0,0.28)]">
-                <Image
-                  src="/images/kurogami-load.jpg"
-                  alt="Kurogami World logo"
-                  width={900}
-                  height={900}
-                  className="h-full w-full rounded-[1.75rem] object-contain"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
+        <article className={panel}><p className={label}>$KRG Utility</p><h2 className="mt-4 font-[var(--disp)] text-3xl font-semibold text-white sm:text-4xl">What $KRG is for</h2><div className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{['Access and coordination inside Kurogami systems', 'Participation incentives across culture and network activity', 'Ecosystem payments and settlement surface over time', 'Alignment between artists, operators, and holders', 'Future module activation as rails expand'].map((item) => <div key={item} className="rounded-[1.1rem] border border-white/10 bg-black/25 p-5 text-base leading-7 text-white/82">{item}</div>)}</div><p className="mt-6 text-base leading-8 text-white/72">$KRG is designed as the monetary layer of the world, not a meme with no role.</p></article>
 
-        <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-          <article className="token-card rounded-[1.7rem] border border-white/10 bg-[rgba(8,10,17,0.9)] p-8 sm:p-10">
-            <p className="token-section-title">What $KRG Is</p>
-            <div className="token-divider-sm my-5" />
-            <p className="token-paragraph">
-              $KRG is the native token of Kurogami World. It is designed to move value across access and membership layers, artist and network incentives, in-world economic activity, staking and collateral pathways, and future virtual-economy participation.
-            </p>
-            <p className="token-paragraph mt-5">
-              It is not a meme with no job. It is infrastructure money for a specific system.
-            </p>
-          </article>
+        <article className={panel}><p className={label}>Illustrative Allocation</p><h2 className="mt-4 font-[var(--disp)] text-3xl font-semibold text-white sm:text-4xl">Allocation framework</h2><div className="mt-7 space-y-4">{allocation.map(([title, percent, purpose]) => <div key={title} className="rounded-[1.1rem] border border-white/10 bg-black/25 p-4 sm:p-5"><div className="flex flex-wrap items-center justify-between gap-3"><h3 className="text-base font-semibold text-white">{title}</h3><span className="font-mono text-sm text-[var(--gold)]">{percent}</span></div><div className="mt-3 h-2 overflow-hidden rounded-full bg-white/10"><div className="h-full rounded-full bg-[var(--gold)]" style={{ width: percent }} /></div><p className="mt-3 text-sm leading-7 text-white/65">{purpose}</p></div>)}</div><p className="mt-6 text-sm leading-7 text-white/60">Illustrative framework for understanding system design. Final smart contract parameters and schedules will be published before TGE. Team allocation should vest; emissions should serve activity, not pure dilution.</p></article>
 
-          <article className="token-card rounded-[1.7rem] border border-white/10 bg-[rgba(8,10,17,0.9)] p-8 sm:p-10">
-            <p className="token-section-title">The BTC Comparison</p>
-            <div className="token-divider-sm my-5" />
-            <div className="overflow-hidden rounded-[1.2rem] border border-white/10">
-              <div className="grid grid-cols-3 border-b border-white/10 bg-white/5 text-sm uppercase tracking-[0.24em] text-[var(--gold)]">
-                <div className="p-3">Layer</div>
-                <div className="border-l border-white/10 p-3">Bitcoin</div>
-                <div className="border-l border-white/10 p-3">$KRG</div>
-              </div>
-              <div className="grid grid-cols-3 border-b border-white/10 text-sm text-white/85">
-                <div className="p-3 font-semibold text-[var(--gold)]">Role</div>
-                <div className="border-l border-white/10 p-3">Hardened neutral money</div>
-                <div className="border-l border-white/10 p-3">Coordinating asset inside Kurogami</div>
-              </div>
-              <div className="grid grid-cols-3 border-b border-white/10 text-sm text-white/85">
-                <div className="p-3 font-semibold text-[var(--gold)]">Primary function</div>
-                <div className="border-l border-white/10 p-3">Settlement and store-of-value</div>
-                <div className="border-l border-white/10 p-3">Access, incentives, and world activity</div>
-              </div>
-              <div className="grid grid-cols-3 text-sm text-white/85">
-                <div className="p-3 font-semibold text-[var(--gold)]">Structure</div>
-                <div className="border-l border-white/10 p-3">Money outside applications</div>
-                <div className="border-l border-white/10 p-3">Money operating inside a world</div>
-              </div>
-            </div>
-          </article>
-        </div>
+        <div className="grid gap-8 lg:grid-cols-2"><article className={panel}><p className={label}>NFT → $KRG</p><h2 className="mt-4 font-[var(--disp)] text-3xl font-semibold text-white">Keys first. Token second.</h2><div className="mt-6 space-y-3 text-base leading-8 text-white/78"><p><span className="text-[var(--gold)]">NFT key:</span> access instrument</p><p><span className="text-[var(--gold)]">$KRG:</span> monetary and coordination layer</p><p><span className="text-[var(--gold)]">Founding rares:</span> priority positioning in allocation design</p><p><span className="text-[var(--gold)]">Multiple keys:</span> greater presence in the early cohort framework</p></div><div className="mt-6 overflow-hidden rounded-[1rem] border border-white/10"><div className="grid grid-cols-2 border-b border-white/10 p-3 text-xs uppercase tracking-[0.16em] text-[var(--gold)]"><span>Position</span><span>Framework</span></div>{[['Founding Rare', 'Highest early positioning'], ['Standard Founding Key', 'Core access + allocation eligibility'], ['Later public access', 'Broader entry after foundations']].map(([key, value]) => <div key={key} className="grid grid-cols-2 border-b border-white/10 p-3 text-sm text-white/75 last:border-0"><span>{key}</span><span>{value}</span></div>)}</div></article><article className={panel}><p className={label}>Supply Principles</p><h2 className="mt-4 font-[var(--disp)] text-3xl font-semibold text-white">Build for continuity</h2><ul className="mt-6 space-y-3 text-base leading-8 text-white/78"><li>Fixed or transparently governed supply schedule</li><li>Vesting for team and core allocations</li><li>Treasury spending tied to visible world development</li><li>Avoid uncontrolled inflation</li><li>Prefer utility-driven demand over emissions dependency</li></ul></article></div>
 
-        <article className="token-card rounded-[1.7rem] border border-white/10 bg-[rgba(8,10,17,0.9)] p-8 sm:p-10">
-          <p className="token-section-title">Why a World Needs Its Own Monetary Layer</p>
-          <div className="token-divider-sm my-5" />
-          <p className="token-paragraph">
-            A cultural economy needs more than attention. It needs a unit that can price access, reward contribution, settle internal activity, align long-term holders with system growth, and connect physical founding art and NFT keys to broader participation.
-          </p>
-          <p className="token-paragraph mt-5">
-            Without a native unit, every action depends on external money and external platforms. With a native unit, the world can coordinate itself.
-          </p>
-        </article>
+        <article className={panel}><p className={label}>Roadmap</p><h2 className="mt-4 font-[var(--disp)] text-3xl font-semibold text-white sm:text-4xl">What comes next</h2><div className="mt-7 grid gap-5 md:grid-cols-2">{roadmap.map(([status, title, items]) => <div key={String(title)} className="rounded-[1.2rem] border border-white/10 bg-black/25 p-6"><span className="rounded-full border border-[#f1c96a]/35 bg-[#f1c96a]/[0.08] px-3 py-1 font-mono text-xs uppercase tracking-[0.18em] text-[var(--gold)]">{status}</span><h3 className="mt-5 text-xl font-semibold text-white">{title}</h3><ul className="mt-4 space-y-2 text-sm leading-7 text-white/72">{(items as string[]).map((item) => <li key={item}>- {item}</li>)}</ul></div>)}</div></article>
 
-        <div className="grid gap-6 lg:grid-cols-[1fr_0.95fr]">
-          <article className="token-card rounded-[1.7rem] border border-white/10 bg-[rgba(8,10,17,0.9)] p-8 sm:p-10">
-            <p className="token-section-title">Utility Surfaces</p>
-            <div className="token-divider-sm my-5" />
-            <ul className="token-list space-y-3">
-              <li>Access and tier signaling inside Kurogami systems</li>
-              <li>Incentives for artists, operators, and network growth</li>
-              <li>Settlement medium for internal markets and future packs/mods economies</li>
-              <li>Collateral and staking pathways as infrastructure matures</li>
-              <li>Alignment asset for holders who want exposure to the whole stack, not one isolated drop</li>
-            </ul>
-          </article>
+        <article className={panel}><p className={label}>FAQ</p><div className="mt-6 grid gap-5 md:grid-cols-2">{[['Is the NFT just art?', 'No. Founding art is the front of the access key.'], ['When does $KRG launch?', 'After access foundations and final parameters are published.'], ['Do founding rares matter more?', 'Yes, in early positioning and allocation design.'], ['Is this financial advice?', 'No. This page explains system design, not financial advice.'], ['Are returns guaranteed?', 'No. Crypto assets are volatile and participation involves risk of loss.']].map(([question, answer]) => <div key={String(question)}><h3 className="text-base font-semibold text-white">{question}</h3><p className="mt-2 text-sm leading-7 text-white/68">{answer}</p></div>)}</div></article>
 
-          <article className="token-card rounded-[1.7rem] border border-white/10 bg-[rgba(8,10,17,0.9)] p-8 sm:p-10">
-            <p className="token-section-title">Relationship to Founding Art / NFTs</p>
-            <div className="token-divider-sm my-5" />
-            <p className="token-paragraph">
-              Founding art and NFT keys are access and origin objects. $KRG is the circulating monetary layer around the system those keys open.
-            </p>
-            <p className="token-paragraph mt-5">
-              One is passage and identity. One is coordination and flow. Together they form ownership + movement.
-            </p>
-          </article>
-        </div>
-
-        <article className="token-card rounded-[1.7rem] border border-white/10 bg-[rgba(8,10,17,0.9)] p-8 sm:p-10">
-          <p className="token-section-title">Design Principles</p>
-          <div className="token-divider-sm my-5" />
-          <p className="token-paragraph">
-            Scarcity with purpose. Utility before theater. No fake yield promises. Long-term system alignment. Compatibility with Solana execution rails.
-          </p>
-        </article>
-
-        <article className="token-card rounded-[1.7rem] border border-white/10 bg-[rgba(8,10,17,0.9)] p-8 sm:p-10">
-          <p className="token-section-title">Clear Disclaimer</p>
-          <div className="token-divider-sm my-5" />
-          <p className="token-paragraph">
-            $KRG is not a guaranteed return product. Value depends on execution, adoption, and market conditions. This page explains role and design, not financial advice.
-          </p>
-        </article>
-
-        <article className="token-card rounded-[1.7rem] border border-white/10 bg-[rgba(8,10,17,0.9)] p-8 text-center sm:p-10">
-          <p className="token-section-title">Next Action</p>
-          <div className="token-divider-sm mx-auto my-5" />
-          <p className="token-paragraph">Pair monetary exposure with system access and public cultural visibility.</p>
-          <div className="herocta mt-8 justify-center">
-            <Link href="/" className="btn btn-primary">Reserve Founding Art</Link>
-            <Link href="/surviving-miami" className="btn btn-secondary">Kurogami World</Link>
-            <Link href="/solana" className="btn btn-token">Solana Rails</Link>
-          </div>
-        </article>
+        <article className="rounded-[1.7rem] border border-white/10 bg-[rgba(8,10,17,0.9)] p-7 text-center shadow-[0_30px_80px_rgba(0,0,0,0.26)] sm:p-10"><p className={label}>System Note</p><p className="mx-auto mt-5 max-w-3xl text-sm leading-7 text-white/62">Illustrative system design. Not financial advice. Crypto assets are volatile and risky. Participation involves risk of loss. Token parameters remain subject to final publication before TGE.</p><div className="herocta mt-8 justify-center"><Link href="/reserve" className="btn btn-primary">Reserve Founding Art</Link><Link href="/world" className="btn btn-secondary">Understand the World</Link></div></article>
       </section>
     </main>
   )
