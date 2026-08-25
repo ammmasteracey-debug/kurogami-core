@@ -216,7 +216,7 @@ export default function HomePage() {
       },
       image: '/images/kurogami-load.jpg',
       socials: {
-        instagram: 'https://instagram.com',
+        instagram: 'https://www.instagram.com/nadiaaawilson?igsi=dHVtNXpnemZic2p6',
       },
       portfolio: [],
       ctaLabel: 'View brand',
