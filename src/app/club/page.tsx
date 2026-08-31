@@ -52,13 +52,13 @@ export default function ClubPage() {
           <p className={labelClass}>Club Lane</p>
           <h2 className="mt-4 font-[var(--disp)] text-3xl font-semibold text-white sm:text-4xl">Fine Shit Do Memes</h2>
           <p className="mt-5 max-w-4xl text-base leading-8 text-white/80 sm:text-lg">Fine Shit Do Memes is Kurogami's women-native meme desk and official club entry lane: token-gated access, curriculum, utility, and an official coin. The official token and contract-address source of truth live on the FSDM dapp.</p>
-          <a href="https://fine-shit-do-memes.vercel.app/" target="_blank" rel="noreferrer" className="btn btn-primary mt-7">Enter Fine Shit Do Memes</a>
+          <a href="https://fine-shit-do-memes-pied.vercel.app/" target="_blank" rel="noreferrer" className="btn btn-primary mt-7">Enter Fine Shit Do Memes</a>
         </article>
 
         <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:gap-5">
           <Link href="/reserve" className="btn btn-primary w-full sm:w-auto">Reserve Founding Art</Link>
           <Link href="/curriculum" className="btn btn-secondary w-full sm:w-auto">Enter Curriculum</Link>
-          <a href="https://fine-shit-do-memes.vercel.app/" target="_blank" rel="noreferrer" className="btn btn-secondary w-full sm:w-auto">Enter Fine Shit Do Memes</a>
+          <a href="https://fine-shit-do-memes-pied.vercel.app/" target="_blank" rel="noreferrer" className="btn btn-secondary w-full sm:w-auto">Enter Fine Shit Do Memes</a>
         </div>
       </section>
     </main>
