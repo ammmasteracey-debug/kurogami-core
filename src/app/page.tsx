@@ -69,7 +69,7 @@ export default function HomePage() {
               <h2 className="mt-2 font-[var(--disp)] text-2xl font-semibold text-white">Fine Shit Do Memes</h2>
               <p className="mt-2 text-sm leading-7 text-white/65">Women-native meme desk. Coin. Curriculum.</p>
             </div>
-            <a href="https://fine-shit-do-memes-pied.vercel.app/" target="_blank" rel="noreferrer" className="btn btn-primary mt-5 sm:mt-0">Enter FSDM</a>
+            <a href="https://fine-shit-do-memes.vercel.app/" target="_blank" rel="noreferrer" className="btn btn-primary mt-5 sm:mt-0">Enter FSDM</a>
           </div>
         </motion.div>
       </div>

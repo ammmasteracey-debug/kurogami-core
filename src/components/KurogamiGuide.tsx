@@ -96,7 +96,7 @@ export default function KurogamiGuide() {
           <Link href="/lore" onClick={() => setMenuOpen(false)}>The Lore</Link>
           <Link href="/token" onClick={() => setMenuOpen(false)}>$KRG Layer</Link>
           <Link href="/solana" onClick={() => setMenuOpen(false)}>Solana Rails</Link>
-          <a href="https://fine-shit-do-memes-pied.vercel.app/" target="_blank" rel="noreferrer" onClick={() => setMenuOpen(false)}>Fine Shit Do Memes</a>
+          <a href="https://fine-shit-do-memes.vercel.app/" target="_blank" rel="noreferrer" onClick={() => setMenuOpen(false)}>Fine Shit Do Memes</a>
           <button type="button" onClick={() => setAssistantOpen(true)}>Ask Kurogami Guide</button>
         </div>
       )}
