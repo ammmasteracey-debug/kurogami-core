@@ -90,11 +90,13 @@ export default function KurogamiGuide() {
         <div id="kurogamiUtilityMenu" className="guide-menu-panel">
           <Link href="/" onClick={() => setMenuOpen(false)}>Home</Link>
           <Link href="/reserve" onClick={() => setMenuOpen(false)}>Reserve Founding Art</Link>
+          <Link href="/club" onClick={() => setMenuOpen(false)}>The Club</Link>
           <Link href="/curriculum" onClick={() => setMenuOpen(false)}>Curriculum</Link>
           <Link href="/incubation" onClick={() => setMenuOpen(false)}>Incubation</Link>
           <Link href="/lore" onClick={() => setMenuOpen(false)}>The Lore</Link>
           <Link href="/token" onClick={() => setMenuOpen(false)}>$KRG Layer</Link>
           <Link href="/solana" onClick={() => setMenuOpen(false)}>Solana Rails</Link>
+          <a href="https://fine-shit-do-memes-pied.vercel.app/" target="_blank" rel="noreferrer" onClick={() => setMenuOpen(false)}>Fine Shit Do Memes</a>
           <button type="button" onClick={() => setAssistantOpen(true)}>Ask Kurogami Guide</button>
         </div>
       )}

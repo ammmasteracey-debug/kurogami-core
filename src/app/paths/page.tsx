@@ -19,7 +19,7 @@ const paths = [
   },
   {
     title: 'Curriculum / Desk',
-    description: 'Learn the trading desk + meme engine process',
+    description: 'Learn the rules-based trading desk and meme-engine process',
     href: '/curriculum',
     cta: 'Enter Curriculum',
   },
@@ -28,6 +28,18 @@ const paths = [
     description: 'Business systems for artists and operators',
     href: '/incubation',
     cta: 'Apply for Incubation',
+  },
+  {
+    title: 'Asset Protocols',
+    description: 'Explore Kurogami ownership, access, and asset rails',
+    href: '/token',
+    cta: 'Explore Asset Protocols',
+  },
+  {
+    title: 'Fine Shit Do Memes',
+    description: 'Elite meme-finance social club lane. Token-gated access. Curriculum. Official coin.',
+    href: 'https://fine-shit-do-memes-pied.vercel.app/',
+    cta: 'Enter FSDM',
   },
 ]
 
@@ -42,7 +54,7 @@ export default function PathsPage() {
       <section className="relative z-10 mx-auto flex max-w-6xl flex-col gap-8 px-6 py-20 sm:px-8 lg:px-10">
         <article className={panelClass}>
           <p className={labelClass}>Path Selection</p>
-          <h1 className="mt-4 font-[var(--disp)] text-3xl font-semibold text-white sm:text-4xl">Choose how you enter</h1>
+          <h1 className="mt-4 font-[var(--disp)] text-3xl font-semibold text-white sm:text-4xl">Choose your club entry lane</h1>
         </article>
 
         <div className="grid gap-5 md:grid-cols-2">
@@ -50,7 +62,11 @@ export default function PathsPage() {
             <article key={path.title} className="group rounded-[1.2rem] border border-[#f1c96a]/18 bg-[rgba(8,10,17,0.86)] p-6 transition-colors hover:border-[#f1c96a]/40">
               <h2 className="font-[var(--disp)] text-xl font-semibold text-white sm:text-2xl">{path.title}</h2>
               <p className="mt-3 text-base leading-7 text-white/78">{path.description}</p>
-              <Link href={path.href} className="btn btn-primary mt-6">{path.cta}</Link>
+              {path.href.startsWith('http') ? (
+                <a href={path.href} target="_blank" rel="noreferrer" className="btn btn-primary mt-6">{path.cta}</a>
+              ) : (
+                <Link href={path.href} className="btn btn-primary mt-6">{path.cta}</Link>
+              )}
             </article>
           ))}
         </div>

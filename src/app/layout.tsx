@@ -5,13 +5,13 @@ import './globals.css'
 
 export const metadata = {
   title: 'Kurogami World',
-  description: 'Premium portal for creators with founding access layers.'
+  description: 'Elite culture-finance social club for exclusive access, utility, and ownership rails.'
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="min-h-screen flex flex-col bg-black text-[var(--text-1)]">
+      <body className="app-shell min-h-screen flex flex-col bg-black text-[var(--text-1)]">
         <KurogamiGuide />
         <header className="site-nav-wrap">
           <div className="mx-auto max-w-6xl px-6 pt-6 sm:px-8 lg:px-10">
@@ -22,25 +22,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 </div>
                 <div>
                   <p className="text-[0.68rem] uppercase tracking-[0.28em] text-[var(--gold)]">Kurogami World</p>
-                  <p className="text-xs text-white/60">Portal</p>
+                  <p className="text-xs text-white/60">Social Club</p>
                 </div>
               </Link>
 
               <div className="site-nav-links">
                 <Link href="/world">World</Link>
+                <Link href="/club">Club</Link>
                 <Link href="/paths">Paths</Link>
-                <Link href="/artists">Artists</Link>
-                <Link href="/nights">Nights</Link>
-                <Link href="/reserve">Reserve</Link>
-                <Link href="/curriculum">Curriculum</Link>
-                <Link href="/incubation">Incubation</Link>
-                <Link href="/desk">Desk</Link>
-                <Link href="/deeper">Deeper</Link>
+                <a href="https://fine-shit-do-memes-pied.vercel.app/" target="_blank" rel="noreferrer">FSDM</a>
               </div>
             </nav>
           </div>
         </header>
-        <div className="flex-1">{children}</div>
+        <div className="app-shell-content flex-1">{children}</div>
         <footer className="site-footer">
           <div className="mx-auto flex max-w-6xl flex-col gap-6 px-6 pb-10 pt-2 sm:px-8 lg:px-10">
             <div className="site-footer-card">
@@ -51,17 +46,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   </div>
                   <div>
                     <p className="text-[0.68rem] uppercase tracking-[0.3em] text-[var(--gold)]">Kurogami World</p>
-                    <p className="text-sm text-white/65">Founding access layer</p>
+                    <p className="text-sm text-white/65">Elite culture-finance social club</p>
                   </div>
                 </Link>
                 <div className="max-w-2xl text-sm leading-7 text-white/70">
                   <p>
-                    Kurogami World is a cultural and economic access layer for artists, founders, and holders. This experience is conceptual, editorial, and informational in nature and should not be considered financial or investment advice.
+                    Kurogami World is an elite culture-finance social club and operating system for operators, creators, and investors. Trading and tokens involve risk of loss. No guaranteed returns. Educational and access products only where stated.
                   </p>
                 </div>
               </div>
               <nav aria-label="Footer navigation" className="mt-6 flex flex-wrap gap-x-5 gap-y-3 border-t border-white/10 pt-5 text-[0.68rem] uppercase tracking-[0.18em] text-white/65">
                 <Link href="/world" className="transition-colors hover:text-[var(--gold)]">World</Link>
+                <Link href="/club" className="transition-colors hover:text-[var(--gold)]">Club</Link>
                 <Link href="/paths" className="transition-colors hover:text-[var(--gold)]">Paths</Link>
                 <Link href="/artists" className="transition-colors hover:text-[var(--gold)]">Artists</Link>
                 <Link href="/nights" className="transition-colors hover:text-[var(--gold)]">Nights</Link>
@@ -71,9 +67,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <Link href="/desk" className="transition-colors hover:text-[var(--gold)]">Desk</Link>
                 <Link href="/deeper" className="transition-colors hover:text-[var(--gold)]">Deeper</Link>
                 <Link href="/portal" className="transition-colors hover:text-[var(--gold)]">Portal</Link>
+                <a href="https://fine-shit-do-memes-pied.vercel.app/" target="_blank" rel="noreferrer" className="transition-colors hover:text-[var(--gold)]">FSDM</a>
               </nav>
               <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-white/10 pt-4">
-                <p className="text-[0.68rem] uppercase tracking-[0.28em] text-white/45">Kurogami World · Cultural Access Layer</p>
+                <p className="text-[0.68rem] uppercase tracking-[0.28em] text-white/45">Kurogami World · Exclusive Access + Operating Rails</p>
                 <Link href="/" className="site-return-btn">
                   Return to Main
                 </Link>

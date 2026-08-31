@@ -15,34 +15,35 @@ export default function WorldPage() {
       <section className="relative z-10 mx-auto flex max-w-4xl flex-col gap-8 px-6 py-20 sm:px-8 lg:px-10">
         <article className={panelClass}>
           <p className={labelClass}>What It Is</p>
-          <h1 className="mt-4 font-[var(--disp)] text-3xl font-semibold text-white sm:text-4xl">Kurogami World is an artist-first culture system with a founding access layer.</h1>
+          <h1 className="mt-4 font-[var(--disp)] text-3xl font-semibold text-white sm:text-4xl">Kurogami World is an elite culture-finance social club and operating system.</h1>
         </article>
 
         <article className={panelClass}>
           <p className={labelClass}>What It Means</p>
           <div className="my-5 h-px w-20 bg-gradient-to-r from-[var(--gold)] to-transparent" />
-          <p className="text-lg leading-8 text-white/84 sm:text-xl">Art gets visibility, ownership, and infrastructure in one world.</p>
+          <p className="text-lg leading-8 text-white/84 sm:text-xl">Exclusive access, real utility, and ownership rails for operators, creators, influencers, and investors.</p>
         </article>
 
         <article className={panelClass}>
           <p className={labelClass}>How It Works</p>
           <div className="my-5 h-px w-20 bg-gradient-to-r from-[var(--gold)] to-transparent" />
           <ul className="space-y-3 text-base leading-8 text-white/82 sm:text-lg">
-            <li>Artists build in public</li>
-            <li>Founding art functions as key</li>
-            <li>Nights and culture create presence</li>
-            <li>Deeper rails sit behind the room</li>
+            <li>Founding art functions as an access key</li>
+            <li>Public culture proof creates presence</li>
+            <li>Desk process and curriculum train operators</li>
+            <li>Private operating and asset rails sit behind the room</li>
           </ul>
         </article>
 
         <article className={panelClass}>
           <p className={labelClass}>Who It Is For</p>
           <div className="my-5 h-px w-20 bg-gradient-to-r from-[var(--gold)] to-transparent" />
-          <p className="text-base leading-8 text-white/82 sm:text-lg">Painters, streamers, designers, musicians, stylists, builders, operators</p>
+          <p className="text-base leading-8 text-white/82 sm:text-lg">Artists, operators, creators, influencers, builders, and investors seeking the next level of finance and culture.</p>
         </article>
 
         <div className="flex flex-col gap-4 sm:flex-row sm:gap-5">
           <Link href="/paths" className="btn btn-primary w-full sm:w-auto">Choose Your Path</Link>
+          <Link href="/club" className="btn btn-secondary w-full sm:w-auto">Enter the Club</Link>
           <Link href="/reserve" className="btn btn-secondary w-full sm:w-auto">Reserve Founding Art</Link>
         </div>
       </section>
