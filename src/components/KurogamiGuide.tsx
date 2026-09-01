@@ -28,7 +28,7 @@ function answerQuestion(question: string) {
   }
 
   if (normalized.includes('fsdm') || normalized.includes('fine shit') || normalized.includes('meme')) {
-    return 'Fine Shit Do Memes is Kurogami’s women-native meme desk and social-club lane, with an official coin and curriculum. Enter the live dapp at fine-shit-do-memes.vercel.app.'
+    return 'Fine Shit Do Memes is Kurogami’s women-native meme desk and social-club lane, with an official coin and curriculum. Enter the live dapp at fine-shit-do-memes-pied.vercel.app.'
   }
 
   if (normalized.includes('gami boyz') || normalized.includes('brotherhood')) {
@@ -140,7 +140,7 @@ export default function KurogamiGuide() {
           <Link href="/lore" onClick={() => setMenuOpen(false)}>The Lore</Link>
           <Link href="/token" onClick={() => setMenuOpen(false)}>$KRG Layer</Link>
           <Link href="/solana" onClick={() => setMenuOpen(false)}>Solana Rails</Link>
-          <a href="https://fine-shit-do-memes.vercel.app/" target="_blank" rel="noreferrer" onClick={() => setMenuOpen(false)}>Fine Shit Do Memes</a>
+          <a href="https://fine-shit-do-memes-pied.vercel.app/" target="_blank" rel="noreferrer" onClick={() => setMenuOpen(false)}>Fine Shit Do Memes</a>
           <a href="https://gami-boyz.vercel.app/" target="_blank" rel="noreferrer" onClick={() => setMenuOpen(false)}>Gami Boyz</a>
           <button type="button" onClick={() => setAssistantOpen(true)}>Ask Kurogami Guide</button>
         </div>

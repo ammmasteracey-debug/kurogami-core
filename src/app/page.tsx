@@ -8,7 +8,7 @@ const clubLanes = [
   {
     name: 'Fine Shit Do Memes',
     description: 'Women-native meme desk and club lane. Official coin + curriculum.',
-    href: 'https://fine-shit-do-memes.vercel.app/',
+    href: 'https://fine-shit-do-memes-pied.vercel.app/',
     cta: 'Enter FSDM',
   },
   {

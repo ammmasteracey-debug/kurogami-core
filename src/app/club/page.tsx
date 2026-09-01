@@ -53,7 +53,7 @@ export default function ClubPage() {
           <h2 className="mt-4 font-[var(--disp)] text-3xl font-semibold text-white sm:text-4xl">Specialized rooms. One parent club.</h2>
           <p className="mt-5 max-w-4xl text-base leading-8 text-white/80 sm:text-lg">Fine Shit Do Memes is the women-native meme desk with an official coin and curriculum. Gami Boyz is the brotherhood lane for raw culture, access, and motion. Each has its own entry point inside the Kurogami map.</p>
           <div className="mt-7 flex flex-wrap gap-4">
-            <a href="https://fine-shit-do-memes.vercel.app/" target="_blank" rel="noreferrer" className="btn btn-primary">Enter Fine Shit Do Memes</a>
+            <a href="https://fine-shit-do-memes-pied.vercel.app/" target="_blank" rel="noreferrer" className="btn btn-primary">Enter Fine Shit Do Memes</a>
             <a href="https://gami-boyz.vercel.app/" target="_blank" rel="noreferrer" className="btn btn-secondary">Enter Gami Boyz</a>
           </div>
         </article>

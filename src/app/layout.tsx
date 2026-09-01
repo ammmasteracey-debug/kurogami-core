@@ -69,7 +69,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <Link href="/desk" className="transition-colors hover:text-[var(--gold)]">Desk</Link>
                 <Link href="/deeper" className="transition-colors hover:text-[var(--gold)]">Deeper</Link>
                 <Link href="/portal" className="transition-colors hover:text-[var(--gold)]">Portal</Link>
-                <a href="https://fine-shit-do-memes.vercel.app/" target="_blank" rel="noreferrer" className="transition-colors hover:text-[var(--gold)]">FSDM</a>
+                <a href="https://fine-shit-do-memes-pied.vercel.app/" target="_blank" rel="noreferrer" className="transition-colors hover:text-[var(--gold)]">FSDM</a>
               </nav>
               <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-white/10 pt-4">
                 <p className="text-[0.68rem] uppercase tracking-[0.28em] text-white/45">Kurogami World · Exclusive Access + Operating Rails</p>

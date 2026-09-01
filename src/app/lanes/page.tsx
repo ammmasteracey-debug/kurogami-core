@@ -14,7 +14,7 @@ const groups: { title: string; label: string; lanes: Lane[] }[] = [
     title: 'Social Club Lanes',
     label: '01 / Club Rooms',
     lanes: [
-      { name: 'Fine Shit Do Memes', description: 'Women-native meme desk and club lane. Official coin + curriculum.', status: 'Live', href: 'https://fine-shit-do-memes.vercel.app/', cta: 'Enter FSDM', external: true },
+      { name: 'Fine Shit Do Memes', description: 'Women-native meme desk and club lane. Official coin + curriculum.', status: 'Live', href: 'https://fine-shit-do-memes-pied.vercel.app/', cta: 'Enter FSDM', external: true },
       { name: 'Gami Boyz', description: 'Brotherhood lane. Raw culture. Access. Motion.', status: 'Live', href: 'https://gami-boyz.vercel.app/', cta: 'Enter Gami Boyz', external: true },
     ],
   },
