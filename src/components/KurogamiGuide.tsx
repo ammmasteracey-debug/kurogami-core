@@ -10,6 +10,8 @@ type GuideMessage = {
 
 const quickQuestions = [
   'How does Kurogami work?',
+  'What lanes are live?',
+  'What are the asset protocols?',
   'What do holders receive?',
   'How do I reserve founding art?',
 ]
@@ -25,8 +27,48 @@ function answerQuestion(question: string) {
     return 'Founding holders receive reservation of a specific art piece, the corresponding rare NFT at collection launch, $KRG allocation based on the number of NFTs held, and access into Kurogami World’s artist, event, network, and future world layers.'
   }
 
+  if (normalized.includes('fsdm') || normalized.includes('fine shit') || normalized.includes('meme')) {
+    return 'Fine Shit Do Memes is Kurogami’s women-native meme desk and social-club lane, with an official coin and curriculum. Enter the live dapp at fine-shit-do-memes.vercel.app.'
+  }
+
+  if (normalized.includes('gami boyz') || normalized.includes('brotherhood')) {
+    return 'Gami Boyz is Kurogami’s brotherhood lane for raw culture, access, and motion. Enter the live dapp at gami-boyz.vercel.app.'
+  }
+
+  if (normalized.includes('fashion')) {
+    return 'Fashion Protocol is a live Kurogami asset rail for drops, provenance, and tokenization. Enter it at kurogami-fashion.vercel.app.'
+  }
+
+  if (normalized.includes('real estate') || normalized.includes('property')) {
+    return 'Real Estate Protocol is a live Kurogami asset rail for property packaging, claim surfaces, and spatial open-house direction. Enter it at kurogami-real-estate.vercel.app.'
+  }
+
+  if (normalized.includes('watch') || normalized.includes('timepiece')) {
+    return 'Watches Protocol is a live Kurogami asset rail for timepiece packaging and provenance records. Enter it at kurogami-watches.vercel.app.'
+  }
+
+  if (normalized.includes('car') || normalized.includes('automotive')) {
+    return 'Cars Protocol is a live Kurogami asset rail for automotive packaging and provenance records. Enter it at kurogami-cars.vercel.app.'
+  }
+
+  if (normalized.includes('yacht') || normalized.includes('marine')) {
+    return 'Yachts Protocol is a live Kurogami asset rail for marine asset packaging and provenance records. Enter it at kurogami-yachts.vercel.app.'
+  }
+
+  if (normalized.includes('art protocol') || normalized.includes('art rail')) {
+    return 'Art Protocol is a live Kurogami asset rail for cultural works, provenance, and ownership records. Enter it at kurogami-art.vercel.app.'
+  }
+
+  if (normalized.includes('lane') || normalized.includes('live') || normalized.includes('room')) {
+    return 'The live Kurogami lanes are Fine Shit Do Memes and Gami Boyz. The live asset protocols are Fashion, Real Estate, Watches, Cars, Yachts, and Art. The Lanes page is the full system index with direct entry to each dapp.'
+  }
+
+  if (normalized.includes('protocol') || normalized.includes('asset')) {
+    return 'Kurogami’s live asset protocols are Fashion for drops, provenance, and tokenization; Real Estate for property packaging and claim surfaces; Watches, Cars, and Yachts for provenance-backed physical asset packaging; and Art for cultural works and ownership records. These are operating rails, not guaranteed-return products.'
+  }
+
   if (normalized.includes('protocol') || normalized.includes('work') || normalized.includes('kurogami')) {
-    return 'Kurogami World is a cultural and access protocol: artists create, collectors reserve founding art, the art becomes a key NFT at launch, and holders enter a living network of artists, events, digital districts, and future utility layers. Culture is the front door; access and ownership connect the system.'
+    return 'Kurogami World is the parent culture-finance social club and operating system. Fine Shit Do Memes and Gami Boyz are specialized club rooms; Fashion, Real Estate, Watches, Cars, Yachts, and Art are live asset protocols. Culture is the front door; access and ownership connect the system.'
   }
 
   if (normalized.includes('crypto') || normalized.includes('cash app') || normalized.includes('pay')) {
@@ -37,7 +79,7 @@ function answerQuestion(question: string) {
     return '$KRG is the conceptual economic layer of Kurogami World. Allocation is tied to NFT holdings and future participation modules, but there are no guaranteed returns. Review the token page for the current framing.'
   }
 
-  return 'I can explain the Kurogami protocol, holder benefits, founding-art reservations, Cash App crypto payment steps, or $KRG. Try one of the questions below.'
+  return 'I can explain Kurogami, the live club lanes and asset protocols, holder benefits, founding-art reservations, Cash App crypto payment steps, or $KRG. Try one of the questions below.'
 }
 
 export default function KurogamiGuide() {
@@ -47,7 +89,7 @@ export default function KurogamiGuide() {
   const [messages, setMessages] = useState<GuideMessage[]>([
     {
       role: 'assistant',
-      text: 'Welcome to Kurogami Guide. Ask me about the protocol, founding art, holder benefits, or how the payment flow works.',
+      text: 'Welcome to Kurogami Guide. Ask about live lanes, asset protocols, founding art, holder benefits, or payment flow.',
     },
   ])
 
@@ -91,12 +133,15 @@ export default function KurogamiGuide() {
           <Link href="/" onClick={() => setMenuOpen(false)}>Home</Link>
           <Link href="/reserve" onClick={() => setMenuOpen(false)}>Reserve Founding Art</Link>
           <Link href="/club" onClick={() => setMenuOpen(false)}>The Club</Link>
+          <Link href="/lanes" onClick={() => setMenuOpen(false)}>Enter the System</Link>
+          <Link href="/protocols" onClick={() => setMenuOpen(false)}>Asset Protocols</Link>
           <Link href="/curriculum" onClick={() => setMenuOpen(false)}>Curriculum</Link>
           <Link href="/incubation" onClick={() => setMenuOpen(false)}>Incubation</Link>
           <Link href="/lore" onClick={() => setMenuOpen(false)}>The Lore</Link>
           <Link href="/token" onClick={() => setMenuOpen(false)}>$KRG Layer</Link>
           <Link href="/solana" onClick={() => setMenuOpen(false)}>Solana Rails</Link>
-          <a href="https://fine-shit-do-memes-pied.vercel.app/" target="_blank" rel="noreferrer" onClick={() => setMenuOpen(false)}>Fine Shit Do Memes</a>
+          <a href="https://fine-shit-do-memes.vercel.app/" target="_blank" rel="noreferrer" onClick={() => setMenuOpen(false)}>Fine Shit Do Memes</a>
+          <a href="https://gami-boyz.vercel.app/" target="_blank" rel="noreferrer" onClick={() => setMenuOpen(false)}>Gami Boyz</a>
           <button type="button" onClick={() => setAssistantOpen(true)}>Ask Kurogami Guide</button>
         </div>
       )}

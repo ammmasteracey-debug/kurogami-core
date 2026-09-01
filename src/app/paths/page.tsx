@@ -38,7 +38,7 @@ const paths = [
   {
     title: 'Fine Shit Do Memes',
     description: 'Elite meme-finance social club lane. Token-gated access. Curriculum. Official coin.',
-    href: 'https://fine-shit-do-memes-pied.vercel.app/',
+    href: 'https://fine-shit-do-memes.vercel.app/',
     cta: 'Enter FSDM',
   },
 ]
