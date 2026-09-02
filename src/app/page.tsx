@@ -98,15 +98,25 @@ export default function HomePage() {
             {assetProtocols.map((protocol) => <PortalCard key={protocol.name} {...protocol} />)}
           </div>
         </section>
+
+        <section className="mt-6 pb-8">
+          <div className="border-b border-[#f1c96a]/20 pb-5">
+            <p className="font-mono text-[0.68rem] uppercase tracking-[0.3em] text-[var(--gold)]">03 / Institutional Adjacency</p>
+            <h2 className="mt-3 font-[var(--disp)] text-3xl font-semibold text-white sm:text-4xl">Private Desk</h2>
+          </div>
+          <div className="mt-5 grid gap-5 md:grid-cols-2">
+            <PortalCard name="Shadow Deal Desk" description="Private institutional adjacency for qualified members." href="/apply" cta="Request Qualification" status="Selective" />
+          </div>
+        </section>
       </div>
     </main>
   )
 }
 
-function PortalCard({ name, description, href, cta }: { name: string; description: string; href: string; cta: string }) {
+function PortalCard({ name, description, href, cta, status = 'Live' }: { name: string; description: string; href: string; cta: string; status?: string }) {
   return (
     <article className="club-instrument-panel flex min-h-64 flex-col border border-[#f1c96a]/18 bg-[rgba(8,10,17,0.9)] p-6 shadow-[0_24px_60px_rgba(0,0,0,0.24)]">
-      <span className="w-fit border border-[#2fe6b0]/35 bg-[#2fe6b0]/10 px-2 py-1 font-mono text-[0.62rem] uppercase tracking-[0.18em] text-[#79f4cf]">Live</span>
+      <span className={`w-fit border px-2 py-1 font-mono text-[0.62rem] uppercase tracking-[0.18em] ${status === 'Selective' ? 'border-[#f1c96a]/35 bg-[#f1c96a]/10 text-[#f6d98c]' : 'border-[#2fe6b0]/35 bg-[#2fe6b0]/10 text-[#79f4cf]'}`}>{status}</span>
       <h3 className="mt-6 font-[var(--disp)] text-2xl font-semibold text-white">{name}</h3>
       <p className="mt-3 text-base leading-7 text-white/72">{description}</p>
       <a href={href} target="_blank" rel="noreferrer" className="btn btn-primary mt-auto self-start pt-6">{cta}</a>

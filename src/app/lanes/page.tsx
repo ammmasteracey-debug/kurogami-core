@@ -3,7 +3,7 @@ import Link from 'next/link'
 type Lane = {
   name: string
   description: string
-  status: 'Live' | 'Build' | 'Next'
+  status: 'Live' | 'Build' | 'Next' | 'Selective'
   href: string
   cta: string
   external?: boolean
@@ -38,6 +38,7 @@ const groups: { title: string; label: string; lanes: Lane[] }[] = [
       { name: 'Curriculum / Desk', description: 'Trading discipline and operating process.', status: 'Live', href: '/curriculum', cta: 'Enter Curriculum' },
       { name: 'Incubation', description: 'Business systems for artists and operators.', status: 'Live', href: '/incubation', cta: 'Enter Incubation' },
       { name: 'Hub', description: 'The Kurogami command center.', status: 'Live', href: '/hub', cta: 'Enter Hub' },
+      { name: 'Shadow Deal Desk', description: 'Private institutional adjacency for qualified members.', status: 'Selective', href: '/apply', cta: 'Request Qualification' },
     ],
   },
 ]

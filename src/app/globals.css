@@ -36,6 +36,24 @@ body {
   color: var(--text);
 }
 
+.intake-input {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(0, 0, 0, 0.35);
+  padding: 0.75rem 1rem;
+  color: white;
+  font-size: 0.875rem;
+  outline: none;
+}
+
+.intake-input:focus {
+  border-color: rgba(241, 201, 106, 0.55);
+}
+
+.intake-input::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+}
+
 .app-shell {
   position: relative;
   isolation: isolate;

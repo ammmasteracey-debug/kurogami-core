@@ -67,6 +67,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <Link href="/curriculum" className="transition-colors hover:text-[var(--gold)]">Curriculum</Link>
                 <Link href="/incubation" className="transition-colors hover:text-[var(--gold)]">Incubation</Link>
                 <Link href="/desk" className="transition-colors hover:text-[var(--gold)]">Desk</Link>
+                <Link href="/shadow-deal" className="transition-colors hover:text-[var(--gold)]">Shadow Desk</Link>
                 <Link href="/deeper" className="transition-colors hover:text-[var(--gold)]">Deeper</Link>
                 <Link href="/portal" className="transition-colors hover:text-[var(--gold)]">Portal</Link>
                 <a href="https://fine-shit-do-memes-pied.vercel.app/" target="_blank" rel="noreferrer" className="transition-colors hover:text-[var(--gold)]">FSDM</a>
