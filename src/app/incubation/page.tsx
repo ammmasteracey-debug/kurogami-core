@@ -85,14 +85,6 @@ export default function IncubationPage() {
         </article>
 
         <article className={panelClass}>
-          <p className={labelClass}>Proof / Live Builds</p>
-          <div className="mt-7 grid gap-6 md:grid-cols-2">
-            <div className="rounded-[1.2rem] border border-[#f1c96a]/20 bg-black/25 p-6"><h2 className="text-xl font-semibold text-white">Kurogami World</h2><p className="mt-3 leading-7 text-white/72">Ecosystem site for culture, artists, access, and system layers.</p><Link href="/" className="btn btn-secondary mt-6">View live build</Link></div>
-            <div className="rounded-[1.2rem] border border-[#f1c96a]/20 bg-black/25 p-6"><h2 className="text-xl font-semibold text-white">Nadia Fashion Brand</h2><p className="mt-3 leading-7 text-white/72">Live e-commerce example for a brand operating in public.</p><a href="https://luxecreators.store/" target="_blank" rel="noreferrer" className="btn btn-secondary mt-6">View live build</a></div>
-          </div>
-        </article>
-
-        <article className={panelClass}>
           <p className={labelClass}>Who It Is For</p>
           <ul className="mt-6 grid gap-3 text-base leading-7 text-white/82 sm:grid-cols-3"><li>Artists entering Kurogami</li><li>Operators building public brands</li><li>External e-commerce brands seeking elite presentation</li></ul>
         </article>

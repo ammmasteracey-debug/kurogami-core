@@ -198,30 +198,6 @@ export default function HomePage() {
         },
       ],
     },
-    {
-      id: 'nadia',
-      name: 'Nadia',
-      role: 'Fashion Brand Operator · Meme Engine Lead',
-      bio: 'Builds in public across fashion and capital systems. Operates a live fashion brand and leads the Meme Engine process inside Kurogami World.',
-      fullBio:
-        'Nadia builds in public across fashion and capital systems. She operates a live fashion brand and leads the Meme Engine process inside Kurogami World, connecting product, culture, timing, and public execution.',
-      tags: ['Fashion', 'Brand Operations', 'Meme Engine', 'Capital Systems'],
-      score: 86,
-      breakdown: {
-        creation: 88,
-        consistency: 86,
-        culturalSignal: 89,
-        distribution: 84,
-        systems: 83,
-      },
-      image: '/images/kurogami-load.jpg',
-      socials: {
-        instagram: 'https://www.instagram.com/nadiaaawilson?igsi=dHVtNXpnemZic2p6',
-      },
-      portfolio: [],
-      ctaLabel: 'View brand',
-      ctaLink: 'https://luxecreators.store/',
-    },
   ]
 
   const selectedArtistProfile = artists.find((artist) => artist.id === selectedArtist) ?? null
