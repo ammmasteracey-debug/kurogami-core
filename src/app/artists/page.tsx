@@ -64,6 +64,18 @@ const artists = [
     ctaLabel: 'View brand',
     ctaLink: 'https://luxecreators.store/',
   },
+  {
+    id: 'abu',
+    name: 'Abu',
+    role: 'Creative Direction · Events · Culture',
+    bio: 'Multidisciplinary creative operator since 2014 across entertainment and events nationally. Mission rooted in sovereignty for himself and others. Creative director, event planner, promoter, videographer, fashion designer, songwriter, producer, tattoo artist, therapist, and shamanic practitioner — a full-spectrum creative who understands how culture and rooms actually move.',
+    tags: ['Creative Direction', 'Events', 'Tattoo', 'Film', 'Fashion', 'Music', 'Healing Arts'],
+    status: 'Founding · Culture',
+    image: '/images/kurogami-load.jpg',
+    socials: {
+      instagram: 'https://www.instagram.com/sphinxa8?igsi=MXJ5b3N1bjJyaHBreA==',
+    },
+  },
 ]
 
 export default function ArtistsPage() {
@@ -89,14 +101,15 @@ export default function ArtistsPage() {
               <div className="artist-body p-4">
                 <h3 className="artist-name">{artist.name}</h3>
                 <p className="artist-role">{artist.role}</p>
+                {artist.status && <p className="mt-2 font-mono text-[0.62rem] uppercase tracking-[0.18em] text-[var(--gold)]">{artist.status}</p>}
                 <p className="artist-bio mt-3">{artist.bio}</p>
                 <div className="artist-tags mt-3">
                   {artist.tags.map((tag) => <span key={tag} className="tag">{tag}</span>)}
                 </div>
-                <div className="artist-socials mt-4">
-                  <a href={artist.socials.instagram} target="_blank" rel="noreferrer" className="artist-social-link">Instagram</a>
+                {(artist.socials.instagram || artist.socials.x) && <div className="artist-socials mt-4">
+                  {artist.socials.instagram && <a href={artist.socials.instagram} target="_blank" rel="noreferrer" className="artist-social-link">Instagram</a>}
                   {artist.socials.x && <a href={artist.socials.x} target="_blank" rel="noreferrer" className="artist-social-link">X</a>}
-                </div>
+                </div>}
                 {artist.ctaLink && artist.ctaLabel && (
                   <div className="mt-auto pt-4">
                     <a href={artist.ctaLink} target="_blank" rel="noreferrer" className="btn btn-secondary">{artist.ctaLabel}</a>
