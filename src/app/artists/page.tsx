@@ -52,6 +52,19 @@ const artists = [
     },
   },
   {
+    id: 'nadia',
+    name: 'Nadia',
+    role: 'Fashion Brand Operator · Meme Engine Lead',
+    bio: 'Builds in public across fashion and capital systems. Operates a live fashion brand and leads the Meme Engine process inside Kurogami World.',
+    tags: ['Fashion', 'Brand Operations', 'Meme Engine', 'Capital Systems'],
+    image: '/images/kurogami-load.jpg',
+    socials: {
+      instagram: 'https://www.instagram.com/nadiaaawilson?igsi=dHVtNXpnemZic2p6',
+    },
+    ctaLabel: 'View brand',
+    ctaLink: 'https://luxecreators.store/',
+  },
+  {
     id: 'abu',
     name: 'Abu',
     role: 'Creative Direction · Events · Culture',
@@ -97,6 +110,11 @@ export default function ArtistsPage() {
                   {artist.socials.instagram && <a href={artist.socials.instagram} target="_blank" rel="noreferrer" className="artist-social-link">Instagram</a>}
                   {artist.socials.x && <a href={artist.socials.x} target="_blank" rel="noreferrer" className="artist-social-link">X</a>}
                 </div>}
+                {artist.ctaLink && artist.ctaLabel && (
+                  <div className="mt-auto pt-4">
+                    <a href={artist.ctaLink} target="_blank" rel="noreferrer" className="btn btn-secondary">{artist.ctaLabel}</a>
+                  </div>
+                )}
               </div>
             </article>
           ))}

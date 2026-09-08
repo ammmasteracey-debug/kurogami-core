@@ -29,7 +29,7 @@ export default function ClubPage() {
           <div className="pt-10 sm:pt-14">
             <p className="font-mono text-[0.65rem] uppercase tracking-[0.28em] text-white/50">Signal room / 01</p>
             <h1 className="mt-5 max-w-4xl font-[var(--disp)] text-5xl font-semibold leading-[0.88] text-white sm:text-6xl">The Club</h1>
-            <p className="mt-7 max-w-4xl text-lg leading-8 text-white/82 sm:text-xl">Kurogami is the parent club system: a high-signal room for operators, artists, creators, and investors moving through culture, markets, and ownership. Fine Shit Do Memes and Gami Boyz are specialized rooms in the broader movement.</p>
+            <p className="mt-7 max-w-4xl text-lg leading-8 text-white/82 sm:text-xl">Kurogami is the parent club system: a high-signal room for operators, artists, creators, and investors moving through culture, markets, and ownership. Gami Boyz is a specialized room in the broader movement.</p>
             <div className="mt-9 flex flex-wrap gap-x-6 gap-y-3 font-mono text-[0.64rem] uppercase tracking-[0.2em] text-white/55">
               <span>Founding keys online</span>
               <span>Desk rails active</span>
@@ -51,10 +51,9 @@ export default function ClubPage() {
         <article className="club-command-frame rounded-[1.7rem] border border-[#f1c96a]/25 bg-[rgba(8,10,17,0.92)] p-7 shadow-[0_30px_80px_rgba(0,0,0,0.26)] sm:p-10">
           <p className={labelClass}>Club Rooms</p>
           <h2 className="mt-4 font-[var(--disp)] text-3xl font-semibold text-white sm:text-4xl">Specialized rooms. One parent club.</h2>
-          <p className="mt-5 max-w-4xl text-base leading-8 text-white/80 sm:text-lg">Fine Shit Do Memes is the women-native meme desk with an official coin and curriculum. Gami Boyz is the brotherhood lane for raw culture, access, and motion. Each has its own entry point inside the Kurogami map.</p>
+          <p className="mt-5 max-w-4xl text-base leading-8 text-white/80 sm:text-lg">Gami Boyz is the brotherhood lane for raw culture, access, and motion. It has its own entry point inside the Kurogami map.</p>
           <div className="mt-7 flex flex-wrap gap-4">
-            <a href="https://fine-shit-do-memes-pied.vercel.app/" target="_blank" rel="noreferrer" className="btn btn-primary">Enter Fine Shit Do Memes</a>
-            <a href="https://gami-boyz.vercel.app/" target="_blank" rel="noreferrer" className="btn btn-secondary">Enter Gami Boyz</a>
+            <a href="https://gami-boyz.vercel.app/" target="_blank" rel="noreferrer" className="btn btn-primary">Enter Gami Boyz</a>
           </div>
         </article>
 

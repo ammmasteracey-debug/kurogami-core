@@ -36,10 +36,10 @@ const paths = [
     cta: 'Explore Asset Protocols',
   },
   {
-    title: 'Fine Shit Do Memes',
-    description: 'Elite meme-finance social club lane. Token-gated access. Curriculum. Official coin.',
-    href: 'https://fine-shit-do-memes-pied.vercel.app/',
-    cta: 'Enter FSDM',
+    title: 'Gami Boyz',
+    description: 'Brotherhood lane for raw culture, access, and motion.',
+    href: 'https://gami-boyz.vercel.app/',
+    cta: 'Enter Gami Boyz',
   },
 ]
 
