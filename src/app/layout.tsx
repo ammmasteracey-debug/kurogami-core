@@ -4,8 +4,8 @@ import KurogamiGuide from '../components/KurogamiGuide'
 import './globals.css'
 
 export const metadata = {
-  title: 'Kurogami World',
-  description: 'Elite culture-finance social club for exclusive access, utility, and ownership rails.'
+  title: 'Kurogami — Tokenization & Collateral Protocol',
+  description: 'Kurogami is the portfolio structuring protocol for real-world assets: tokenization, collateralized liquidity, and compounding ownership in one system.'
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -13,7 +13,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className="app-shell min-h-screen flex flex-col bg-black text-[var(--text-1)]">
         <KurogamiGuide />
-        <header className="site-nav-wrap">
+        <header className="site-nav-wrap sticky top-0">
           <div className="mx-auto max-w-6xl px-6 pt-6 sm:px-8 lg:px-10">
             <nav className="site-nav-card">
               <Link href="/" className="site-nav-brand">
@@ -21,18 +21,25 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   <Image src="/images/kurogami-load.jpg" alt="Kurogami logo" width={40} height={40} className="h-full w-full rounded-full object-contain" />
                 </div>
                 <div>
-                  <p className="text-[0.68rem] uppercase tracking-[0.28em] text-[var(--gold)]">Kurogami World</p>
-                  <p className="text-xs text-white/60">Social Club</p>
+                  <p className="text-[0.68rem] uppercase tracking-[0.28em] text-[var(--gold)]">Kurogami</p>
+                  <p className="text-xs text-white/60">Tokenization &amp; Collateral Protocol</p>
                 </div>
               </Link>
 
               <div className="site-nav-links">
-                <Link href="/world">World</Link>
-                <Link href="/lanes">Lanes</Link>
-                <Link href="/club">Club</Link>
-                <Link href="/protocols">Protocols</Link>
-                <Link href="/roadmap">Roadmap</Link>
+                <Link href="/">Overview</Link>
+                <Link href="/tokenization-engine">Tokenization Engine</Link>
+                <Link href="/collateral-engine">Collateral Engine</Link>
+                <Link href="/markets">Markets</Link>
+                <Link href="/portfolio">Portfolio</Link>
+                <Link href="/verticals">Verticals</Link>
+                <Link href="/architecture">Docs</Link>
+                <Link href="/portfolio">Enter</Link>
               </div>
+
+              <Link href="/access" className="btn btn-gold shrink-0 !px-4 !py-2 text-xs">
+                Request Access
+              </Link>
             </nav>
           </div>
         </header>
@@ -46,38 +53,31 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     <Image src="/images/kurogami-load.jpg" alt="Kurogami logo" width={44} height={44} className="h-full w-full rounded-full object-contain" />
                   </div>
                   <div>
-                    <p className="text-[0.68rem] uppercase tracking-[0.3em] text-[var(--gold)]">Kurogami World</p>
-                    <p className="text-sm text-white/65">Elite culture-finance social club</p>
+                    <p className="text-[0.68rem] uppercase tracking-[0.3em] text-[var(--gold)]">Kurogami</p>
+                    <p className="text-sm text-white/65">Tokenization + Collateral + Portfolio Structuring Protocol</p>
                   </div>
                 </Link>
                 <div className="max-w-2xl text-sm leading-7 text-white/70">
                   <p>
-                    Kurogami World is an elite culture-finance social club and operating system for operators, creators, and investors. Trading and tokens involve risk of loss. No guaranteed returns. Educational and access products only where stated.
+                    Kurogami is infrastructure for tokenizing, collateralizing, and structuring real-world assets. Trading, lending, and tokenized assets carry risk of loss, including total loss. Nothing here is an offer to sell securities, and no returns are guaranteed.
                   </p>
                 </div>
               </div>
               <nav aria-label="Footer navigation" className="mt-6 flex flex-wrap gap-x-5 gap-y-3 border-t border-white/10 pt-5 text-[0.68rem] uppercase tracking-[0.18em] text-white/65">
-                <Link href="/world" className="transition-colors hover:text-[var(--gold)]">World</Link>
-                <Link href="/lanes" className="transition-colors hover:text-[var(--gold)]">Lanes</Link>
-                <Link href="/club" className="transition-colors hover:text-[var(--gold)]">Club</Link>
-                <Link href="/protocols" className="transition-colors hover:text-[var(--gold)]">Protocols</Link>
-                <Link href="/roadmap" className="transition-colors hover:text-[var(--gold)]">Roadmap</Link>
-                <Link href="/paths" className="transition-colors hover:text-[var(--gold)]">Paths</Link>
-                <Link href="/artists" className="transition-colors hover:text-[var(--gold)]">Artists</Link>
-                <Link href="/nights" className="transition-colors hover:text-[var(--gold)]">Nights</Link>
-                <Link href="/reserve" className="transition-colors hover:text-[var(--gold)]">Reserve</Link>
-                <Link href="/curriculum" className="transition-colors hover:text-[var(--gold)]">Curriculum</Link>
-                <Link href="/incubation" className="transition-colors hover:text-[var(--gold)]">Incubation</Link>
-                <Link href="/desk" className="transition-colors hover:text-[var(--gold)]">Desk</Link>
-                <Link href="/shadow-deal" className="transition-colors hover:text-[var(--gold)]">Shadow Desk</Link>
-                <Link href="/deeper" className="transition-colors hover:text-[var(--gold)]">Deeper</Link>
-                <Link href="/portal" className="transition-colors hover:text-[var(--gold)]">Portal</Link>
+                <Link href="/" className="transition-colors hover:text-[var(--gold)]">Overview</Link>
+                <Link href="/tokenization-engine" className="transition-colors hover:text-[var(--gold)]">Tokenization Engine</Link>
+                <Link href="/collateral-engine" className="transition-colors hover:text-[var(--gold)]">Collateral Engine</Link>
+                <Link href="/markets" className="transition-colors hover:text-[var(--gold)]">Markets</Link>
+                <Link href="/portfolio" className="transition-colors hover:text-[var(--gold)]">Portfolio</Link>
+                <Link href="/verticals" className="transition-colors hover:text-[var(--gold)]">Verticals</Link>
+                <Link href="/architecture" className="transition-colors hover:text-[var(--gold)]">Architecture</Link>
+                <Link href="/access" className="transition-colors hover:text-[var(--gold)]">Access</Link>
               </nav>
               <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-white/10 pt-4">
-                <p className="text-[0.68rem] uppercase tracking-[0.28em] text-white/45">Kurogami World · Exclusive Access + Operating Rails</p>
-                <Link href="/" className="site-return-btn">
-                  Return to Main
-                </Link>
+                <p className="text-[0.68rem] uppercase tracking-[0.28em] text-white/45">Kurogami · Infrastructure Layer</p>
+                <a href="https://gami-boyz.vercel.app/" target="_blank" rel="noreferrer" className="text-[0.68rem] uppercase tracking-[0.24em] text-white/40 transition-colors hover:text-[var(--gold)]">
+                  Culture network: Gami Boyz ↗
+                </a>
               </div>
             </div>
           </div>
