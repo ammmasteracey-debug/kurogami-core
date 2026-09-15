@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { FormEvent, useState } from 'react'
+import { FormEvent, useEffect, useState } from 'react'
 
 type GuideMessage = {
   role: 'assistant' | 'user'
@@ -9,77 +9,59 @@ type GuideMessage = {
 }
 
 const quickQuestions = [
-  'How does Kurogami work?',
-  'What lanes are live?',
-  'What are the asset protocols?',
-  'What do holders receive?',
-  'How do I reserve founding art?',
+  'What is Kurogami?',
+  'What is the Tokenization Engine?',
+  'What is the Collateral Engine?',
+  'What asset verticals are supported?',
+  'What can I see in Portfolio OS?',
+  'How do I connect my wallet?',
+  'How do I request access?',
 ]
 
 function answerQuestion(question: string) {
   const normalized = question.toLowerCase()
 
-  if (normalized.includes('reserve') || normalized.includes('buy') || normalized.includes('purchase')) {
-    return 'To reserve founding art, choose a piece, then follow the crypto onboarding flow on the Reserve page. You can buy SOL, ETH, or BTC through Cash App, send the matching asset to the official treasury address, include your piece code, and submit the transaction proof for manual confirmation.'
+  if (normalized.includes('wallet') || normalized.includes('phantom') || normalized.includes('connect')) {
+    return 'Tap Connect Wallet in the top nav. On desktop it opens a picker for any installed Solana wallet; on mobile it deep-links straight into the Phantom app (or the App Store if you don’t have it yet) so you can approve the connection there.'
   }
 
-  if (normalized.includes('receive') || normalized.includes('benefit') || normalized.includes('holder') || normalized.includes('get')) {
-    return 'Founding holders receive reservation of a specific art piece, the corresponding rare NFT at collection launch, $KRG allocation based on the number of NFTs held, and access into Kurogami World’s artist, event, network, and future world layers.'
+  if (normalized.includes('access') || normalized.includes('apply') || normalized.includes('sign up') || normalized.includes('join')) {
+    return 'Kurogami is rolling out by stages. Tap Request Access in the nav to reach the team directly, or use the Request Access form for a fuller intake. Early access prioritizes operators, originators, and capital partners who understand the loop.'
   }
 
-  if (normalized.includes('fsdm') || normalized.includes('fine shit') || normalized.includes('meme')) {
-    return 'Fine Shit Do Memes is Kurogami’s women-native meme desk and social-club lane, with an official coin and curriculum. Enter the live dapp at fine-shit-do-memes-pied.vercel.app.'
+  if (normalized.includes('tokeniz') || normalized.includes('asset nft') || normalized.includes('mint')) {
+    return 'The Tokenization Engine turns verified real-world value into composable on-chain units. An asset moves through intake, verification, and a compliant legal wrap, then mints as a standardized Asset NFT that can be vaulted, fractionalized, or posted as collateral. See the Tokenization Engine page for the full flow.'
   }
 
-  if (normalized.includes('gami boyz') || normalized.includes('brotherhood')) {
-    return 'Gami Boyz is Kurogami’s brotherhood lane for raw culture, access, and motion. Enter the live dapp at gami-boyz.vercel.app.'
+  if (normalized.includes('collateral') || normalized.includes('borrow') || normalized.includes('liquidity') || normalized.includes('health factor') || normalized.includes('ltv')) {
+    return 'The Collateral Engine lets you deposit an Asset NFT or reserve units, receive borrow capacity based on its tier, and deploy that liquidity without a forced sale. Borrow capacity ranges from up to 70% LTV for Tier A (reserve / gold-backed units) down to 35% for Tier C. Positions are tracked by a health factor, and the full breakdown is on the Collateral Engine page.'
   }
 
-  if (normalized.includes('fashion')) {
-    return 'Fashion Protocol is a live Kurogami asset rail for drops, provenance, and tokenization. Enter it at kurogami-fashion.vercel.app.'
+  if (normalized.includes('market')) {
+    return 'Kurogami Markets covers five surfaces on the same asset base: spot ownership, collateral/borrow, vault/yield, prediction/events tied to real asset outcomes, and basket/index exposure across verticals. Most surfaces are data-gated behind early access right now.'
   }
 
-  if (normalized.includes('real estate') || normalized.includes('property')) {
-    return 'Real Estate Protocol is a live Kurogami asset rail for property packaging, claim surfaces, and spatial open-house direction. Enter it at kurogami-real-estate.vercel.app.'
+  if (normalized.includes('portfolio')) {
+    return 'Portfolio OS is the full-loop view of your position: balances, tokenized assets, collateral positions and health factor, borrow capacity, active strategies, vertical exposures, and basket exposure. Connect your wallet to unlock live data once you have approved access.'
   }
 
-  if (normalized.includes('watch') || normalized.includes('timepiece')) {
-    return 'Watches Protocol is a live Kurogami asset rail for timepiece packaging and provenance records. Enter it at kurogami-watches.vercel.app.'
+  if (normalized.includes('vertical') || normalized.includes('reserve') || normalized.includes('real estate') || normalized.includes('watch') || normalized.includes('art') || normalized.includes('fashion') || normalized.includes('fleet') || normalized.includes('nil') || normalized.includes('sport')) {
+    return 'Asset Verticals are policy packs on the same engine: Reserve/Gold, Real Estate, Watches, Art & Collectibles, Fashion/Inventory, Mobility/Fleet, and Sports/NIL. Only intake requirements, verification standards, and risk tiers change per vertical — the Tokenization and Collateral Engines stay the same. See the Asset Verticals page for details.'
   }
 
-  if (normalized.includes('car') || normalized.includes('automotive')) {
-    return 'Cars Protocol is a live Kurogami asset rail for automotive packaging and provenance records. Enter it at kurogami-cars.vercel.app.'
+  if (normalized.includes('architecture') || normalized.includes('layer') || normalized.includes('how does') || normalized.includes('how it work') || normalized.includes('system')) {
+    return 'Kurogami is one system across six layers: the Desk generates capital, the Tokenization Engine turns real-world assets into Asset NFTs, the Collateral Engine unlocks liquidity against them, Vertical Vaults hold assets by policy pack, Markets route exposure, and the Basket Layer indexes positions across verticals. See the Architecture page for the full map.'
   }
 
-  if (normalized.includes('yacht') || normalized.includes('marine')) {
-    return 'Yachts Protocol is a live Kurogami asset rail for marine asset packaging and provenance records. Enter it at kurogami-yachts.vercel.app.'
+  if (normalized.includes('krg') || normalized.includes('token ')) {
+    return 'Kurogami’s current live product is the Tokenization + Collateral + Portfolio protocol — there is no live token sale right now. Check back on the Architecture and Markets pages as the monetary layer rolls out.'
   }
 
-  if (normalized.includes('art protocol') || normalized.includes('art rail')) {
-    return 'Art Protocol is a live Kurogami asset rail for cultural works, provenance, and ownership records. Enter it at kurogami-art.vercel.app.'
+  if (normalized.includes('kurogami')) {
+    return 'Kurogami is the portfolio structuring protocol for real-world assets: tokenize verified assets into Asset NFTs, post them as collateral for liquidity without a forced sale, and manage the full loop from one Portfolio OS. Try the Tokenization Engine, Collateral Engine, Markets, Portfolio OS, or Asset Verticals questions below.'
   }
 
-  if (normalized.includes('lane') || normalized.includes('live') || normalized.includes('room')) {
-    return 'The live Kurogami lanes are Fine Shit Do Memes and Gami Boyz. The live asset protocols are Fashion, Real Estate, Watches, Cars, Yachts, and Art. The Lanes page is the full system index with direct entry to each dapp.'
-  }
-
-  if (normalized.includes('protocol') || normalized.includes('asset')) {
-    return 'Kurogami’s live asset protocols are Fashion for drops, provenance, and tokenization; Real Estate for property packaging and claim surfaces; Watches, Cars, and Yachts for provenance-backed physical asset packaging; and Art for cultural works and ownership records. These are operating rails, not guaranteed-return products.'
-  }
-
-  if (normalized.includes('protocol') || normalized.includes('work') || normalized.includes('kurogami')) {
-    return 'Kurogami World is the parent culture-finance social club and operating system. Fine Shit Do Memes and Gami Boyz are specialized club rooms; Fashion, Real Estate, Watches, Cars, Yachts, and Art are live asset protocols. Culture is the front door; access and ownership connect the system.'
-  }
-
-  if (normalized.includes('crypto') || normalized.includes('cash app') || normalized.includes('pay')) {
-    return 'The beginner path is Cash App: buy SOL, ETH, or BTC, copy the matching official treasury address from the Reserve page, send the payment with your piece code, and submit your transaction hash or screenshot. Always verify the asset and address before sending.'
-  }
-
-  if (normalized.includes('token') || normalized.includes('krg')) {
-    return '$KRG is the conceptual economic layer of Kurogami World. Allocation is tied to NFT holdings and future participation modules, but there are no guaranteed returns. Review the token page for the current framing.'
-  }
-
-  return 'I can explain Kurogami, the live club lanes and asset protocols, holder benefits, founding-art reservations, Cash App crypto payment steps, or $KRG. Try one of the questions below.'
+  return 'I can walk you through the Tokenization Engine, Collateral Engine, Markets, Portfolio OS, Asset Verticals, system architecture, wallet connect, or requesting access. Try one of the questions below.'
 }
 
 export default function KurogamiGuide() {
@@ -89,7 +71,7 @@ export default function KurogamiGuide() {
   const [messages, setMessages] = useState<GuideMessage[]>([
     {
       role: 'assistant',
-      text: 'Welcome to Kurogami Guide. Ask about live lanes, asset protocols, founding art, holder benefits, or payment flow.',
+      text: 'Welcome to Kurogami Guide. Ask about the Tokenization Engine, Collateral Engine, Markets, Portfolio OS, Asset Verticals, wallet connect, or requesting access.',
     },
   ])
 
@@ -115,6 +97,27 @@ export default function KurogamiGuide() {
     ])
   }
 
+  const openAssistant = () => {
+    setMenuOpen(false)
+    setAssistantOpen((open) => !open)
+  }
+
+  const openMenu = () => {
+    setAssistantOpen(false)
+    setMenuOpen((open) => !open)
+  }
+
+  useEffect(() => {
+    if (!menuOpen && !assistantOpen) return
+    const previousOverflow = document.body.style.overflow
+    if (window.matchMedia('(max-width: 640px)').matches) {
+      document.body.style.overflow = 'hidden'
+    }
+    return () => {
+      document.body.style.overflow = previousOverflow
+    }
+  }, [menuOpen, assistantOpen])
+
   return (
     <div className="guide-utility">
       <button
@@ -122,42 +125,44 @@ export default function KurogamiGuide() {
         className="guide-menu-toggle"
         aria-expanded={menuOpen}
         aria-controls="kurogamiUtilityMenu"
-        onClick={() => setMenuOpen((open) => !open)}
+        onClick={openMenu}
       >
         <span className="guide-menu-icon" aria-hidden="true">☰</span>
         <span>Menu</span>
       </button>
 
       {menuOpen && (
-        <div id="kurogamiUtilityMenu" className="guide-menu-panel">
-          <Link href="/" onClick={() => setMenuOpen(false)}>Home</Link>
-          <Link href="/reserve" onClick={() => setMenuOpen(false)}>Reserve Founding Art</Link>
-          <Link href="/club" onClick={() => setMenuOpen(false)}>The Club</Link>
-          <Link href="/lanes" onClick={() => setMenuOpen(false)}>Enter the System</Link>
-          <Link href="/protocols" onClick={() => setMenuOpen(false)}>Asset Protocols</Link>
-          <Link href="/curriculum" onClick={() => setMenuOpen(false)}>Curriculum</Link>
-          <Link href="/incubation" onClick={() => setMenuOpen(false)}>Incubation</Link>
-          <Link href="/lore" onClick={() => setMenuOpen(false)}>The Lore</Link>
-          <Link href="/token" onClick={() => setMenuOpen(false)}>$KRG Layer</Link>
-          <Link href="/solana" onClick={() => setMenuOpen(false)}>Solana Rails</Link>
-          <a href="https://fine-shit-do-memes-pied.vercel.app/" target="_blank" rel="noreferrer" onClick={() => setMenuOpen(false)}>Fine Shit Do Memes</a>
-          <a href="https://gami-boyz.vercel.app/" target="_blank" rel="noreferrer" onClick={() => setMenuOpen(false)}>Gami Boyz</a>
-          <button type="button" onClick={() => setAssistantOpen(true)}>Ask Kurogami Guide</button>
-        </div>
+        <>
+          <div className="guide-backdrop" onClick={() => setMenuOpen(false)} />
+          <div id="kurogamiUtilityMenu" className="guide-menu-panel">
+            <Link href="/" onClick={() => setMenuOpen(false)}>Overview</Link>
+            <Link href="/tokenization-engine" onClick={() => setMenuOpen(false)}>Tokenization Engine</Link>
+            <Link href="/collateral-engine" onClick={() => setMenuOpen(false)}>Collateral Engine</Link>
+            <Link href="/markets" onClick={() => setMenuOpen(false)}>Markets</Link>
+            <Link href="/portfolio" onClick={() => setMenuOpen(false)}>Portfolio OS</Link>
+            <Link href="/verticals" onClick={() => setMenuOpen(false)}>Asset Verticals</Link>
+            <Link href="/architecture" onClick={() => setMenuOpen(false)}>Architecture</Link>
+            <Link href="/access" onClick={() => setMenuOpen(false)}>Request Access</Link>
+            <button type="button" onClick={openAssistant}>Ask Kurogami Guide</button>
+          </div>
+        </>
       )}
 
       <button
         type="button"
         className="guide-assistant-launch"
         aria-expanded={assistantOpen}
-        onClick={() => setAssistantOpen((open) => !open)}
+        aria-label="Ask Kurogami Guide"
+        onClick={openAssistant}
       >
         <span className="guide-assistant-dot" aria-hidden="true" />
-        Kurogami Guide
+        <span className="guide-assistant-label">Kurogami Guide</span>
       </button>
 
       {assistantOpen && (
-        <div className="guide-assistant-panel" role="dialog" aria-label="Kurogami Guide assistant">
+        <>
+          <div className="guide-backdrop" onClick={() => setAssistantOpen(false)} />
+          <div className="guide-assistant-panel" role="dialog" aria-label="Kurogami Guide assistant">
           <div className="guide-assistant-header">
             <div>
               <p className="guide-kicker">Kurogami Guide</p>
@@ -192,7 +197,8 @@ export default function KurogamiGuide() {
             <button type="submit">Ask</button>
           </form>
           <p className="guide-disclaimer">Informational guide only. Review official page details before sending funds.</p>
-        </div>
+          </div>
+        </>
       )}
     </div>
   )

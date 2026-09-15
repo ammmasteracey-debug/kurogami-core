@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import AccessModal from './AccessModal'
 import KurogamiGuide from './KurogamiGuide'
+import MobileBottomNav from './MobileBottomNav'
 import WalletConnectButton from './WalletConnectButton'
 
 export default function AppShellClient({ children }: { children: React.ReactNode }) {
@@ -51,6 +52,7 @@ export default function AppShellClient({ children }: { children: React.ReactNode
         </div>
       </header>
       <div className="app-shell-content flex-1">{children}</div>
+      <MobileBottomNav />
       <footer className="site-footer">
         <div className="mx-auto flex max-w-6xl flex-col gap-6 px-6 pb-10 pt-2 sm:px-8 lg:px-10">
           <div className="site-footer-card">
