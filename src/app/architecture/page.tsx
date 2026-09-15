@@ -32,7 +32,7 @@ export default function ArchitecturePage() {
           </article>
 
           <div className="mt-8">
-            <EngineCta label="View Verticals" href="/verticals" secondaryLabel="Request Access" secondaryHref="/access" />
+            <EngineCta label="View Verticals" href="/verticals" secondaryLabel="Request Access" secondaryHref="#" />
           </div>
         </section>
       </section>

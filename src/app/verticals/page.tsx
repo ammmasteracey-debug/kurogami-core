@@ -39,7 +39,7 @@ export default function VerticalsPage() {
             </p>
           </article>
           <div className="mt-8">
-            <EngineCta label="Start Intake" href="/tokenization-engine" secondaryLabel="System Architecture" secondaryHref="/architecture" />
+            <EngineCta label="Start Intake" href="#" secondaryLabel="System Architecture" secondaryHref="/architecture" />
           </div>
         </section>
       </section>

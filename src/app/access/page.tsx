@@ -42,9 +42,9 @@ export default function AccessPage() {
           </div>
           <div className="mt-7 flex flex-wrap items-center justify-between gap-4 border-t border-white/10 pt-6">
             <p className="max-w-xl text-xs leading-6 text-white/45">
-              Access is controlled and reviewed individually. Submitting this form does not guarantee access, allocation, or any specific outcome.
+              Access is controlled and reviewed individually. For direct intake, message Ac3y on Instagram and the team will follow up there.
             </p>
-            <button type="submit" className="btn btn-gold">Submit Request</button>
+            <a href="https://www.instagram.com/cryptoac3y?stkn=OXIzOXd2YmFybjgz&utm_source=qr" target="_blank" rel="noreferrer" className="btn btn-gold">DM Ac3y on IG</a>
           </div>
           {submitted && (
             <p className="mt-5 border border-[var(--gold)]/35 bg-[var(--gold)]/10 px-4 py-3 text-sm leading-7 text-[var(--gold-2)]">

@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 import { Fragment } from 'react'
 
@@ -57,11 +59,33 @@ export function ObjectCard({ title, body }: { title: string; body: string }) {
 }
 
 export function EngineCta({ label, href, secondaryLabel, secondaryHref }: { label: string; href: string; secondaryLabel?: string; secondaryHref?: string }) {
+  const isExternal = href.startsWith('http')
+  const isSecondaryExternal = Boolean(secondaryHref && secondaryHref.startsWith('http'))
+  const isPopupButton = href === '#'
+  const isSecondaryPopupButton = secondaryHref === '#'
+
+  const handleOpenAccess = () => {
+    window.dispatchEvent(new CustomEvent('kurogami-open-access'))
+  }
+
   return (
     <div className="flex flex-wrap items-center gap-3">
-      <Link href={href} className="btn btn-gold">{label}</Link>
+      {isPopupButton ? (
+        <button type="button" onClick={handleOpenAccess} className="btn btn-gold">{label}</button>
+      ) : isExternal ? (
+        <a href={href} target="_blank" rel="noreferrer" className="btn btn-gold">{label}</a>
+      ) : (
+        <Link href={href} className="btn btn-gold">{label}</Link>
+      )}
+
       {secondaryLabel && secondaryHref && (
-        <Link href={secondaryHref} className="btn btn-gold-outline">{secondaryLabel}</Link>
+        isSecondaryPopupButton ? (
+          <button type="button" onClick={handleOpenAccess} className="btn btn-gold-outline">{secondaryLabel}</button>
+        ) : isSecondaryExternal ? (
+          <a href={secondaryHref} target="_blank" rel="noreferrer" className="btn btn-gold-outline">{secondaryLabel}</a>
+        ) : (
+          <Link href={secondaryHref} className="btn btn-gold-outline">{secondaryLabel}</Link>
+        )
       )}
     </div>
   )

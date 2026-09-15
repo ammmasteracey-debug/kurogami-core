@@ -87,7 +87,7 @@ export default function CollateralEnginePage() {
             </table>
           </div>
           <div className="mt-8">
-            <EngineCta label="Open Collateral Dashboard" href="/portfolio" secondaryLabel="Request Access" secondaryHref="/access" />
+            <EngineCta label="Open Collateral Dashboard" href="#" secondaryLabel="Request Access" secondaryHref="#" />
           </div>
           <p className="mt-5 text-xs leading-6 text-white/40">
             Collateral positions carry liquidation risk. Borrow capacity and tiers are illustrative and subject to policy and market conditions. See <Link href="/architecture" className="underline hover:text-[var(--gold)]">System Architecture</Link> for how the Collateral Engine connects to Vaults and Markets.

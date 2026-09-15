@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 import { EngineCta, FlowSteps, LoopSteps } from '../components/engine/EngineUI'
 
@@ -18,12 +20,21 @@ export default function HomePage() {
       <section className="relative z-10 mx-auto max-w-6xl px-6 py-20 sm:px-8 lg:px-10">
         <div className="engine-panel mx-auto flex min-h-[62vh] max-w-4xl flex-col justify-center p-7 text-center sm:p-14">
           <p className="engine-kicker">Kurogami Protocol</p>
+
+          <div className="mx-auto mt-5 flex w-full max-w-[220px] items-center justify-center rounded-[1.3rem] border border-[var(--gold)]/20 bg-black/20 p-4 shadow-[0_0_30px_rgba(240,194,74,0.08)]">
+            <img
+              src="/images/kurogami-official-logo.jpg"
+              alt="Kurogami official logo"
+              className="h-auto w-full object-contain"
+            />
+          </div>
+
           <h1 className="mt-5 font-[var(--disp)] text-5xl font-semibold leading-[0.95] text-white sm:text-7xl">Kurogami</h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-white/85 sm:text-2xl">The portfolio structuring protocol for real-world assets.</p>
           <p className="engine-kicker mt-4">Tokenize. Collateralize. Deploy. Compound.</p>
           <div className="mt-9 flex flex-wrap justify-center gap-3">
-            <Link href="/portfolio" className="btn btn-gold">Launch App</Link>
-            <Link href="/architecture" className="btn btn-gold-outline">View Architecture</Link>
+            <button type="button" onClick={() => window.dispatchEvent(new CustomEvent('kurogami-open-access'))} className="btn btn-gold">Launch App</button>
+            <button type="button" onClick={() => window.dispatchEvent(new CustomEvent('kurogami-open-access'))} className="btn btn-gold-outline">View Architecture</button>
           </div>
         </div>
 
@@ -43,7 +54,7 @@ export default function HomePage() {
                 Capital is generated, hardened into durable form, and posted as collateral. Liquidity is deployed to acquire and tokenize real-world assets, which re-enter the loop as productive, composable positions.
               </p>
               <div className="mt-6">
-                <EngineCta label="Start Intake" href="/tokenization-engine" secondaryLabel="Open Collateral Dashboard" secondaryHref="/collateral-engine" />
+                <EngineCta label="Start Intake" href="#" secondaryLabel="Open Collateral Dashboard" secondaryHref="#" />
               </div>
             </article>
           </div>
@@ -75,7 +86,7 @@ export default function HomePage() {
             <FlowSteps steps={['Desk', 'Intake', 'Collateral', 'Deploy', 'Tokenize']} />
           </div>
           <div className="mt-8">
-            <EngineCta label="Request Access" href="/access" secondaryLabel="View Architecture" secondaryHref="/architecture" />
+            <EngineCta label="Request Access" href="#" secondaryLabel="View Architecture" secondaryHref="/architecture" />
           </div>
         </section>
       </section>

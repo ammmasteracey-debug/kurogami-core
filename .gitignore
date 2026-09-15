@@ -3,6 +3,7 @@ node_modules/
 
 # production build
 .next/
+tsconfig.tsbuildinfo
 
 # local env
 .env
