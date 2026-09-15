@@ -54,7 +54,7 @@ export default function HomePage() {
                 Capital is generated, hardened into durable form, and posted as collateral. Liquidity is deployed to acquire and tokenize real-world assets, which re-enter the loop as productive, composable positions.
               </p>
               <div className="mt-6">
-                <EngineCta label="Start Intake" href="#" secondaryLabel="Open Collateral Dashboard" secondaryHref="#" />
+                <EngineCta label="Start Intake" href="/intake" secondaryLabel="Open Collateral Dashboard" secondaryHref="#" />
               </div>
             </article>
           </div>
