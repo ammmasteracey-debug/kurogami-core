@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { FormEvent, useEffect, useState } from 'react'
+import { FormEvent, useEffect, useRef, useState } from 'react'
 
 type GuideMessage = {
   role: 'assistant' | 'user'
@@ -107,6 +107,14 @@ export default function KurogamiGuide() {
     setMenuOpen((open) => !open)
   }
 
+  const messagesRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const node = messagesRef.current
+    if (!node) return
+    node.scrollTo({ top: node.scrollHeight, behavior: 'smooth' })
+  }, [messages])
+
   useEffect(() => {
     if (!menuOpen && !assistantOpen) return
     const previousOverflow = document.body.style.overflow
@@ -150,7 +158,7 @@ export default function KurogamiGuide() {
 
       <button
         type="button"
-        className="guide-assistant-launch"
+        className={`guide-assistant-launch ${assistantOpen ? '' : 'guide-assistant-glow'}`}
         aria-expanded={assistantOpen}
         aria-label="Ask Kurogami Guide"
         onClick={openAssistant}
@@ -171,7 +179,7 @@ export default function KurogamiGuide() {
             <button type="button" className="guide-close" aria-label="Close Kurogami Guide" onClick={() => setAssistantOpen(false)}>×</button>
           </div>
 
-          <div className="guide-messages" aria-live="polite">
+          <div className="guide-messages" aria-live="polite" ref={messagesRef}>
             {messages.map((message, index) => (
               <div key={`${message.role}-${index}`} className={`guide-message ${message.role}`}>
                 {message.text}
