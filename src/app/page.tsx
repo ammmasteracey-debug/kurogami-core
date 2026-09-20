@@ -1,13 +1,15 @@
 'use client'
 
 import Link from 'next/link'
+import { ArtifactStrip, ArtifactVisual } from '../components/engine/ArtifactVisual'
 import { EngineCta, FlowSteps, LoopSteps } from '../components/engine/EngineUI'
+import { ALL_ARTIFACTS, ARTIFACTS } from '../data/artifacts'
 
 const loop = ['Generate', 'Harden', 'Collateralize', 'Deploy', 'Acquire', 'Tokenize', 'Compound']
 
 const surfaces = [
-  { title: 'Tokenization Engine', body: 'Turn verified real-world value into composable on-chain units.', href: '/tokenization-engine' },
   { title: 'Collateral Engine', body: 'Unlock liquidity against tokenized assets without forced sale.', href: '/collateral-engine' },
+  { title: 'Tokenization Engine', body: 'Turn verified real-world value into composable on-chain units.', href: '/tokenization-engine' },
   { title: 'Markets', body: 'Ownership, collateral, yield, and event surfaces for real-world value.', href: '/markets' },
   { title: 'Portfolio OS', body: 'See balances, positions, and exposure across the full loop.', href: '/portfolio' },
   { title: 'Asset Verticals', body: 'One engine, policy packs for reserve, real estate, watches, art, and more.', href: '/verticals' },
@@ -58,6 +60,18 @@ export default function HomePage() {
               </div>
             </article>
           </div>
+
+          <div className="mt-8 grid items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,18rem)]">
+            <p className="max-w-2xl text-sm leading-7 text-white/60 sm:text-base sm:leading-8">
+              The loop compounds. Each cycle returns capital to the system with more structure than the last — verified, collateralized, and deployed again.
+            </p>
+            <ArtifactVisual
+              src={ARTIFACTS.systemIntelligence.src}
+              alt="System Intelligence artifact — a DNA helix representing the protocol's compounding structure"
+              caption={ARTIFACTS.systemIntelligence.caption}
+              code={ARTIFACTS.systemIntelligence.code}
+            />
+          </div>
         </section>
 
         <section className="mt-14" aria-labelledby="core-surfaces">
@@ -74,6 +88,15 @@ export default function HomePage() {
               </Link>
             ))}
           </div>
+        </section>
+
+        <section className="mt-14" aria-labelledby="protocol-artifacts">
+          <div className="border-b border-white/10 pb-5">
+            <p className="engine-kicker">Protocol Artifacts</p>
+            <h2 id="protocol-artifacts" className="mt-3 font-[var(--disp)] text-3xl font-semibold text-white sm:text-4xl">The visual language of the system</h2>
+            <p className="mt-3 max-w-2xl text-base leading-7 text-white/70">Six artifacts. One for each surface of the protocol.</p>
+          </div>
+          <ArtifactStrip artifacts={ALL_ARTIFACTS} className="mt-6" />
         </section>
 
         <section className="mt-14 pb-8" aria-labelledby="process-flow">

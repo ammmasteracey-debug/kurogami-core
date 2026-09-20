@@ -2,7 +2,9 @@
 
 import Link from 'next/link'
 import { FormEvent, useState } from 'react'
+import { ArtifactVisual } from '../../components/engine/ArtifactVisual'
 import { EngineHeader } from '../../components/engine/EngineUI'
+import { ARTIFACTS } from '../../data/artifacts'
 
 const VERTICALS = [
   'Reserve / Gold',
@@ -97,6 +99,18 @@ export default function IntakePage() {
           title="Asset Intake"
           subtitle="Submit an asset for structuring: documentation, ownership records, and declared value."
         />
+
+        <div className="mt-8 grid items-center gap-8 md:grid-cols-[minmax(0,1fr)_minmax(0,15rem)]">
+          <p className="max-w-xl text-base leading-8 text-white/70">
+            Intake is the entry point of the protocol. A verified record is the key that opens every later stage.
+          </p>
+          <ArtifactVisual
+            src={ARTIFACTS.genesisKey.src}
+            alt="Genesis Key artifact — a crystal key holding a city in its bow"
+            caption={ARTIFACTS.genesisKey.caption}
+            code={ARTIFACTS.genesisKey.code}
+          />
+        </div>
 
         <form className="engine-panel mt-8 p-6 sm:p-9" onSubmit={handleSubmit}>
           <div className="grid gap-5 md:grid-cols-2">

@@ -144,8 +144,8 @@ export default function KurogamiGuide() {
           <div className="guide-backdrop" onClick={() => setMenuOpen(false)} />
           <div id="kurogamiUtilityMenu" className="guide-menu-panel">
             <Link href="/" onClick={() => setMenuOpen(false)}>Overview</Link>
-            <Link href="/tokenization-engine" onClick={() => setMenuOpen(false)}>Tokenization Engine</Link>
             <Link href="/collateral-engine" onClick={() => setMenuOpen(false)}>Collateral Engine</Link>
+            <Link href="/tokenization-engine" onClick={() => setMenuOpen(false)}>Tokenization Engine</Link>
             <Link href="/markets" onClick={() => setMenuOpen(false)}>Markets</Link>
             <Link href="/portfolio" onClick={() => setMenuOpen(false)}>Portfolio OS</Link>
             <Link href="/verticals" onClick={() => setMenuOpen(false)}>Asset Verticals</Link>

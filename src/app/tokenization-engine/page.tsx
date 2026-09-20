@@ -1,4 +1,6 @@
+import { ArtifactVisual } from '../../components/engine/ArtifactVisual'
 import { EngineCta, EngineHeader, FlowSteps, ObjectCard, SectionIntro } from '../../components/engine/EngineUI'
+import { ARTIFACTS } from '../../data/artifacts'
 
 const whatItDoes = [
   { title: 'Intake', body: 'Submit an asset for structuring: documentation, ownership records, and declared value.' },
@@ -25,6 +27,18 @@ export default function TokenizationEnginePage() {
           title="Tokenization Engine"
           subtitle="Turn verified real-world value into composable on-chain units."
         />
+
+        <div className="mt-8 grid items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,20rem)]">
+          <p className="max-w-2xl text-base leading-8 text-white/70">
+            Real-world assets enter as documented value and leave as standardized on-chain units — verified, wrapped, and composable across the protocol.
+          </p>
+          <ArtifactVisual
+            src={ARTIFACTS.tokenizationEngine.src}
+            alt="Tokenization Engine artifact — a sealed glass vessel holding a city, a DNA strand, and a moon"
+            caption={ARTIFACTS.tokenizationEngine.caption}
+            code={ARTIFACTS.tokenizationEngine.code}
+          />
+        </div>
 
         <section className="mt-12" aria-labelledby="what-it-does">
           <SectionIntro kicker="01 / What It Does" title="From verified asset to on-chain unit" />

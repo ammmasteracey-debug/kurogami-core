@@ -31,8 +31,8 @@ export default function AppShellClient({ children }: { children: React.ReactNode
 
             <div className="site-nav-links">
               <Link href="/">Overview</Link>
-              <Link href="/tokenization-engine">Tokenization Engine</Link>
               <Link href="/collateral-engine">Collateral Engine</Link>
+              <Link href="/tokenization-engine">Tokenization Engine</Link>
               <Link href="/markets">Markets</Link>
               <Link href="/portfolio">Portfolio</Link>
               <Link href="/verticals">Verticals</Link>
@@ -74,12 +74,13 @@ export default function AppShellClient({ children }: { children: React.ReactNode
             </div>
             <nav aria-label="Footer navigation" className="mt-6 flex flex-wrap gap-x-5 gap-y-3 border-t border-white/10 pt-5 text-[0.68rem] uppercase tracking-[0.18em] text-white/65">
               <Link href="/" className="transition-colors hover:text-[var(--gold)]">Overview</Link>
-              <Link href="/tokenization-engine" className="transition-colors hover:text-[var(--gold)]">Tokenization Engine</Link>
               <Link href="/collateral-engine" className="transition-colors hover:text-[var(--gold)]">Collateral Engine</Link>
+              <Link href="/tokenization-engine" className="transition-colors hover:text-[var(--gold)]">Tokenization Engine</Link>
               <Link href="/markets" className="transition-colors hover:text-[var(--gold)]">Markets</Link>
               <Link href="/portfolio" className="transition-colors hover:text-[var(--gold)]">Portfolio</Link>
               <Link href="/verticals" className="transition-colors hover:text-[var(--gold)]">Verticals</Link>
               <Link href="/architecture" className="transition-colors hover:text-[var(--gold)]">Architecture</Link>
+              <Link href="/terms" className="transition-colors hover:text-[var(--gold)]">Terms</Link>
               <button
                 type="button"
                 onClick={openAccess}

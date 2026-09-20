@@ -1,5 +1,7 @@
 import Link from 'next/link'
+import { ArtifactVisual } from '../../components/engine/ArtifactVisual'
 import { EngineCta, EngineHeader, ObjectCard, SectionIntro } from '../../components/engine/EngineUI'
+import { ARTIFACTS } from '../../data/artifacts'
 
 const loopSteps = [
   { title: 'Deposit', body: 'Post an eligible Asset NFT or reserve units as collateral.' },
@@ -24,6 +26,18 @@ export default function CollateralEnginePage() {
           title="Collateral Engine"
           subtitle="Unlock liquidity without forced sale."
         />
+
+        <div className="mt-8 grid items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,20rem)]">
+          <p className="max-w-2xl text-base leading-8 text-white/70">
+            Value is held in reserve while capacity is drawn against it. The asset stays intact; the position stays measured.
+          </p>
+          <ArtifactVisual
+            src={ARTIFACTS.collateralCore.src}
+            alt="Collateral Core artifact — a crystal orb set in a crater, holding reserve value"
+            caption={ARTIFACTS.collateralCore.caption}
+            code={ARTIFACTS.collateralCore.code}
+          />
+        </div>
 
         <section className="mt-12" aria-labelledby="collateral-loop">
           <SectionIntro kicker="01 / The Loop" title="Deposit, borrow, deploy, repay" />

@@ -39,6 +39,10 @@ export default function DeskPage() {
           <p className={labelClass}>Disclaimer</p>
           <div className="my-5 h-px w-20 bg-gradient-to-r from-[var(--gold)] to-transparent" />
           <p className="text-base leading-8 text-white/72 sm:text-lg">This is educational content only. No guaranteed returns. Trading involves risk.</p>
+          <p className="mt-4 text-sm leading-7 text-white/60">
+            Desk Access, Operator Seat, and Capital Partner Seat are governed by the{' '}
+            <Link href="/terms" className="text-[var(--gold)] underline decoration-[var(--gold)]/40 underline-offset-4 transition-colors hover:text-[var(--gold-2)]">Desk Access Terms</Link>.
+          </p>
         </article>
 
         <div className="flex flex-col gap-4 sm:flex-row sm:gap-5">

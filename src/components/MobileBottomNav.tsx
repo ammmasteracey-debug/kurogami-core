@@ -5,8 +5,8 @@ import { usePathname } from 'next/navigation'
 
 const NAV_ORDER = [
   { href: '/', label: 'Overview' },
-  { href: '/tokenization-engine', label: 'Tokenize' },
   { href: '/collateral-engine', label: 'Collateral' },
+  { href: '/tokenization-engine', label: 'Tokenize' },
   { href: '/markets', label: 'Markets' },
   { href: '/portfolio', label: 'Portfolio' },
   { href: '/verticals', label: 'Verticals' },

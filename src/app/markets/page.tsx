@@ -1,4 +1,6 @@
+import { ArtifactVisual } from '../../components/engine/ArtifactVisual'
 import { EngineHeader, SectionIntro } from '../../components/engine/EngineUI'
+import { ARTIFACTS } from '../../data/artifacts'
 
 const marketCards = [
   { title: 'Spot / Ownership', body: 'Direct ownership of tokenized real-world assets, transferable on-chain.' },
@@ -17,6 +19,18 @@ export default function MarketsPage() {
           title="RWA Markets"
           subtitle="Ownership, collateral, yield, and event surfaces for real-world value."
         />
+
+        <div className="mt-8 grid items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,20rem)]">
+          <p className="max-w-2xl text-base leading-8 text-white/70">
+            One asset base, expressed across five surfaces. Capital moves between them without leaving the protocol.
+          </p>
+          <ArtifactVisual
+            src={ARTIFACTS.marketVessel.src}
+            alt="Market Vessel artifact — an ankh vessel holding a city with capital in flow"
+            caption={ARTIFACTS.marketVessel.caption}
+            code={ARTIFACTS.marketVessel.code}
+          />
+        </div>
 
         <section className="mt-12" aria-labelledby="market-surfaces">
           <SectionIntro kicker="Market Surfaces" title="Five surfaces, one asset base" />
