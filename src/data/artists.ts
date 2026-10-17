@@ -47,7 +47,7 @@ export const artists: ArtistProfile[] = [
     },
     image: '/images/kurogami-load.jpg',
     socials: {
-      instagram: 'https://www.instagram.com/cryptoac3y?igsh=OXIzOXd2YmFybjgz&utm_source=qr',
+      instagram: 'https://www.instagram.com/ac3yway',
       x: 'https://x.com/CryptoAc3y',
     },
     portfolio: [
@@ -61,7 +61,7 @@ export const artists: ArtistProfile[] = [
         title: 'Automation & Ops Systems',
         format: 'AI / CRM / tooling',
         note: 'Voice agents, dashboard workflows, and process automation built for service, real estate, and trading operations.',
-        link: 'https://www.instagram.com/cryptoac3y?igsh=OXIzOXd2YmFybjgz&utm_source=qr',
+        link: 'https://www.instagram.com/ac3yway',
       },
     ],
   },

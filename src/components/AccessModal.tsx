@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 
-const IG_LINK = 'https://www.instagram.com/cryptoac3y?stkn=OXIzOXd2YmFybjgz&utm_source=qr'
+const IG_LINK = 'https://www.instagram.com/ac3yway'
 
 export default function AccessModal() {
   const [open, setOpen] = useState(false)

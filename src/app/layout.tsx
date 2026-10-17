@@ -3,8 +3,8 @@ import SolanaWalletProvider from '../components/SolanaWalletProvider'
 import './globals.css'
 
 export const metadata = {
-  title: 'Kurogami — Tokenization & Collateral Protocol',
-  description: 'Kurogami is the portfolio structuring protocol for real-world assets: tokenization, collateralized liquidity, and compounding ownership in one system.'
+  title: 'Kurogami — Process-Trained Intelligence',
+  description: 'Kurogami turns how skilled humans work into process-trained agents that can be trained, measured, owned, rented, and improved.'
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

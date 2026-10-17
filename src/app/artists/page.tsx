@@ -13,7 +13,7 @@ const artists = [
     tags: ['Systems', 'Infrastructure', 'Automation', 'Trading', 'Web3'],
     image: '/images/kurogami-load.jpg',
     socials: {
-      instagram: 'https://www.instagram.com/cryptoac3y?igsh=OXIzOXd2YmFybjgz&utm_source=qr',
+      instagram: 'https://www.instagram.com/ac3yway',
       x: 'https://x.com/CryptoAc3y',
     },
   },

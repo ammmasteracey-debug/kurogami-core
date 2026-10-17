@@ -108,7 +108,7 @@ export default function AccessPage() {
               <div className="mt-7 flex flex-wrap items-center justify-between gap-4 border-t border-white/10 pt-6">
                 <p className="max-w-xl text-xs leading-6 text-white/45">
                   Full payment is required before access. Access begins only after payment is confirmed. For direct intake, message{' '}
-                  <a href="https://www.instagram.com/cryptoac3y?stkn=OXIzOXd2YmFybjgz&utm_source=qr" target="_blank" rel="noreferrer" className="underline hover:text-[var(--gold)]">Ac3y on Instagram</a>.
+                  <a href="https://www.instagram.com/ac3yway" target="_blank" rel="noreferrer" className="underline hover:text-[var(--gold)]">Ac3y on Instagram</a>.
                 </p>
                 <button type="submit" disabled={!agreed} className="btn btn-gold disabled:cursor-not-allowed disabled:opacity-50">
                   Unlock Access
