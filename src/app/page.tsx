@@ -1,5 +1,8 @@
 'use client'
 
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation'
+
 const pillars = [
   {
     index: '01',
@@ -72,6 +75,26 @@ function AccessButton({ children = 'Request Access' }: { children?: React.ReactN
 }
 
 export default function HomePage() {
+  const router = useRouter()
+  const [loadingComplete, setLoadingComplete] = useState(false)
+
+  useEffect(() => {
+    const hasSeenLoading = document.cookie
+      .split(';')
+      .some((part) => part.trim().startsWith('kurogami_shown_loading=1'))
+
+    if (hasSeenLoading) {
+      setLoadingComplete(true)
+      return
+    }
+
+    router.replace('/loading?to=/')
+  }, [router])
+
+  if (!loadingComplete) {
+    return <main className="investor-page min-h-[70vh]" aria-busy="true" />
+  }
+
   return (
     <main className="investor-page">
       <section className="investor-hero" aria-labelledby="hero-title">

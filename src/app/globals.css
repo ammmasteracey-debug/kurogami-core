@@ -3746,7 +3746,7 @@ canvas {
 .kurogami-loader {
   position: relative;
   display: grid;
-  min-height: calc(100svh - 5rem);
+  min-height: 100svh;
   place-items: center;
   overflow: hidden;
   isolation: isolate;

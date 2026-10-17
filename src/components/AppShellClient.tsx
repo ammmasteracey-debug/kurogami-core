@@ -24,6 +24,8 @@ export default function AppShellClient({ children }: { children: React.ReactNode
     window.dispatchEvent(new CustomEvent('kurogami-open-access'))
   }
 
+  if (pathname === '/loading') return <>{children}</>
+
   return (
     <>
       {!isHome && <KurogamiGuide />}
