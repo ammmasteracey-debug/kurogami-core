@@ -17,6 +17,52 @@ const compoundingFactors = [
   ['Shared capital access', 'Operators can reach aligned resources to extend their work.'],
 ]
 
+const networkBottlenecks = [
+  ['Product is weak or hard to explain', 'Clear process infrastructure people can actually use.'],
+  ['Endless recruiting pressure', 'Access is the product. Recruiting is optional leverage.'],
+  ['Complicated comp plans', 'Simple, transparent tiers tied to real access sold.'],
+  ['High churn or refunds', 'Education, tools, and standards reduce empty joins.'],
+  ['Build a team or make nothing', 'Individual operators still get full value from their own seat.'],
+  ['Events feel like pitches', 'Events are operator culture and real work, not hype rooms.'],
+  ['Income claims are vague', 'Scenarios are grounded in published access prices and labeled illustrative.'],
+]
+
+const networkSteps = [
+  ['01', 'Personal Access', 'You join a tier. You get the tools and process.'],
+  ['02', 'Introduction', 'You share Kurogami with people in your network.'],
+  ['03', 'Team Structure', 'When people you introduce join—and when their introductions join—you may earn under the applicable compensation plan.'],
+]
+
+const networkScenarios = [
+  {
+    label: 'Scenario A / Personal only',
+    title: 'One seat. No team.',
+    body: 'You take Operator Access (Desk) at $1,500 and use the tools and process. The value is your own access and capability; no team is required.',
+  },
+  {
+    label: 'Scenario B / Small intentional network',
+    title: 'Four direct introductions.',
+    body: 'Four people take Operator Seat at $5,000 each. At an illustrative 20% direct share, the example is 4 × $1,000 = $4,000. This is hypothetical, not a promised or finalized payout. Your own seat remains independently valuable.',
+  },
+  {
+    label: 'Scenario C / Active builder',
+    title: 'Direct and second-level activity.',
+    body: 'You introduce six Operator Seats at $5,000 each; each introduces two Desk Access seats at $1,500. Any direct and second-level payout depends on the final written compensation plan. These access purchases are not a guarantee of income.',
+  },
+  {
+    label: 'Scenario D / Event-led',
+    title: 'Host the work in public.',
+    body: 'You host or co-host Kurogami / Gami nights. Attendees experience the culture and desk standard, then may request $1,500 Operator Access, a $5,000 Operator Seat, or a $15,000 / $25,000 Capital Partner Seat through your link. Any host allocation and direct share are subject to the final plan.',
+  },
+]
+
+const compensationPrinciples = [
+  'Direct introductions earn a defined share of the access fee.',
+  'Second-level activity earns a smaller residual share.',
+  'Verified event hosts can earn additional host allocation.',
+  'Your own seat value does not depend on recruiting.',
+]
+
 const briefSeries = [
   ['Brief 01', 'Models Have Crossed the Threshold', 'The cost curve and model capability shift the bottleneck from raw intelligence to directed process.'],
   ['Brief 02', 'Biology Is Becoming Digital', 'Discovery cycles compress when human judgment is structured, trained, and applied to the right targets.'],
@@ -118,10 +164,83 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="investor-section investor-network-section" id="network" aria-labelledby="network-title">
+        <div className="investor-container">
+          <header className="investor-network-hero">
+            <p className="investor-eyebrow">NETWORK / OPERATOR DISTRIBUTION</p>
+            <h2 id="network-title">Share the process. Build a team. Earn from real access.</h2>
+            <p>Kurogami includes a structured network layer so operators can introduce others, host, and earn without the usual network marketing problems.</p>
+          </header>
+
+          <div className="investor-network-block">
+            <h3>Most network marketing breaks in the same places.</h3>
+            <div className="investor-network-contrast" role="list">
+              {networkBottlenecks.map(([problem, approach]) => (
+                <article className="investor-network-contrast-row" key={problem} role="listitem">
+                  <p>{problem}</p>
+                  <span aria-hidden="true">→</span>
+                  <p>{approach}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          <div className="investor-network-block">
+            <div className="investor-network-heading">
+              <p className="investor-eyebrow">HOW IT WORKS</p>
+              <h3>Three ways value moves</h3>
+            </div>
+            <div className="investor-network-steps">
+              {networkSteps.map(([index, title, body]) => (
+                <article className="investor-network-step" key={index}>
+                  <span>{index}</span>
+                  <h4>{title}</h4>
+                  <p>{body}</p>
+                </article>
+              ))}
+            </div>
+            <p className="investor-network-standalone">No one is required to build a team to get value from their own seat.</p>
+          </div>
+
+          <div className="investor-network-block investor-network-comp">
+            <div className="investor-network-heading">
+              <p className="investor-eyebrow">COMP OVERVIEW</p>
+              <h3>Structure before percentages.</h3>
+            </div>
+            <ul>
+              {compensationPrinciples.map((principle) => <li key={principle}>{principle}</li>)}
+            </ul>
+            <p className="investor-network-caveat">Exact rates, eligibility, and payment terms are subject to a finalized written compensation plan. No payout or income is guaranteed.</p>
+          </div>
+
+          <div className="investor-network-block">
+            <div className="investor-network-heading">
+              <p className="investor-eyebrow">ILLUSTRATIVE SCENARIOS</p>
+              <h3>Access first. Distribution second.</h3>
+            </div>
+            <div className="investor-network-scenarios">
+              {networkScenarios.map(({ label, title, body }) => (
+                <article className="investor-network-scenario" key={label}>
+                  <span>{label}</span>
+                  <h4>{title}</h4>
+                  <p>{body}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          <div className="investor-network-events">
+            <p className="investor-eyebrow">EVENTS / DISTRIBUTION</p>
+            <p>Events are not pitch fests. They are operator culture in public: desk standard, process, BriefOS context, and real work. People who resonate request access. That is the distribution.</p>
+          </div>
+          <p className="investor-network-closing">The network layer is leverage on real process infrastructure, not a replacement for it.</p>
+        </div>
+      </section>
+
       <section className="investor-section investor-briefos-section" id="briefos" aria-labelledby="briefos-title">
         <div className="investor-container investor-briefos-grid">
           <div>
-            <p className="investor-eyebrow">04 / Public intelligence</p>
+            <p className="investor-eyebrow">05 / Public intelligence</p>
             <h2 id="briefos-title">BriefOS</h2>
           </div>
           <div>

@@ -10,6 +10,7 @@ const landingNavigation = [
   { label: 'System', id: 'system' },
   { label: 'Stack', id: 'stack' },
   { label: 'Operators', id: 'operators' },
+  { label: 'Network', id: 'network' },
   { label: 'BriefOS', id: 'briefos' },
   { label: 'Access', id: 'access' },
 ]
@@ -48,6 +49,7 @@ export default function AppShellClient({ children }: { children: React.ReactNode
                 <Link href="/#system">System</Link>
                 <Link href="/#stack">Stack</Link>
                 <Link href="/#operators">Operators</Link>
+                <Link href="/#network">Network</Link>
                 <Link href="/#briefos">BriefOS</Link>
                 <Link href="/#access">Access</Link>
               </div>
