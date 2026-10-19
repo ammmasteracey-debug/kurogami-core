@@ -237,10 +237,89 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="investor-section investor-agentic-section" id="agentic-network" aria-labelledby="agentic-network-title">
+        <div className="investor-container">
+          <header className="investor-agentic-hero">
+            <p className="investor-eyebrow">NETWORK / AGENTIC DISTRIBUTION</p>
+            <h2 id="agentic-network-title">Your downline is changing.</h2>
+            <p>In the agentic era, scale no longer depends only on how many humans you can manage. It depends on whether you own the process that trains agents — agents that can distribute, follow up, trade, and carry a brand.</p>
+          </header>
+
+          <div className="investor-agentic-shift">
+            <article>
+              <p className="investor-eyebrow">OLD MODEL</p>
+              <ul>
+                <li>Human recruits human.</li>
+                <li>You train people.</li>
+                <li>You manage people.</li>
+                <li>Income is mostly limited by human time and consistency.</li>
+              </ul>
+            </article>
+            <article>
+              <p className="investor-eyebrow">NEW MODEL</p>
+              <ul>
+                <li>Operator captures process.</li>
+                <li>Process trains agents.</li>
+                <li>Agents extend distribution, execution, and brand.</li>
+                <li>Humans still introduce and oversee. Agents handle scale.</li>
+              </ul>
+            </article>
+          </div>
+
+          <div className="investor-agentic-block">
+            <div className="investor-network-heading">
+              <p className="investor-eyebrow">WHAT KUROGAMI PROVIDES</p>
+              <h3>Process infrastructure for agentic distribution.</h3>
+            </div>
+            <div className="investor-agentic-provisions">
+              <article>
+                <span>01 / PROCESS CAPTURE</span>
+                <h4>Desk OS and Field OS record how real work is actually done.</h4>
+              </article>
+              <article>
+                <span>02 / AGENT EXTENSION</span>
+                <h4>Captured process is trained and extended into agents.</h4>
+              </article>
+              <article>
+                <span>03 / OWNERSHIP SURFACE</span>
+                <h4>Agents can be ranked, rented, and coordinated through the Forge.</h4>
+              </article>
+              <article>
+                <span>04 / DISTRIBUTION LAYER</span>
+                <h4>Humans introduce. Agents can follow up, educate, and maintain presence.</h4>
+              </article>
+            </div>
+            <p className="investor-agentic-seat">Your own seat still has full value even with zero team.</p>
+          </div>
+
+          <div className="investor-agentic-block">
+            <div className="investor-network-heading">
+              <p className="investor-eyebrow">HOW VALUE MOVES</p>
+              <h3>Human judgment. Process. Agent scale.</h3>
+            </div>
+            <ol className="investor-agentic-flow">
+              <li><span>01</span><p>You operate and capture process.</p></li>
+              <li><span>02</span><p>Process is extended into agents.</p></li>
+              <li><span>03</span><p>Agents support distribution and execution.</p></li>
+              <li><span>04</span><p>Human network + agent activity both contribute to leverage.</p></li>
+              <li><span>05</span><p>Standards remain. Empty volume is not the goal.</p></li>
+            </ol>
+          </div>
+
+          <div className="investor-agentic-closing">
+            <p>This is not a better network marketing company.<br />It is the infrastructure network marketing runs on once agents become normal.</p>
+            <div className="investor-actions">
+              <AccessButton>Request Access</AccessButton>
+              <Link href="/access#desk-process" className="investor-button investor-button-quiet">See Operator Tiers <span aria-hidden="true">↗</span></Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="investor-section investor-briefos-section" id="briefos" aria-labelledby="briefos-title">
         <div className="investor-container investor-briefos-grid">
           <div>
-            <p className="investor-eyebrow">05 / Public intelligence</p>
+            <p className="investor-eyebrow">06 / Public intelligence</p>
             <h2 id="briefos-title">BriefOS</h2>
           </div>
           <div>

@@ -5341,3 +5341,248 @@ canvas {
     font-size: clamp(2.2rem, 10vw, 3.4rem);
   }
 }
+
+.investor-agentic-section {
+  background:
+    radial-gradient(ellipse at 88% 10%, rgba(240, 194, 74, 0.035), transparent 36rem),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.004), transparent 48%);
+}
+
+.investor-agentic-hero {
+  max-width: 58rem;
+}
+
+.investor-agentic-hero > .investor-eyebrow {
+  color: rgba(220, 193, 127, 0.82);
+}
+
+.investor-agentic-hero h2 {
+  margin-top: 1.3rem;
+  color: #f3f1e9;
+  font-family: 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
+  font-size: clamp(2.6rem, 6vw, 5.2rem);
+  font-weight: 400;
+  letter-spacing: -0.05em;
+  line-height: 1.04;
+}
+
+.investor-agentic-hero > p:last-child {
+  max-width: 48rem;
+  margin: 1.35rem 0 0;
+  color: var(--investor-copy);
+  font-size: 1rem;
+  line-height: 1.9;
+}
+
+.investor-agentic-shift {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: clamp(2.8rem, 6vw, 4.5rem);
+}
+
+.investor-agentic-shift article {
+  border: 1px solid rgba(226, 211, 170, 0.13);
+  background: rgba(255, 255, 255, 0.012);
+  padding: clamp(1.2rem, 2.5vw, 2rem);
+}
+
+.investor-agentic-shift article:last-child {
+  border-color: rgba(220, 193, 127, 0.25);
+  background: linear-gradient(145deg, rgba(240, 194, 74, 0.035), rgba(255, 255, 255, 0.008));
+}
+
+.investor-agentic-shift ul {
+  display: grid;
+  gap: 0.85rem;
+  margin: 1.25rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.investor-agentic-shift li {
+  position: relative;
+  padding-left: 1.15rem;
+  color: rgba(243, 241, 233, 0.76);
+  font-size: 0.88rem;
+  line-height: 1.7;
+}
+
+.investor-agentic-shift li::before {
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  content: '—';
+}
+
+.investor-agentic-block {
+  margin-top: clamp(3.5rem, 7vw, 5.5rem);
+}
+
+.investor-agentic-provisions {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid var(--investor-line);
+  border-bottom: 1px solid var(--investor-line);
+}
+
+.investor-agentic-provisions article {
+  min-height: 11rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.085);
+  padding: 1.25rem;
+}
+
+.investor-agentic-provisions article:first-child {
+  padding-left: 0;
+}
+
+.investor-agentic-provisions article:last-child {
+  border-right: 0;
+  padding-right: 0;
+}
+
+.investor-agentic-provisions span,
+.investor-agentic-flow li > span {
+  color: var(--gold);
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.13em;
+}
+
+.investor-agentic-provisions h4 {
+  margin: 1rem 0 0;
+  color: rgba(243, 241, 233, 0.88);
+  font-size: 0.88rem;
+  font-weight: 400;
+  line-height: 1.75;
+}
+
+.investor-agentic-seat {
+  margin: 1rem 0 0;
+  color: rgba(243, 241, 233, 0.9);
+  font-size: 0.88rem;
+  line-height: 1.75;
+}
+
+.investor-agentic-flow {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  margin: 0;
+  border-top: 1px solid var(--investor-line);
+  border-bottom: 1px solid var(--investor-line);
+  padding: 0;
+  list-style: none;
+}
+
+.investor-agentic-flow li {
+  min-height: 9rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.085);
+  padding: 1.1rem;
+}
+
+.investor-agentic-flow li:first-child {
+  padding-left: 0;
+}
+
+.investor-agentic-flow li:last-child {
+  border-right: 0;
+  padding-right: 0;
+}
+
+.investor-agentic-flow li p {
+  margin: 0.85rem 0 0;
+  color: rgba(243, 241, 233, 0.82);
+  font-size: 0.84rem;
+  line-height: 1.75;
+}
+
+.investor-agentic-closing {
+  margin-top: clamp(3.5rem, 7vw, 5.5rem);
+  border-top: 1px solid var(--investor-line);
+  padding-top: 1.5rem;
+}
+
+.investor-agentic-closing > p {
+  max-width: 58rem;
+  margin: 0;
+  color: rgba(220, 193, 127, 0.94);
+  font-family: var(--disp);
+  font-size: clamp(1.4rem, 3vw, 2.3rem);
+  line-height: 1.45;
+}
+
+.investor-agentic-closing .investor-actions {
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .investor-agentic-provisions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .investor-agentic-provisions article:nth-child(2n) {
+    border-right: 0;
+  }
+
+  .investor-agentic-provisions article:nth-child(-n + 2) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.085);
+  }
+
+  .investor-agentic-flow {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .investor-agentic-flow li:nth-child(3n) {
+    border-right: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .investor-agentic-shift {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .investor-agentic-provisions {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .investor-agentic-provisions article,
+  .investor-agentic-provisions article:first-child,
+  .investor-agentic-provisions article:last-child {
+    min-height: 0;
+    border-right: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.085);
+    padding: 1rem 0;
+  }
+
+  .investor-agentic-provisions article:last-child {
+    border-bottom: 0;
+  }
+
+  .investor-agentic-provisions h4 {
+    margin-top: 0.55rem;
+  }
+
+  .investor-agentic-flow {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .investor-agentic-flow li,
+  .investor-agentic-flow li:first-child,
+  .investor-agentic-flow li:last-child {
+    display: grid;
+    grid-template-columns: 2.5rem minmax(0, 1fr);
+    min-height: 0;
+    border-right: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.085);
+    padding: 0.9rem 0;
+  }
+
+  .investor-agentic-flow li:last-child {
+    border-bottom: 0;
+  }
+
+  .investor-agentic-flow li p {
+    margin: 0;
+  }
+}
