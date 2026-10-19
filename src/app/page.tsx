@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { DESK_TIERS } from '../data/deskTiers'
 
 const stack = [
   ['01', 'Desk OS', 'Capture decisions and workflows at the desk.'],
@@ -14,6 +15,14 @@ const compoundingFactors = [
   ['Shared process data', 'A broader record of how real work is done.'],
   ['Shared intelligence', 'Learning and context compound across operators.'],
   ['Shared capital access', 'Operators can reach aligned resources to extend their work.'],
+]
+
+const briefSeries = [
+  ['Brief 01', 'Models Have Crossed the Threshold', 'The cost curve and model capability shift the bottleneck from raw intelligence to directed process.'],
+  ['Brief 02', 'Biology Is Becoming Digital', 'Discovery cycles compress when human judgment is structured, trained, and applied to the right targets.'],
+  ['Brief 03', 'The Body Is Coming Online', 'Interface shifts move the premium toward clarified intention and operational process quality.'],
+  ['Brief 04', 'Physical Agents Are Being Built for Learning', 'Dexterity is being trained in simulation and transferred to hardware at the task level.'],
+  ['Brief 05', 'Discovery Itself Is Accelerating', 'The world is no longer moving linearly; the only durable response is process infrastructure.'],
 ]
 
 function AccessButton({ children = 'Request access' }: { children?: React.ReactNode }) {
@@ -122,17 +131,50 @@ export default function HomePage() {
             </p>
           </div>
         </div>
+
+        <div className="investor-container investor-briefs-wrap">
+          <div className="investor-briefs-header">
+            <p className="investor-eyebrow">The first 5 pieces</p>
+            <h3>BriefOS — First 5 pieces</h3>
+          </div>
+          <div className="investor-briefs-grid">
+            {briefSeries.map(([label, title, body]) => (
+              <article key={title} className="investor-brief-card">
+                <span>{label}</span>
+                <h4>{title}</h4>
+                <p>{body}</p>
+              </article>
+            ))}
+          </div>
+        </div>
       </section>
 
       <section className="investor-closing" id="access" aria-labelledby="closing-title">
         <div className="investor-container investor-closing-inner">
           <p className="investor-eyebrow"><span className="investor-status-dot" /> Kurogami / Operator infrastructure</p>
-          <h2 id="closing-title">Stay ahead of the curve <em>by design.</em></h2>
-          <p>Maintain sovereignty over skill. Capture real process. Compound real capability.</p>
-          <div className="investor-actions">
-            <AccessButton />
-            <Link href="/access#desk-process" className="investor-button investor-button-quiet">Enter the desk <span aria-hidden="true">↗</span></Link>
+          <h2 id="closing-title">Request Access</h2>
+          <p>Kurogami is process infrastructure for operators.</p>
+          <p className="investor-access-description">
+            Access includes Desk tools, operator resources, and BriefOS intelligence.
+            <br />
+            This is not a community and not a course.
+          </p>
+          <div className="investor-access-tier-grid">
+            {DESK_TIERS.map((tier, index) => (
+              <article className="investor-access-tier" key={tier.id}>
+                <p className="investor-access-tier-index">{String(index + 1).padStart(2, '0')} / {tier.price}</p>
+                <h3>{tier.name}</h3>
+                <p>{tier.summary}</p>
+                <Link
+                  href={`/access?tier=${encodeURIComponent(tier.id)}#desk-process`}
+                  className="investor-button investor-button-gold"
+                >
+                  Select tier
+                </Link>
+              </article>
+            ))}
           </div>
+          <p className="investor-access-checkout-note">Secure checkout via Stripe. Access instructions sent after payment.</p>
         </div>
       </section>
     </main>

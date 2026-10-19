@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { FormEvent, useState } from 'react'
+import { FormEvent, useEffect, useState } from 'react'
 import DeskTermsConsent from '../../components/DeskTermsConsent'
 import { DESK_TIERS } from '../../data/deskTiers'
 
@@ -36,14 +36,27 @@ const deskPrinciples = [
 export default function AccessPage() {
   const [tierId, setTierId] = useState<string>(DESK_TIERS[0].id)
   const [agreed, setAgreed] = useState(false)
-  const [submitted, setSubmitted] = useState(false)
+  const [paymentError, setPaymentError] = useState<string | null>(null)
 
   const tier = DESK_TIERS.find((option) => option.id === tierId) ?? DESK_TIERS[0]
+
+  useEffect(() => {
+    const requestedTierId = new URLSearchParams(window.location.search).get('tier')
+    if (requestedTierId && DESK_TIERS.some((option) => option.id === requestedTierId)) {
+      setTierId(requestedTierId)
+    }
+  }, [])
 
   function submitRequest(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     if (!agreed) return
-    setSubmitted(true)
+    const link = tier.paymentLink?.trim()
+    if (!link) {
+      setPaymentError('This access tier is not live yet. Add the Stripe Payment Link for this tier before enabling checkout.')
+      return
+    }
+    setPaymentError(null)
+    window.location.assign(link)
   }
 
   return (
@@ -81,89 +94,59 @@ export default function AccessPage() {
 
       <section id="desk-process" className="access-form-section">
         <div className="investor-container">
-          {submitted ? (
-            <article className="access-form access-submitted">
-              <p className="investor-eyebrow">{tier.name} · {tier.price}</p>
-              <h2>Request noted</h2>
-              <p>
-                For direct follow-up, contact the desk through Instagram.
-              </p>
-              <a href="https://www.instagram.com/ac3yway" target="_blank" rel="noreferrer" className="investor-button investor-button-gold">Contact the desk</a>
-              <p className="access-disclaimer">
-                Desk access is education and network access only — not investment advice, not managed trading, and no profits are guaranteed.
-              </p>
-            </article>
-          ) : (
-            <>
-              <header className="access-form-heading">
-                <p className="investor-eyebrow">BEGIN DESK PROCESS / SELECT ACCESS LEVEL</p>
-                <h2>Request access</h2>
-                <p>Requests are assessed for role, operating context, and consistency with the desk standard.</p>
-              </header>
-              <div className="access-tier-grid">
-                {DESK_TIERS.map((option, index) => {
-                  const active = option.id === tierId
-                  return (
-                    <button
-                      key={option.id}
-                      type="button"
-                      onClick={() => setTierId(option.id)}
-                      aria-pressed={active}
-                      className={`access-tier ${active ? 'is-active' : ''}`}
-                    >
-                      <span className="access-tier-index">{String(index + 1).padStart(2, '0')} / {option.price}</span>
-                      <span className="access-tier-title">{option.name}</span>
-                      <span className="access-tier-summary">{option.summary}</span>
-                    </button>
-                  )
-                })}
-              </div>
+          <header className="access-form-heading">
+            <p className="investor-eyebrow">BEGIN DESK PROCESS / SELECT ACCESS LEVEL</p>
+            <h2>Request Access</h2>
+            <p>
+              Kurogami is process infrastructure for operators.
+              <br />
+              Access includes Desk tools, operator resources, and BriefOS intelligence.
+              <br />
+              This is not a community and not a course.
+            </p>
+          </header>
+          <div className="access-tier-grid">
+            {DESK_TIERS.map((option, index) => {
+              const active = option.id === tierId
+              return (
+                <button
+                  key={option.id}
+                  type="button"
+                  onClick={() => setTierId(option.id)}
+                  aria-pressed={active}
+                  className={`access-tier ${active ? 'is-active' : ''}`}
+                >
+                  <span className="access-tier-index">{String(index + 1).padStart(2, '0')} / {option.price}</span>
+                  <span className="access-tier-title">{option.name}</span>
+                  <span className="access-tier-summary">{option.summary}</span>
+                </button>
+              )
+            })}
+          </div>
 
-              <form className="access-form" onSubmit={submitRequest}>
-                <div className="access-form-selected">
-                  <p className="investor-eyebrow">Selected access level</p>
-                  <p>{tier.name} <span>{tier.price}</span></p>
-                </div>
-                <div className="access-fields">
-                  <Field label="Name"><input required name="name" type="text" className="intake-input" /></Field>
-                  <Field label="Email / Telegram / X"><input required name="contact" type="text" className="intake-input" /></Field>
-                  <Field label="Role">
-                    <select required name="role" className="intake-input">
-                      <option value="">Select one</option>
-                      <option>Trader</option>
-                      <option>Originator</option>
-                      <option>Capital partner</option>
-                      <option>Builder</option>
-                      <option>Other</option>
-                    </select>
-                  </Field>
-                  <Field label="Vertical or use case"><input name="vertical" type="text" placeholder="Reserve, real estate, watches, art..." className="intake-input" /></Field>
-                  <Field label="Process and operating context" className="md:col-span-2">
-                    <textarea name="message" rows={5} className="intake-input resize-y" />
-                  </Field>
-                </div>
-                <div className="mt-6">
-                  <DeskTermsConsent checked={agreed} onChange={setAgreed} />
-                </div>
-                <div className="access-form-submit">
-                  <p>
-                    Full payment is required before access. Access begins only after payment is confirmed. For direct intake, message{' '}
-                    <a href="https://www.instagram.com/ac3yway" target="_blank" rel="noreferrer">Ac3y on Instagram</a>.
-                  </p>
-                  <button type="submit" disabled={!agreed} className="investor-button investor-button-gold disabled:cursor-not-allowed disabled:opacity-50">
-                    Request access
-                  </button>
-                </div>
-              </form>
-            </>
-          )}
+          <form className="access-form" onSubmit={submitRequest}>
+            <div className="access-form-selected">
+              <p className="investor-eyebrow">Selected access level</p>
+              <p>{tier.name} <span>{tier.price}</span></p>
+            </div>
+            {paymentError && (
+              <p className="access-payment-error">{paymentError}</p>
+            )}
+            <div className="mt-6">
+              <DeskTermsConsent checked={agreed} onChange={setAgreed} />
+            </div>
+            <div className="access-form-submit">
+              <div className="access-checkout-action">
+                <button type="submit" disabled={!agreed || !tier.paymentLink} className="investor-button investor-button-gold disabled:cursor-not-allowed disabled:opacity-50">
+                  {tier.id === 'desk-access' ? 'Get Operator Access' : tier.paymentLink ? 'Continue to Stripe' : 'Payment link pending'}
+                </button>
+                <p>Secure checkout via Stripe. Access instructions sent after payment.</p>
+              </div>
+            </div>
+          </form>
           <Link href="/" className="access-return">Return to overview <span aria-hidden="true">↑</span></Link>
         </div>
       </section>
     </main>
   )
-}
-
-function Field({ label, className = '', children }: { label: string; className?: string; children: React.ReactNode }) {
-  return <label className={`block ${className}`}><span className="text-xs uppercase tracking-[0.18em] text-white/70">{label}</span><div className="mt-2">{children}</div></label>
 }

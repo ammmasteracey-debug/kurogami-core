@@ -4,6 +4,7 @@ export type DeskTier = {
   price: string
   summary: string
   includes: string[]
+  paymentLink?: string
 }
 
 /**
@@ -13,10 +14,11 @@ export type DeskTier = {
 export const DESK_TIERS: DeskTier[] = [
   {
     id: 'desk-access',
-    name: 'Desk Access',
+    name: 'Operator Access',
     price: '$1,500',
-    summary: 'Process education, risk/watchlist methodology, 30 days guided access.',
-    includes: ['Process education', 'Risk/watchlist methodology', '30 days guided access'],
+    summary: 'Digital access to Kurogami process infrastructure.',
+    includes: ['Digital access to Kurogami process infrastructure.'],
+    paymentLink: 'https://buy.stripe.com/00wdRb2KB09tchc8NqgUM02',
   },
   {
     id: 'operator-seat',
@@ -30,18 +32,32 @@ export const DESK_TIERS: DeskTier[] = [
       'Operator network access',
       'Priority sessions as available',
     ],
+    paymentLink: 'https://buy.stripe.com/5kQbJ35WNbSb3KGfbOgUM03',
   },
   {
-    id: 'capital-partner',
+    id: 'capital-partner-15k',
     name: 'Capital Partner Seat',
-    price: '$15,000–$25,000',
-    summary: 'Operator Seat plus higher-touch access, priority onboarding, portfolio structuring education intro, priority infrastructure/intake consideration.',
+    price: '$15,000',
+    summary: 'Higher-touch access, priority onboarding, portfolio structuring intro, and priority intake consideration.',
     includes: [
-      'Everything in Operator Seat',
       'Higher-touch access',
       'Priority onboarding',
-      'Portfolio structuring education intro',
-      'Priority infrastructure/intake consideration',
+      'Portfolio structuring intro',
+      'Priority intake consideration',
     ],
+    paymentLink: 'https://buy.stripe.com/7sYcN73OFcWfepk1kYgUM04',
+  },
+  {
+    id: 'capital-partner-25k',
+    name: 'Capital Partner Seat',
+    price: '$25,000',
+    summary: 'Dedicated onboarding path, expanded portfolio structuring support, priority allocation consideration, and direct coordination access.',
+    includes: [
+      'Dedicated onboarding path',
+      'Expanded portfolio structuring support',
+      'Priority allocation consideration',
+      'Direct coordination access',
+    ],
+    paymentLink: 'https://buy.stripe.com/8x28wRad3f4n80W3t6gUM05',
   },
 ]

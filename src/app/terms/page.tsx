@@ -36,7 +36,7 @@ export default function TermsPage() {
           <p className={kickerClass}>01 / Agreement</p>
           <h2 id="terms-agreement" className={headingClass}>Agreement</h2>
           <p className={bodyClass}>
-            By paying for or accessing Desk Access, Operator Seat, or Capital Partner Seat, you agree to these Terms.
+            By paying for or accessing Operator Access, Operator Seat, or Capital Partner Seat, you agree to these Terms.
           </p>
         </section>
 
@@ -157,7 +157,7 @@ export default function TermsPage() {
           <p className={kickerClass}>13 / Term</p>
           <h2 id="terms-term" className={headingClass}>Term</h2>
           <p className={bodyClass}>
-            Desk Access defaults to 30 days from payment unless otherwise stated at checkout. Higher tiers follow the access window stated at purchase. Continued access requires renewal or written extension.
+            Operator Access defaults to 30 days from payment unless otherwise stated at checkout. Higher tiers follow the access window stated at purchase. Continued access requires renewal or written extension.
           </p>
         </section>
 

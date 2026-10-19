@@ -3665,6 +3665,65 @@ canvas {
   line-height: 1.8;
 }
 
+.investor-closing-inner > .investor-access-description {
+  margin-top: 0.45rem;
+}
+
+.investor-access-tier-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.8rem;
+  width: 100%;
+  margin-top: 2.25rem;
+  text-align: left;
+}
+
+.investor-access-tier {
+  display: flex;
+  min-height: 15rem;
+  flex-direction: column;
+  align-items: flex-start;
+  border: 1px solid rgba(226, 211, 170, 0.16);
+  background: linear-gradient(155deg, rgba(255, 255, 255, 0.025), rgba(240, 194, 74, 0.025));
+  padding: 1.2rem;
+}
+
+.investor-access-tier-index {
+  margin: 0;
+  color: rgba(220, 193, 127, 0.78);
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.investor-access-tier h3 {
+  margin: 1.1rem 0 0;
+  color: #f3f1e9;
+  font-family: var(--disp);
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.investor-access-tier > p:not(.investor-access-tier-index) {
+  margin: 0.6rem 0 1.2rem;
+  color: var(--investor-copy);
+  font-size: 0.76rem;
+  line-height: 1.7;
+}
+
+.investor-access-tier .investor-button {
+  margin-top: auto;
+  font-size: 0.68rem;
+}
+
+.investor-closing-inner > .investor-access-checkout-note {
+  margin-top: 0.85rem;
+  color: rgba(243, 241, 233, 0.48);
+  font-size: 0.72rem;
+}
+
 .investor-closing .investor-actions {
   justify-content: center;
 }
@@ -4087,6 +4146,10 @@ canvas {
 }
 
 @media (max-width: 900px) {
+  .investor-access-tier-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .investor-nav-card {
     flex-direction: row;
     align-items: center;
@@ -4127,6 +4190,14 @@ canvas {
 }
 
 @media (max-width: 640px) {
+  .investor-access-tier-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .investor-access-tier {
+    min-height: 0;
+  }
+
   .investor-container {
     width: min(100% - 2rem, 72rem);
   }
@@ -4380,9 +4451,10 @@ canvas {
 .investor-hero-subhead {
   max-width: 56rem;
   margin: clamp(1.8rem, 4vh, 2.8rem) 0 0;
-  color: rgba(225, 211, 176, 0.88);
+  color: rgba(238, 228, 202, 0.96);
   font-family: 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
   font-size: clamp(1.35rem, 2.15vw, 1.8rem);
+  font-weight: 500;
   letter-spacing: -0.018em;
   line-height: 1.5;
 }
@@ -4500,6 +4572,65 @@ canvas {
   line-height: 1.85;
 }
 
+.investor-briefs-wrap {
+  margin-top: 2.75rem;
+}
+
+.investor-briefs-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.3rem;
+}
+
+.investor-briefs-header h3 {
+  margin: 0;
+  color: rgba(243, 241, 233, 0.94);
+  font-family: var(--disp);
+  font-size: clamp(1.5rem, 2.4vw, 2.2rem);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+}
+
+.investor-briefs-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.investor-brief-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  min-height: 13.5rem;
+  border: 1px solid rgba(226, 211, 170, 0.12);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(240, 194, 74, 0.02));
+  padding: 1.15rem 1rem 1rem;
+}
+
+.investor-brief-card span {
+  color: var(--gold);
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.investor-brief-card h4 {
+  margin: 0;
+  color: rgba(243, 241, 233, 0.96);
+  font-size: 1.04rem;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.investor-brief-card p {
+  margin: 0;
+  color: var(--investor-copy);
+  font-size: 0.78rem;
+  line-height: 1.7;
+}
+
 @media (max-width: 900px) {
   .investor-stack-pillars {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -4508,6 +4639,10 @@ canvas {
   .investor-briefos-grid {
     grid-template-columns: minmax(0, 1fr);
     gap: 1.3rem;
+  }
+
+  .investor-briefs-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -4543,6 +4678,10 @@ canvas {
 
   .investor-hero-heading .investor-hero-intro {
     font-size: 0.88rem;
+  }
+
+  .investor-briefs-grid {
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .investor-stack-pillars {
@@ -4683,8 +4822,7 @@ canvas {
   margin-bottom: 2rem;
 }
 
-.access-form-heading h2,
-.access-submitted h2 {
+.access-form-heading h2 {
   margin: 1rem 0 0;
   color: #f3f1e9;
   font-family: var(--disp);
@@ -4694,8 +4832,7 @@ canvas {
   line-height: 1.08;
 }
 
-.access-form-heading > p:last-child,
-.access-submitted > p:not(.investor-eyebrow):not(.access-disclaimer) {
+.access-form-heading > p:last-child {
   margin: 0.8rem 0 0;
   color: rgba(243, 241, 233, 0.62);
   font-size: 0.9rem;
@@ -4704,7 +4841,7 @@ canvas {
 
 .access-tier-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   border-top: 1px solid rgba(220, 193, 127, 0.2);
   border-bottom: 1px solid rgba(220, 193, 127, 0.2);
 }
@@ -4788,21 +4925,6 @@ canvas {
   color: var(--gold);
 }
 
-.access-fields {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.25rem;
-  margin-top: 1.5rem;
-}
-
-.access-fields label > span {
-  color: rgba(243, 241, 233, 0.68);
-  font-family: var(--mono);
-  font-size: 0.62rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
 .access-form-submit {
   display: flex;
   align-items: center;
@@ -4813,8 +4935,33 @@ canvas {
   padding-top: 1.4rem;
 }
 
-.access-form-submit p,
-.access-disclaimer {
+.access-checkout-action {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-left: auto;
+}
+
+.access-checkout-action p {
+  max-width: 28rem;
+  margin: 0;
+  color: rgba(243, 241, 233, 0.48);
+  font-size: 0.7rem;
+  line-height: 1.7;
+}
+
+.access-payment-error {
+  margin: 0 0 1rem;
+  border: 1px solid rgba(245, 124, 93, 0.35);
+  background: rgba(245, 124, 93, 0.06);
+  color: #f5d4c9;
+  font-size: 0.78rem;
+  line-height: 1.7;
+  padding: 0.8rem 0.9rem;
+}
+
+.access-form-submit p {
   max-width: 40rem;
   margin: 0;
   color: rgba(243, 241, 233, 0.43);
@@ -4833,22 +4980,6 @@ canvas {
   color: var(--gold-2);
 }
 
-.access-submitted {
-  text-align: center;
-}
-
-.access-submitted .investor-eyebrow {
-  justify-content: center;
-}
-
-.access-submitted .investor-button {
-  margin-top: 1.5rem;
-}
-
-.access-submitted .access-disclaimer {
-  margin: 1.5rem auto 0;
-}
-
 .access-return {
   display: inline-block;
   margin-top: 1.5rem;
@@ -4859,6 +4990,10 @@ canvas {
 }
 
 @media (max-width: 760px) {
+  .access-tier-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .access-principle {
     grid-template-columns: 2.25rem minmax(0, 1fr);
     gap: 0.7rem 1rem;
@@ -4876,6 +5011,14 @@ canvas {
   .access-tier {
     min-height: 10.5rem;
     padding-inline: 0.9rem;
+  }
+
+  .access-tier:nth-child(2n) {
+    border-right: 0;
+  }
+
+  .access-tier:nth-child(-n + 2) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.09);
   }
 }
 
