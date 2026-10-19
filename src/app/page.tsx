@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { DESK_TIERS } from '../data/deskTiers'
+import DeskOsCarousel from '../components/DeskOsCarousel'
 
 const stack = [
   ['01', 'Desk OS', 'Capture decisions and workflows at the desk.'],
@@ -145,6 +146,19 @@ export default function HomePage() {
             ))}
           </div>
           <p className="investor-stack-sequence">Desk OS / Field OS <span>→</span> Train <span>→</span> Clone to Agent <span>→</span> Forge</p>
+        </div>
+      </section>
+
+      <section className="investor-section desk-os-showcase" id="desk-os" aria-labelledby="desk-os-title">
+        <div className="investor-container">
+          <div className="investor-section-intro">
+            <div>
+              <p className="investor-eyebrow">DESK OS / OPERATING SURFACE</p>
+              <h2 id="desk-os-title">A record of the work behind the outcome.</h2>
+            </div>
+            <p>One view at a time. Select an image to inspect the interface.</p>
+          </div>
+          <DeskOsCarousel />
         </div>
       </section>
 
