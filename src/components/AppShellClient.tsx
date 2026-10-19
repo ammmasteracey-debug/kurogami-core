@@ -19,7 +19,7 @@ const landingNavigation = [
 export default function AppShellClient({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
   const isHome = pathname === '/'
-  const usesInvestorChrome = isHome || pathname === '/access'
+  const usesInvestorChrome = isHome || pathname === '/access' || pathname === '/network-leaders'
 
   if (pathname === '/loading') return <>{children}</>
 
