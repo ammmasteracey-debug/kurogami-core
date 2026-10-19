@@ -6,13 +6,12 @@ import { usePathname } from 'next/navigation'
 import AccessModal from './AccessModal'
 import KurogamiGuide from './KurogamiGuide'
 import MobileBottomNav from './MobileBottomNav'
-import WalletConnectButton from './WalletConnectButton'
 
 const landingNavigation = [
   { label: 'System', id: 'system' },
+  { label: 'Stack', id: 'stack' },
   { label: 'Operators', id: 'operators' },
-  { label: 'Capital', id: 'capital' },
-  { label: 'Intelligence', id: 'intelligence' },
+  { label: 'BriefOS', id: 'briefos' },
   { label: 'Access', id: 'access' },
 ]
 
@@ -50,9 +49,9 @@ export default function AppShellClient({ children }: { children: React.ReactNode
             ) : (
               <div className="site-nav-links">
                 <Link href="/#system">System</Link>
+                <Link href="/#stack">Stack</Link>
                 <Link href="/#operators">Operators</Link>
-                <Link href="/#capital">Capital</Link>
-                <Link href="/#intelligence">Intelligence</Link>
+                <Link href="/#briefos">BriefOS</Link>
                 <Link href="/#access">Access</Link>
               </div>
             )}
@@ -64,7 +63,6 @@ export default function AppShellClient({ children }: { children: React.ReactNode
             >
               Request Access
             </button>
-            {!isHome && <WalletConnectButton />}
           </nav>
         </div>
       </header>
@@ -80,11 +78,11 @@ export default function AppShellClient({ children }: { children: React.ReactNode
                 </div>
                 <div>
                   <p className="text-[0.68rem] uppercase tracking-[0.3em] text-[var(--gold)]">Kurogami</p>
-                  <p className="text-sm text-white/65">Infrastructure for process-trained agents</p>
+                  <p className="text-sm text-white/65">Systematic capture of elite human process</p>
                 </div>
               </Link>
               <p className="investor-footer-statement">
-                We turn how skilled humans work into intelligence that can be trained, measured, owned, rented, and improved.
+                Operators are the underlying asset. AI extends their process. The Forge is the market.
               </p>
             </div>
             <nav aria-label="Footer navigation" className="investor-footer-links">
@@ -94,7 +92,7 @@ export default function AppShellClient({ children }: { children: React.ReactNode
               <Link href="/terms">Terms</Link>
             </nav>
             <div className="investor-footer-bottom">
-              <p>KUROGAMI · THE PROCESS PREMIUM</p>
+              <p>KUROGAMI · PROCESS INFRASTRUCTURE</p>
               <button type="button" onClick={openAccess}>Request Access <span aria-hidden="true">↗</span></button>
             </div>
           </div>

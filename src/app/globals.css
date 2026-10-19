@@ -133,7 +133,7 @@ body {
 }
 
 ::selection {
-  background: rgba(47, 230, 176, 0.16);
+  background: rgba(240, 194, 74, 0.2);
 }
 
 .hero {
@@ -521,8 +521,8 @@ body {
   width: 0.42rem;
   height: 0.42rem;
   border-radius: 50%;
-  background: var(--teal);
-  box-shadow: 0 0 12px rgba(47, 230, 176, 0.7);
+  background: var(--gold);
+  box-shadow: 0 0 12px rgba(240, 194, 74, 0.55);
 }
 
 .guide-assistant-glow {
@@ -4282,4 +4282,268 @@ canvas {
   .investor-footer-bottom button {
     transition: none;
   }
+}
+
+.investor-hero-grid {
+  display: block;
+}
+
+.investor-hero {
+  position: relative;
+  isolation: isolate;
+  min-height: max(44rem, calc(100svh - 4.5rem));
+  overflow: hidden;
+  padding: clamp(5rem, 11vh, 9rem) 0;
+  border-bottom-color: rgba(226, 211, 170, 0.1);
+  background:
+    radial-gradient(ellipse at 48% 44%, rgba(190, 153, 73, 0.065), transparent 39rem),
+    radial-gradient(ellipse at center, transparent 28%, rgba(0, 0, 0, 0.52) 100%),
+    #030303;
+}
+
+.investor-hero::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.16), transparent 38%, rgba(0, 0, 0, 0.32));
+  content: '';
+  pointer-events: none;
+}
+
+.investor-hero .investor-container {
+  width: min(100% - 4rem, 78rem);
+}
+
+.investor-hero-heading {
+  max-width: 73rem;
+  margin-inline: auto;
+}
+
+.investor-hero-heading .investor-eyebrow {
+  padding-left: 0.12rem;
+  color: rgba(220, 193, 127, 0.82);
+  font-size: 0.62rem;
+  letter-spacing: 0.24em;
+}
+
+.investor-hero-heading h1 {
+  position: relative;
+  max-width: 73rem;
+  margin-top: clamp(1.5rem, 3.2vh, 2.6rem);
+  padding: clamp(1.6rem, 4vw, 3.4rem) clamp(1.4rem, 4vw, 3.5rem);
+  border: 1px solid rgba(221, 197, 144, 0.13);
+  background: linear-gradient(112deg, rgba(220, 193, 127, 0.028), rgba(255, 255, 255, 0.006) 60%, transparent);
+  box-shadow: inset 0 0 80px rgba(210, 175, 94, 0.018);
+  color: #f0eee6;
+  font-family: 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
+  font-size: clamp(2.5rem, 4.2vw, 4.15rem);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.052em;
+  text-shadow: 0 0 38px rgba(220, 193, 127, 0.085);
+}
+
+.investor-hero-heading h1::before,
+.investor-hero-heading h1::after {
+  position: absolute;
+  width: 2rem;
+  height: 2rem;
+  border-color: rgba(220, 193, 127, 0.66);
+  border-style: solid;
+  content: '';
+}
+
+.investor-hero-heading h1::before {
+  top: -1px;
+  left: -1px;
+  border-width: 1px 0 0 1px;
+}
+
+.investor-hero-heading h1::after {
+  right: -1px;
+  bottom: -1px;
+  border-width: 0 1px 1px 0;
+}
+
+.investor-hero-heading h1 span {
+  display: block;
+}
+
+.investor-hero-subhead {
+  max-width: 56rem;
+  margin: clamp(1.8rem, 4vh, 2.8rem) 0 0;
+  color: rgba(225, 211, 176, 0.88);
+  font-family: 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
+  font-size: clamp(1.35rem, 2.15vw, 1.8rem);
+  letter-spacing: -0.018em;
+  line-height: 1.5;
+}
+
+.investor-hero-heading .investor-hero-intro {
+  max-width: 47rem;
+  margin-top: 1.1rem;
+  color: rgba(235, 233, 225, 0.62);
+  font-size: 0.94rem;
+  line-height: 1.9;
+}
+
+.investor-hero-heading .investor-actions {
+  margin-top: 1.8rem;
+}
+
+.investor-stack-pillars {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.investor-stack-pillars .investor-pillar {
+  min-height: 13rem;
+}
+
+.investor-stack-sequence {
+  margin: 1.35rem 0 0;
+  color: rgba(243, 241, 233, 0.68);
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.investor-stack-sequence span {
+  padding-inline: 0.5rem;
+  color: var(--gold);
+}
+
+.investor-operators-section .investor-section-heading > p:last-child {
+  max-width: 30rem;
+  color: rgba(243, 241, 233, 0.68);
+  font-size: 0.94rem;
+  line-height: 1.8;
+}
+
+.investor-compound-lead {
+  max-width: 34rem;
+  margin: 0 0 1.25rem;
+  color: rgba(243, 241, 233, 0.88);
+  font-family: var(--disp);
+  font-size: clamp(1.35rem, 2.2vw, 1.8rem);
+  line-height: 1.45;
+}
+
+.investor-compound-list {
+  border-top: 1px solid var(--investor-line);
+}
+
+.investor-compound-item {
+  display: grid;
+  grid-template-columns: 2.2rem minmax(0, 1fr);
+  gap: 0.8rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+  padding: 1rem 0;
+}
+
+.investor-compound-item > span {
+  padding-top: 0.15rem;
+  color: var(--gold);
+  font-family: var(--mono);
+  font-size: 0.64rem;
+}
+
+.investor-compound-item h3 {
+  margin: 0;
+  color: #f3f1e9;
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+.investor-compound-item p,
+.investor-briefos-copy {
+  margin: 0.4rem 0 0;
+  color: var(--investor-copy);
+  font-size: 0.8rem;
+  line-height: 1.75;
+}
+
+.investor-briefos-section {
+  background: linear-gradient(100deg, rgba(240, 194, 74, 0.035), transparent 70%);
+}
+
+.investor-briefos-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(2rem, 8vw, 8rem);
+}
+
+.investor-briefos-grid h2 {
+  margin-top: 1.2rem;
+  color: var(--gold-2);
+  font-family: var(--disp);
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.investor-briefos-copy {
+  max-width: 36rem;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  line-height: 1.85;
+}
+
+@media (max-width: 900px) {
+  .investor-stack-pillars {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .investor-briefos-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.3rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .investor-hero {
+    min-height: calc(100svh - 4rem);
+    padding-block: 4.2rem;
+  }
+
+  .investor-hero .investor-container {
+    width: min(100% - 2rem, 78rem);
+  }
+
+  .investor-hero-heading .investor-eyebrow {
+    font-size: 0.55rem;
+    letter-spacing: 0.17em;
+  }
+
+  .investor-hero-heading h1 {
+    font-size: clamp(2.05rem, 8.3vw, 3.1rem);
+    padding: 1.45rem 1.1rem;
+    line-height: 1.07;
+  }
+
+  .investor-hero-heading h1 span + span {
+    margin-top: 0.42em;
+  }
+
+  .investor-hero-subhead {
+    margin-top: 1.8rem;
+    font-size: 1.25rem;
+  }
+
+  .investor-hero-heading .investor-hero-intro {
+    font-size: 0.88rem;
+  }
+
+  .investor-stack-pillars {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .investor-stack-sequence {
+    font-size: 0.58rem;
+    line-height: 2;
+  }
+
 }

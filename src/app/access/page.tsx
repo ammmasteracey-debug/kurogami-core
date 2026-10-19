@@ -27,12 +27,12 @@ export default function AccessPage() {
         <EngineHeader
           kicker="Kurogami / Request Access"
           title="Request Access"
-          subtitle="Kurogami is rolling out by stages. Early access prioritizes operators, originators, and capital partners who understand the loop."
+          subtitle="Access is reviewed in stages for operators and partners working on process capture, AI, and the Forge."
         />
 
         <div className="mt-8 grid items-center gap-8 md:grid-cols-[minmax(0,1fr)_minmax(0,16rem)]">
           <p className="max-w-xl text-base leading-8 text-white/70">
-            Seats are limited by stage. Each request is reviewed against the current phase of the protocol.
+            Requests are reviewed against current access criteria.
           </p>
           <ArtifactVisual
             src={ARTIFACTS.accessPortal.src}
@@ -119,7 +119,7 @@ export default function AccessPage() {
         )}
 
         <p className="mt-6 text-xs uppercase tracking-[0.2em] text-white/35">
-          Kurogami is the infrastructure layer. Culture and community live separately at{' '}
+          Kurogami is process infrastructure. Gami Boyz is a separate project at{' '}
           <a href="https://gami-boyz.vercel.app/" target="_blank" rel="noreferrer" className="underline hover:text-[var(--gold)]">Gami Boyz</a>.
         </p>
 
