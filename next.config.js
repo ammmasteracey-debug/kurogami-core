@@ -3,6 +3,20 @@ const path = require('path')
 
 const nextConfig = {
   reactStrictMode: true,
+  async redirects() {
+    return [
+      {
+        source: '/desk',
+        destination: '/access#desk-process',
+        permanent: true
+      },
+      {
+        source: '/page-old',
+        destination: '/',
+        permanent: true
+      }
+    ]
+  },
   webpack(config) {
     config.resolve.alias = {
       ...config.resolve.alias,

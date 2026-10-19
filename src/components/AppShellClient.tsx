@@ -3,7 +3,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import AccessModal from './AccessModal'
 import KurogamiGuide from './KurogamiGuide'
 import MobileBottomNav from './MobileBottomNav'
 
@@ -18,20 +17,16 @@ const landingNavigation = [
 export default function AppShellClient({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
   const isHome = pathname === '/'
-
-  const openAccess = () => {
-    window.dispatchEvent(new CustomEvent('kurogami-open-access'))
-  }
+  const usesInvestorChrome = isHome || pathname === '/access'
 
   if (pathname === '/loading') return <>{children}</>
 
   return (
     <>
-      {!isHome && <KurogamiGuide />}
-      <AccessModal />
-      <header className={`site-nav-wrap sticky top-0 ${isHome ? 'investor-nav-wrap' : ''}`}>
+      {!usesInvestorChrome && <KurogamiGuide />}
+      <header className={`site-nav-wrap sticky top-0 ${usesInvestorChrome ? 'investor-nav-wrap' : ''}`}>
         <div className="mx-auto max-w-6xl px-6 pt-4 sm:px-8 lg:px-10">
-          <nav className={`site-nav-card ${isHome ? 'investor-nav-card' : ''}`} aria-label="Main navigation">
+          <nav className={`site-nav-card ${usesInvestorChrome ? 'investor-nav-card' : ''}`} aria-label="Main navigation">
             <Link href="/" className="site-nav-brand">
               <div className="site-nav-logo-wrap">
                 <Image src="/images/kurogami-official-logo.jpg" alt="Kurogami" width={40} height={40} className="h-full w-full object-contain" />
@@ -42,9 +37,11 @@ export default function AppShellClient({ children }: { children: React.ReactNode
               </div>
             </Link>
 
-            {isHome ? (
+            {usesInvestorChrome ? (
               <div className="site-nav-links investor-nav-links">
-                {landingNavigation.map(({ label, id }) => <a key={id} href={`#${id}`}>{label}</a>)}
+                {landingNavigation.map(({ label, id }) => (
+                  <Link key={id} href={isHome ? `#${id}` : `/#${id}`}>{label}</Link>
+                ))}
               </div>
             ) : (
               <div className="site-nav-links">
@@ -56,19 +53,15 @@ export default function AppShellClient({ children }: { children: React.ReactNode
               </div>
             )}
 
-            <button
-              type="button"
-              onClick={openAccess}
-              className="btn btn-gold shrink-0 !px-4 !py-2 text-xs"
-            >
+            <Link href="/access#desk-process" className="btn btn-gold shrink-0 !px-4 !py-2 text-xs">
               Request Access
-            </button>
+            </Link>
           </nav>
         </div>
       </header>
       <div className="app-shell-content flex-1">{children}</div>
-      {!isHome && <MobileBottomNav />}
-      <footer className={`site-footer ${isHome ? 'investor-footer' : ''}`}>
+      {!usesInvestorChrome && <MobileBottomNav />}
+      <footer className={`site-footer ${usesInvestorChrome ? 'investor-footer' : ''}`}>
         <div className="mx-auto flex max-w-6xl flex-col gap-6 px-6 pb-10 pt-2 sm:px-8 lg:px-10">
           <div className="site-footer-card">
             <div className="investor-footer-main">
@@ -93,7 +86,7 @@ export default function AppShellClient({ children }: { children: React.ReactNode
             </nav>
             <div className="investor-footer-bottom">
               <p>KUROGAMI · PROCESS INFRASTRUCTURE</p>
-              <button type="button" onClick={openAccess}>Request Access <span aria-hidden="true">↗</span></button>
+              <Link href="/access#desk-process">Request Access <span aria-hidden="true">↗</span></Link>
             </div>
           </div>
         </div>

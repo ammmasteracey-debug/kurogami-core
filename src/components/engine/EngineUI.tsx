@@ -61,17 +61,11 @@ export function ObjectCard({ title, body }: { title: string; body: string }) {
 export function EngineCta({ label, href, secondaryLabel, secondaryHref }: { label: string; href: string; secondaryLabel?: string; secondaryHref?: string }) {
   const isExternal = href.startsWith('http')
   const isSecondaryExternal = Boolean(secondaryHref && secondaryHref.startsWith('http'))
-  const isPopupButton = href === '#'
-  const isSecondaryPopupButton = secondaryHref === '#'
-
-  const handleOpenAccess = () => {
-    window.dispatchEvent(new CustomEvent('kurogami-open-access'))
-  }
 
   return (
     <div className="flex flex-wrap items-center gap-3">
-      {isPopupButton ? (
-        <button type="button" onClick={handleOpenAccess} className="btn btn-gold">{label}</button>
+      {href === '#' ? (
+        <Link href="/access#desk-process" className="btn btn-gold">{label}</Link>
       ) : isExternal ? (
         <a href={href} target="_blank" rel="noreferrer" className="btn btn-gold">{label}</a>
       ) : (
@@ -79,8 +73,8 @@ export function EngineCta({ label, href, secondaryLabel, secondaryHref }: { labe
       )}
 
       {secondaryLabel && secondaryHref && (
-        isSecondaryPopupButton ? (
-          <button type="button" onClick={handleOpenAccess} className="btn btn-gold-outline">{secondaryLabel}</button>
+        secondaryHref === '#' ? (
+          <Link href="/access#desk-process" className="btn btn-gold-outline">{secondaryLabel}</Link>
         ) : isSecondaryExternal ? (
           <a href={secondaryHref} target="_blank" rel="noreferrer" className="btn btn-gold-outline">{secondaryLabel}</a>
         ) : (

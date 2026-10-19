@@ -3179,7 +3179,8 @@ canvas {
 .investor-button:focus-visible,
 .investor-nav-links a:focus-visible,
 .investor-footer-links a:focus-visible,
-.investor-footer-bottom button:focus-visible {
+.investor-footer-bottom button:focus-visible,
+.investor-footer-bottom a:focus-visible {
   outline: 2px solid var(--gold-2);
   outline-offset: 3px;
 }
@@ -3707,7 +3708,8 @@ canvas {
 }
 
 .investor-footer-links a,
-.investor-footer-bottom button {
+.investor-footer-bottom button,
+.investor-footer-bottom a {
   color: rgba(243, 241, 233, 0.56);
   font-size: 0.73rem;
   text-decoration: none;
@@ -3715,7 +3717,8 @@ canvas {
 }
 
 .investor-footer-links a:hover,
-.investor-footer-bottom button:hover {
+.investor-footer-bottom button:hover,
+.investor-footer-bottom a:hover {
   color: var(--gold-2);
 }
 
@@ -3735,7 +3738,11 @@ canvas {
   letter-spacing: 0.15em;
 }
 
-.investor-footer-bottom button {
+.investor-footer-bottom button,
+.investor-footer-bottom a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
   border: 0;
   background: transparent;
   color: var(--gold);
@@ -4279,7 +4286,8 @@ canvas {
   .investor-button,
   .investor-nav-links a,
   .investor-footer-links a,
-  .investor-footer-bottom button {
+  .investor-footer-bottom button,
+  .investor-footer-bottom a {
     transition: none;
   }
 }
@@ -4546,4 +4554,378 @@ canvas {
     line-height: 2;
   }
 
+}
+
+.access-page {
+  background:
+    radial-gradient(ellipse at 48% 0%, rgba(190, 153, 73, 0.045), transparent 36rem),
+    linear-gradient(180deg, #030303, #090a0b 48%, #060707);
+  color: #f3f1e9;
+}
+
+.access-hero {
+  position: relative;
+  padding: clamp(4.5rem, 10vh, 8rem) 0 clamp(4rem, 8vh, 6rem);
+  border-bottom: 1px solid rgba(226, 211, 170, 0.1);
+}
+
+.access-hero .investor-container,
+.access-principles .investor-container,
+.access-form-section .investor-container {
+  width: min(100% - 4rem, 78rem);
+}
+
+.access-intro {
+  max-width: 73rem;
+  margin-inline: auto;
+}
+
+.access-intro > .investor-eyebrow {
+  color: rgba(220, 193, 127, 0.82);
+  font-size: 0.62rem;
+  letter-spacing: 0.24em;
+}
+
+.access-title {
+  position: relative;
+  margin: 1.6rem 0 0;
+  padding: clamp(1.6rem, 4vw, 3.4rem);
+  border: 1px solid rgba(221, 197, 144, 0.13);
+  background: linear-gradient(112deg, rgba(220, 193, 127, 0.028), rgba(255, 255, 255, 0.006) 60%, transparent);
+  box-shadow: inset 0 0 80px rgba(210, 175, 94, 0.018);
+  color: #f0eee6;
+  font-family: 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
+  font-size: clamp(2.7rem, 5vw, 4.8rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.05em;
+  text-shadow: 0 0 38px rgba(220, 193, 127, 0.07);
+}
+
+.access-title::before,
+.access-title::after {
+  position: absolute;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid rgba(220, 193, 127, 0.58);
+  content: '';
+}
+
+.access-title::before {
+  top: -1px;
+  left: -1px;
+  border-right: 0;
+  border-bottom: 0;
+}
+
+.access-title::after {
+  right: -1px;
+  bottom: -1px;
+  border-top: 0;
+  border-left: 0;
+}
+
+.access-intro .investor-actions {
+  margin-top: 1.8rem;
+}
+
+.access-principles {
+  padding: clamp(3.5rem, 7vw, 6rem) 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.008);
+}
+
+.access-principles-list {
+  border-top: 1px solid rgba(220, 193, 127, 0.2);
+}
+
+.access-principle {
+  display: grid;
+  grid-template-columns: 3.5rem minmax(0, 0.9fr) minmax(0, 1.2fr);
+  align-items: start;
+  gap: 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+  padding: 1.55rem 0;
+}
+
+.access-principle-index {
+  padding-top: 0.15rem;
+  color: var(--gold);
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+}
+
+.access-principle h2 {
+  margin: 0;
+  color: #f3f1e9;
+  font-family: var(--disp);
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.access-principle p {
+  max-width: 38rem;
+  margin: 0;
+  color: rgba(243, 241, 233, 0.62);
+  font-size: 0.84rem;
+  line-height: 1.8;
+}
+
+.access-form-section {
+  padding: clamp(4rem, 8vw, 7rem) 0;
+  scroll-margin-top: 5rem;
+}
+
+.access-form-heading {
+  max-width: 46rem;
+  margin-bottom: 2rem;
+}
+
+.access-form-heading h2,
+.access-submitted h2 {
+  margin: 1rem 0 0;
+  color: #f3f1e9;
+  font-family: var(--disp);
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1.08;
+}
+
+.access-form-heading > p:last-child,
+.access-submitted > p:not(.investor-eyebrow):not(.access-disclaimer) {
+  margin: 0.8rem 0 0;
+  color: rgba(243, 241, 233, 0.62);
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+.access-tier-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid rgba(220, 193, 127, 0.2);
+  border-bottom: 1px solid rgba(220, 193, 127, 0.2);
+}
+
+.access-tier {
+  display: flex;
+  min-height: 12rem;
+  flex-direction: column;
+  align-items: flex-start;
+  border: 0;
+  border-right: 1px solid rgba(255, 255, 255, 0.09);
+  background: transparent;
+  padding: 1.4rem;
+  text-align: left;
+  transition: background 160ms ease, border-color 160ms ease;
+  cursor: pointer;
+}
+
+.access-tier:first-child {
+  padding-left: 0.25rem;
+}
+
+.access-tier:last-child {
+  border-right: 0;
+  padding-right: 0.25rem;
+}
+
+.access-tier:hover,
+.access-tier.is-active {
+  background: linear-gradient(145deg, rgba(220, 193, 127, 0.06), transparent 75%);
+}
+
+.access-tier-index {
+  color: rgba(220, 193, 127, 0.76);
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.access-tier-title {
+  margin-top: 1.5rem;
+  color: #f3f1e9;
+  font-family: var(--disp);
+  font-size: 1.02rem;
+  font-weight: 500;
+}
+
+.access-tier-summary {
+  margin-top: 0.55rem;
+  color: rgba(243, 241, 233, 0.55);
+  font-size: 0.75rem;
+  line-height: 1.7;
+}
+
+.access-form {
+  margin-top: 2rem;
+  border: 1px solid rgba(221, 197, 144, 0.15);
+  background: linear-gradient(145deg, rgba(17, 18, 18, 0.72), rgba(7, 8, 9, 0.82));
+  padding: clamp(1.3rem, 3vw, 2.5rem);
+}
+
+.access-form-selected {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 1.2rem;
+}
+
+.access-form-selected > p:last-child {
+  margin: 0;
+  color: #f3f1e9;
+  font-family: var(--disp);
+  font-size: 1rem;
+}
+
+.access-form-selected > p:last-child span {
+  margin-left: 0.4rem;
+  color: var(--gold);
+}
+
+.access-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.access-fields label > span {
+  color: rgba(243, 241, 233, 0.68);
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.access-form-submit {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
+  padding-top: 1.4rem;
+}
+
+.access-form-submit p,
+.access-disclaimer {
+  max-width: 40rem;
+  margin: 0;
+  color: rgba(243, 241, 233, 0.43);
+  font-size: 0.7rem;
+  line-height: 1.8;
+}
+
+.access-form-submit a,
+.access-return {
+  color: rgba(220, 193, 127, 0.82);
+  text-decoration: none;
+}
+
+.access-form-submit a:hover,
+.access-return:hover {
+  color: var(--gold-2);
+}
+
+.access-submitted {
+  text-align: center;
+}
+
+.access-submitted .investor-eyebrow {
+  justify-content: center;
+}
+
+.access-submitted .investor-button {
+  margin-top: 1.5rem;
+}
+
+.access-submitted .access-disclaimer {
+  margin: 1.5rem auto 0;
+}
+
+.access-return {
+  display: inline-block;
+  margin-top: 1.5rem;
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 760px) {
+  .access-principle {
+    grid-template-columns: 2.25rem minmax(0, 1fr);
+    gap: 0.7rem 1rem;
+  }
+
+  .access-principle > div {
+    display: grid;
+    gap: 0.35rem;
+  }
+
+  .access-principle p {
+    grid-column: 2;
+  }
+
+  .access-tier {
+    min-height: 10.5rem;
+    padding-inline: 0.9rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .access-hero .investor-container,
+  .access-principles .investor-container,
+  .access-form-section .investor-container {
+    width: min(100% - 2rem, 78rem);
+  }
+
+  .access-intro > .investor-eyebrow {
+    font-size: 0.55rem;
+    letter-spacing: 0.17em;
+  }
+
+  .access-title {
+    margin-top: 1.3rem;
+    padding: 1.35rem 1.1rem;
+    font-size: clamp(2.15rem, 9.5vw, 3.2rem);
+  }
+
+  .access-tier-grid,
+  .access-fields {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .access-tier,
+  .access-tier:first-child,
+  .access-tier:last-child {
+    min-height: 0;
+    border-right: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+    padding: 1rem 0.25rem;
+  }
+
+  .access-tier:last-child {
+    border-bottom: 0;
+  }
+
+  .access-tier-title {
+    margin-top: 0.75rem;
+  }
+
+  .access-form-selected,
+  .access-form-submit {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .access-form-submit .investor-button {
+    width: 100%;
+  }
 }

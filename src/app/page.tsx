@@ -18,13 +18,9 @@ const compoundingFactors = [
 
 function AccessButton({ children = 'Request access' }: { children?: React.ReactNode }) {
   return (
-    <button
-      type="button"
-      onClick={() => window.dispatchEvent(new CustomEvent('kurogami-open-access'))}
-      className="investor-button investor-button-gold"
-    >
+    <Link href="/access#desk-process" className="investor-button investor-button-gold">
       {children}
-    </button>
+    </Link>
   )
 }
 
@@ -47,7 +43,7 @@ export default function HomePage() {
             </p>
             <div className="investor-actions">
               <AccessButton />
-              <Link href="/desk" className="investor-button investor-button-quiet">Enter the desk <span aria-hidden="true">↗</span></Link>
+              <Link href="/access#desk-process" className="investor-button investor-button-quiet">Enter the desk <span aria-hidden="true">↗</span></Link>
             </div>
           </div>
         </div>
@@ -135,7 +131,7 @@ export default function HomePage() {
           <p>Maintain sovereignty over skill. Capture real process. Compound real capability.</p>
           <div className="investor-actions">
             <AccessButton />
-            <Link href="/desk" className="investor-button investor-button-quiet">Enter the desk <span aria-hidden="true">↗</span></Link>
+            <Link href="/access#desk-process" className="investor-button investor-button-quiet">Enter the desk <span aria-hidden="true">↗</span></Link>
           </div>
         </div>
       </section>
