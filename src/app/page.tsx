@@ -310,7 +310,7 @@ export default function HomePage() {
             <p>This is not a better network marketing company.<br />It is the infrastructure network marketing runs on once agents become normal.</p>
             <div className="investor-actions">
               <AccessButton>Request Access</AccessButton>
-              <Link href="/access#desk-process" className="investor-button investor-button-quiet">See Operator Tiers <span aria-hidden="true">↗</span></Link>
+              <Link href="/network-leaders" className="investor-button investor-button-quiet">For Network Marketing Leaders <span aria-hidden="true">→</span></Link>
             </div>
           </div>
         </div>
