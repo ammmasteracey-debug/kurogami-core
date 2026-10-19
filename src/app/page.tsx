@@ -33,6 +33,11 @@ const networkSteps = [
   ['03', 'Team Structure', 'When people you introduce join—and when their introductions join—you may earn under the applicable compensation plan.'],
 ]
 
+const distributionPowers = [
+  ['Network leaders', 'Bring structured leverage.'],
+  ['Creators and streamers', 'Bring attention and trust.'],
+]
+
 const networkScenarios = [
   {
     label: 'Scenario A / Personal only',
@@ -169,7 +174,7 @@ export default function HomePage() {
           <header className="investor-network-hero">
             <p className="investor-eyebrow">NETWORK / OPERATOR DISTRIBUTION</p>
             <h2 id="network-title">Share the process. Build a team. Earn from real access.</h2>
-            <p>Kurogami includes a structured network layer so operators can introduce others, host, and earn without the usual network marketing problems.</p>
+            <p>Kurogami supports network leaders, influencers, creators, and streamers with a structured distribution layer. Attention can lead to operator access; team or audience leverage remains optional.</p>
           </header>
 
           <div className="investor-network-block">
@@ -233,6 +238,27 @@ export default function HomePage() {
             <p className="investor-eyebrow">EVENTS / DISTRIBUTION</p>
             <p>Events are not pitch fests. They are operator culture in public: desk standard, process, BriefOS context, and real work. People who resonate request access. That is the distribution.</p>
           </div>
+          <div className="investor-attention-block">
+            <div>
+              <p className="investor-eyebrow">ATTENTION + STRUCTURE</p>
+              <h3>Two distribution powers. One process.</h3>
+            </div>
+            <div className="investor-attention-content">
+              <div className="investor-attention-powers">
+                {distributionPowers.map(([title, body]) => (
+                  <p key={title}><strong>{title}</strong><span>{body}</span></p>
+                ))}
+              </div>
+              <p>Forge Network organizes both under the same operating system: prospecting, process capture, and a path to agents.</p>
+            </div>
+          </div>
+          <div className="investor-streaming-block">
+            <p className="investor-eyebrow">OPEN STREAMING SURFACE</p>
+            <div>
+              <h3>Lives and streams as operator distribution.</h3>
+              <p>Streaming is part of the culture layer and a direct path into access. Hosts and operators can run lives, point to briefing and access, and track the process in Forge Network. Access remains the gate to deeper operator layers.</p>
+            </div>
+          </div>
           <p className="investor-network-closing">The network layer is leverage on real process infrastructure, not a replacement for it.</p>
         </div>
       </section>
@@ -242,7 +268,7 @@ export default function HomePage() {
           <header className="investor-agentic-hero">
             <p className="investor-eyebrow">NETWORK / AGENTIC DISTRIBUTION</p>
             <h2 id="agentic-network-title">Your downline is changing.</h2>
-            <p>In the agentic era, scale no longer depends only on how many humans you can manage. It depends on whether you own the process that trains agents — agents that can distribute, follow up, trade, and carry a brand.</p>
+            <p>In the agentic era, scale no longer depends only on how many humans you can manage. It depends on whether you own the process that trains agents — agents that can distribute, follow up, trade, and carry a brand. This distribution layer serves network leaders, creators, and streamers; the operator seat remains valuable without an audience or team.</p>
           </header>
 
           <div className="investor-agentic-shift">
@@ -312,6 +338,7 @@ export default function HomePage() {
               <AccessButton>Request Access</AccessButton>
               <Link href="/network-leaders" className="investor-button investor-button-quiet">For Network Marketing Leaders <span aria-hidden="true">→</span></Link>
             </div>
+            <Link href="/creators-streamers" className="investor-creator-path">For Creators &amp; Streamers <span aria-hidden="true">→</span></Link>
           </div>
         </div>
       </section>

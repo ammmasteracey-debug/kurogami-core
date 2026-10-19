@@ -16,7 +16,7 @@ export const DESK_TIERS: DeskTier[] = [
     id: 'desk-access',
     name: 'Operator Access',
     price: '$1,500',
-    summary: 'Digital access to Kurogami process infrastructure.',
+    summary: 'Digital access to Kurogami process infrastructure for operators distributing through teams or audiences.',
     includes: ['Digital access to Kurogami process infrastructure.'],
     paymentLink: 'https://buy.stripe.com/00wdRb2KB09tchc8NqgUM02',
   },
@@ -24,7 +24,7 @@ export const DESK_TIERS: DeskTier[] = [
     id: 'operator-seat',
     name: 'Operator Seat',
     price: '$5,000',
-    summary: 'Desk Access plus onboarding, setup reviews, capital allocation framework education, operator network access, priority sessions as available.',
+    summary: 'Desk Access plus onboarding, setup reviews, capital allocation framework education, operator network access, and priority sessions as available. Supports distribution through teams or audiences.',
     includes: [
       'Everything in Desk Access',
       'Onboarding and setup reviews',
@@ -38,7 +38,7 @@ export const DESK_TIERS: DeskTier[] = [
     id: 'capital-partner-15k',
     name: 'Capital Partner Seat',
     price: '$15,000',
-    summary: 'Higher-touch access, priority onboarding, portfolio structuring intro, and priority intake consideration.',
+    summary: 'Higher-touch access, priority onboarding, portfolio structuring intro, and priority intake consideration for operators distributing through teams or audiences.',
     includes: [
       'Higher-touch access',
       'Priority onboarding',
@@ -51,7 +51,7 @@ export const DESK_TIERS: DeskTier[] = [
     id: 'capital-partner-25k',
     name: 'Capital Partner Seat',
     price: '$25,000',
-    summary: 'Dedicated onboarding path, expanded portfolio structuring support, priority allocation consideration, and direct coordination access.',
+    summary: 'Dedicated onboarding path, expanded portfolio structuring support, priority allocation consideration, and direct coordination access for operators distributing through teams or audiences.',
     includes: [
       'Dedicated onboarding path',
       'Expanded portfolio structuring support',

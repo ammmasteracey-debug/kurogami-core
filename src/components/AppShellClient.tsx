@@ -12,6 +12,7 @@ const landingNavigation = [
   { label: 'Operators', id: 'operators' },
   { label: 'Network', id: 'network' },
   { label: 'Agentic', id: 'agentic-network' },
+  { label: 'Creators', href: '/creators-streamers' },
   { label: 'BriefOS', id: 'briefos' },
   { label: 'Access', id: 'access' },
 ]
@@ -19,7 +20,8 @@ const landingNavigation = [
 export default function AppShellClient({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
   const isHome = pathname === '/'
-  const usesInvestorChrome = isHome || pathname === '/access' || pathname === '/network-leaders'
+  const usesInvestorChrome =
+    isHome || pathname === '/access' || pathname === '/network-leaders' || pathname === '/creators-streamers'
 
   if (pathname === '/loading') return <>{children}</>
 
@@ -41,8 +43,8 @@ export default function AppShellClient({ children }: { children: React.ReactNode
 
             {usesInvestorChrome ? (
               <div className="site-nav-links investor-nav-links">
-                {landingNavigation.map(({ label, id }) => (
-                  <Link key={id} href={isHome ? `#${id}` : `/#${id}`}>{label}</Link>
+                {landingNavigation.map(({ label, id, href }) => (
+                  <Link key={id ?? href} href={href ?? (isHome ? `#${id}` : `/#${id}`)}>{label}</Link>
                 ))}
               </div>
             ) : (
@@ -52,6 +54,7 @@ export default function AppShellClient({ children }: { children: React.ReactNode
                 <Link href="/#operators">Operators</Link>
                 <Link href="/#network">Network</Link>
                 <Link href="/#agentic-network">Agentic</Link>
+                <Link href="/creators-streamers">Creators</Link>
                 <Link href="/#briefos">BriefOS</Link>
                 <Link href="/#access">Access</Link>
               </div>
@@ -83,8 +86,8 @@ export default function AppShellClient({ children }: { children: React.ReactNode
               </p>
             </div>
             <nav aria-label="Footer navigation" className="investor-footer-links">
-              {landingNavigation.map(({ label, id }) => (
-                <Link key={id} href={isHome ? `#${id}` : `/#${id}`}>{label}</Link>
+              {landingNavigation.map(({ label, id, href }) => (
+                <Link key={id ?? href} href={href ?? (isHome ? `#${id}` : `/#${id}`)}>{label}</Link>
               ))}
               <Link href="/terms">Terms</Link>
             </nav>
