@@ -1,0 +1,348 @@
+.page {
+  min-height: 70vh;
+}
+
+.container {
+  width: min(100% - 3rem, 72rem);
+  margin-inline: auto;
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(226, 211, 170, 0.1);
+  background:
+    radial-gradient(ellipse at 50% 20%, rgba(190, 153, 73, 0.07), transparent 38rem),
+    #030303;
+  padding: clamp(4rem, 9vw, 7.5rem) 0 clamp(3.5rem, 8vw, 6.5rem);
+}
+
+.hero .container {
+  position: relative;
+}
+
+.japanese {
+  margin: 0 0 1.2rem;
+  color: #dcc17f;
+  font-family: var(--disp);
+  font-size: 1.1rem;
+  letter-spacing: 0.14em;
+}
+
+.japanese span {
+  padding-inline: 0.3rem;
+  color: rgba(220, 193, 127, 0.42);
+}
+
+.hero > .container > .investor-eyebrow {
+  color: rgba(220, 193, 127, 0.75);
+}
+
+.hero h1 {
+  position: relative;
+  z-index: 1;
+  max-width: 56rem;
+  margin: 1rem 0 0;
+  color: #f3f1e9;
+  font-family: 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
+  font-size: clamp(2.7rem, 6.5vw, 5.6rem);
+  font-weight: 400;
+  letter-spacing: -0.05em;
+  line-height: 1.04;
+}
+
+.subtitle {
+  position: relative;
+  z-index: 1;
+  margin: 1.25rem 0 0;
+  color: rgba(243, 241, 233, 0.82);
+  font-family: var(--disp);
+  font-size: clamp(1.05rem, 2vw, 1.4rem);
+  line-height: 1.6;
+}
+
+.disclaimer {
+  position: relative;
+  z-index: 1;
+  margin: 0.6rem 0 0;
+  color: rgba(243, 241, 233, 0.48);
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.wordmark {
+  position: absolute;
+  right: 0;
+  bottom: -5.5rem;
+  color: rgba(220, 193, 127, 0.035);
+  font-family: var(--disp);
+  font-size: clamp(9rem, 25vw, 22rem);
+  font-weight: 600;
+  letter-spacing: -0.1em;
+  line-height: 0.8;
+  pointer-events: none;
+  user-select: none;
+}
+
+.intro,
+.format,
+.episodes,
+.hosts,
+.closing {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: clamp(2.5rem, 5.5vw, 4.25rem) 0;
+}
+
+.intro,
+.closing {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(1.5rem, 6vw, 5rem);
+  align-items: start;
+}
+
+.intro h2,
+.sectionHeading h2,
+.closing h2 {
+  margin: 0.65rem 0 0;
+  color: #f3f1e9;
+  font-family: var(--disp);
+  font-size: clamp(1.55rem, 3vw, 2.35rem);
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 1.25;
+}
+
+.introCopy p {
+  margin: 0;
+  color: rgba(243, 241, 233, 0.72);
+  font-size: 0.92rem;
+  line-height: 1.85;
+}
+
+.introCopy p + p {
+  margin-top: 0.7rem;
+}
+
+.sectionHeading {
+  margin-bottom: 1.4rem;
+}
+
+.formatGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid rgba(220, 193, 127, 0.18);
+  border-bottom: 1px solid rgba(220, 193, 127, 0.18);
+}
+
+.formatGrid article {
+  min-height: 10rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 1.2rem;
+}
+
+.formatGrid article:first-child {
+  padding-left: 0;
+}
+
+.formatGrid article:last-child {
+  border-right: 0;
+  padding-right: 0;
+}
+
+.formatGrid article > span,
+.episodeIndex {
+  color: #dcc17f;
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+}
+
+.formatGrid h3,
+.episode h3,
+.hostList h3 {
+  margin: 1rem 0 0;
+  color: #f3f1e9;
+  font-family: var(--disp);
+  font-size: 1.08rem;
+  font-weight: 500;
+}
+
+.formatGrid article > p,
+.episode > div > p,
+.hostList article > p {
+  margin: 0.5rem 0 0;
+  color: rgba(243, 241, 233, 0.63);
+  font-size: 0.82rem;
+  line-height: 1.75;
+}
+
+.episodeList {
+  border-top: 1px solid rgba(220, 193, 127, 0.18);
+}
+
+.episode {
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: start;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 1.2rem 0;
+}
+
+.episode h3 {
+  margin: 0;
+}
+
+.episodeStatus {
+  margin: 0;
+  color: rgba(220, 193, 127, 0.78);
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.06em;
+  line-height: 1.7;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.episodeStatus span {
+  padding-inline: 0.25rem;
+  color: rgba(243, 241, 233, 0.35);
+}
+
+.hostList {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid rgba(220, 193, 127, 0.18);
+  border-bottom: 1px solid rgba(220, 193, 127, 0.18);
+}
+
+.hostList article {
+  padding: 1rem 1rem 1rem 0;
+}
+
+.hostList article + article {
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  padding-left: 1rem;
+}
+
+.hostList h3 {
+  margin-top: 0;
+}
+
+.closing {
+  align-items: center;
+}
+
+.ctaContent {
+  display: grid;
+  gap: 1.2rem;
+}
+
+.platformLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+}
+
+.platformLinks a {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  color: rgba(243, 241, 233, 0.88);
+  font-size: 0.84rem;
+  text-decoration: none;
+}
+
+.platformLinks a:hover {
+  color: #dcc17f;
+}
+
+.platformLinks a span {
+  color: rgba(243, 241, 233, 0.42);
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.footerNote {
+  margin: 0;
+  padding: 1.25rem 0 2.5rem;
+  color: rgba(243, 241, 233, 0.52);
+  font-size: 0.76rem;
+  line-height: 1.7;
+  text-align: center;
+}
+
+@media (max-width: 760px) {
+  .container {
+    width: min(100% - 2rem, 72rem);
+  }
+
+  .intro,
+  .closing {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .formatGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .formatGrid article,
+  .formatGrid article:first-child,
+  .formatGrid article:last-child {
+    min-height: 0;
+    border-right: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 1rem 0;
+  }
+
+  .formatGrid article:last-child {
+    border-bottom: 0;
+  }
+
+  .formatGrid h3 {
+    margin-top: 0.65rem;
+  }
+
+  .episode {
+    grid-template-columns: 2rem minmax(0, 1fr);
+    gap: 0.6rem;
+  }
+
+  .episodeStatus {
+    grid-column: 2;
+    text-align: left;
+  }
+
+  .wordmark {
+    right: -0.4rem;
+    bottom: -2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hostList {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .hostList article + article {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-left: 0;
+    padding-left: 0;
+  }
+
+  .actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}
