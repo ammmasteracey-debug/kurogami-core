@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { DESK_TIERS } from '../data/deskTiers'
 import DeskOsCarousel from '../components/DeskOsCarousel'
+import FeaturedOverviewVideo from '../components/FeaturedOverviewVideo'
 
 const stack = [
   ['01', 'Desk OS', 'Capture decisions and workflows at the desk.'],
@@ -109,6 +110,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      <FeaturedOverviewVideo />
+
 
       <section className="investor-section investor-problem" id="system" aria-labelledby="system-title">
         <div className="investor-container investor-split">
