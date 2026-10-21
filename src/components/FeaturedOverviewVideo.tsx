@@ -16,7 +16,7 @@ export default function FeaturedOverviewVideo() {
           preload="metadata"
           aria-label="Kurogami overview video"
         >
-          <source src="/kurogami-overview.mp4" type="video/mp4" />
+          <source src="/images/overview.mp4" type="video/mp4" />
           Your browser does not support embedded video.
         </video>
       </div>
