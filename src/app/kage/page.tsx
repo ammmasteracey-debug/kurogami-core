@@ -29,8 +29,19 @@ const episodes = [
 ]
 
 const hosts = [
-  ['Scholar', 'Host / network / culture'],
-  ['Acey', 'Thesis / operator brief'],
+  {
+    name: 'Scholar',
+    role: 'Host / network / culture',
+  },
+  {
+    name: 'Acey',
+    role: 'Thesis / operator brief',
+  },
+  {
+    name: 'Tokeyo',
+    role: 'Personal & Artist Relations Lead',
+    description: 'Owns first contact and human warmth—making the introduction, holding the room with new prospects, and keeping culture and art present so KAGE feels like people, not only thesis.',
+  },
 ]
 
 export default function KagePage() {
@@ -102,10 +113,11 @@ export default function KagePage() {
             <h2 id="kage-hosts">Hosts</h2>
           </div>
           <div className={styles.hostList}>
-            {hosts.map(([name, role]) => (
+            {hosts.map(({ name, role, description }) => (
               <article key={name}>
                 <h3>{name}</h3>
                 <p>{role}</p>
+                {description && <p>{description}</p>}
               </article>
             ))}
           </div>
