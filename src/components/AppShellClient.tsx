@@ -16,13 +16,14 @@ const landingNavigation = [
   { label: 'BriefOS', id: 'briefos' },
   { label: 'Access', id: 'access' },
   { label: 'KAGE', href: '/kage' },
+  { label: 'Agentic Gaming', href: '/agentic-gaming' },
 ]
 
 export default function AppShellClient({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
   const isHome = pathname === '/'
   const usesInvestorChrome =
-    isHome || pathname === '/access' || pathname === '/network-leaders' || pathname === '/creators-streamers' || pathname === '/kage'
+    isHome || pathname === '/access' || pathname === '/network-leaders' || pathname === '/creators-streamers' || pathname === '/kage' || pathname === '/agentic-gaming'
 
   if (pathname === '/loading') return <>{children}</>
 
@@ -59,6 +60,7 @@ export default function AppShellClient({ children }: { children: React.ReactNode
                 <Link href="/#briefos">BriefOS</Link>
                 <Link href="/#access">Access</Link>
                 <Link href="/kage">KAGE</Link>
+                <Link href="/agentic-gaming">Agentic Gaming</Link>
               </div>
             )}
 
